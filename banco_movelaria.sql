@@ -6,7 +6,7 @@ USE MODELO_MOVELARIA;
 Tabela de contatos: Armazena pessoas que ainda não são clientes, só é um cliente quando fecha um orçamenti
 */
 
-CREATE TABLE contato (
+CREATE TABLE Contato (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     telefone VARCHAR(20) NOT NULL,
@@ -14,13 +14,13 @@ CREATE TABLE contato (
     origem VARCHAR(255) NOT NULL COMMENT 'Indica como o contato teve conhecimento da movelaria, como "site", "indicação", "instagran", etc.'
 );
 
-DESC contato;
+DESC Contato;
 
 SHOW TABLES;
 
 CREATE TABLE StatusOrcamento (
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    descricao VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL
 );
 
 --inserção dos  status padrão (StatusOrcamento)--
@@ -31,7 +31,7 @@ INSERT INTO StatusOrcamento (descricao) VALUES
 ('Perdido'),
 ('Entregue');
 
-CREATE TABLE IF NOT EXISTS Statusvisita (
+CREATE TABLE IF NOT EXISTS StatusVisita (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     descricao VARCHAR(50) NOT NULL,
     observacao TEXT COMMENT 'Campo para observações adicionais sobre o status da visita'
@@ -55,3 +55,97 @@ INSERT INTO StatusProjeto (descricao) VALUES
 ('Em execução'),
 ('Concluído'),
 ('Cancelado');
+
+CREATE TABLE Funcionario (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cargo VARCHAR(50),
+    login VARCHAR(50) NOT NULL UNIQUE,
+    senhaHash VARCHAR(255),
+    Ativo BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE Orcamento (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDContato INT NOT NULL,
+    IDStatusOrcamento INT NOT NULL,
+    IDFuncionario INT NOT NULL,
+    NumeroOrcamento VARCHAR(50) NOT NULL UNIQUE,
+    DataSolicitacao DATE NOT NULL,
+    NecessitaProjeto BOOLEAN NOT NULL DEFAULT FALSE,
+    NecessitaVisita BOOLEAN NOT NULL DEFAULT FALSE,
+    Observacao VARCHAR(255) COMMENT 'Campo para observações adicionais sobre o orçamento',
+    Valor DECIMAL(10,2) NOT NULL,
+    DataEntregaOrcamento DATE,
+    DataFechamento DATE,
+
+    FOREIGN KEY (IDContato) REFERENCES Contato(ID),
+    FOREIGN KEY (IDStatusOrcamento) REFERENCES StatusOrcamento(ID),
+    FOREIGN KEY (IDFuncionario) REFERENCES Funcionario(ID)
+);
+
+SHOW TABLES;
+
+CREATE TABLE Visita (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDOrcamento INT NOT NULL,
+    IDStatus INT NOT NULL,
+    DataAgendada DATE,
+    DataRealizada DATE,
+    Observacao VARCHAR(255) COMMENT 'Campo para observações adicionais sobre a visita',
+
+    FOREIGN KEY (IDOrcamento) REFERENCES Orcamento(ID),
+    FOREIGN KEY (IDStatus) REFERENCES StatusVisita(ID)
+);
+
+CREATE TABLE Projeto (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDOrcamento INT NOT NULL,
+    IDStatus INT NOT NULL,
+    NomeProjeto VARCHAR(100),
+    DataInicio DATE,
+    DataConclusao DATE,
+    Observacao VARCHAR(255),
+
+    FOREIGN KEY (IDOrcamento) REFERENCES Orcamento(ID),
+    FOREIGN KEY (IDStatus) REFERENCES StatusProjeto(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Ambiente (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDOrcamento INT NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Valor DECIMAL(10,2) NOT NULL,
+
+    FOREIGN KEY (IDOrcamento) REFERENCES Orcamento(ID)
+);
+
+CREATE TABLE IF NOT EXISTS HistoricoOrcamento (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDOrcamento INT NOT NULL,
+    IDFuncionario INT,
+    DataRegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Observacao VARCHAR(255) NOT NULL,
+    ProximoContato DATE,
+
+    FOREIGN KEY (IDOrcamento) REFERENCES Orcamento(ID),
+    FOREIGN KEY (IDFuncionario) REFERENCES Funcionario(ID)
+);
+
+CREATE TABLE Cliente (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDContato INT NOT NULL UNIQUE,
+    CPF_CNPJ VARCHAR(20),
+    DataNascimento DATE,
+    Profissao VARCHAR(100),
+    EstadoCivil VARCHAR(50),
+    Endereco VARCHAR(255),
+    Cidade VARCHAR(100),
+    Estado VARCHAR(50),
+    Observacao VARCHAR(255),
+
+    FOREIGN KEY (IDContato) REFERENCES Contato(ID)
+);
+
+SHOW TABLES;
+
