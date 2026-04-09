@@ -45,7 +45,7 @@ Foram realizados testes para validar o funcionamento do banco:
 - Relacionamento entre tabelas  
 - Simulação de fluxo real do sistema  
 
-O arquivo teste.sql (teste.sql) contém os cenários utilizados.
+O arquivo [teste.sql](teste.sql) contém os cenários utilizados.
 
 ---
 
