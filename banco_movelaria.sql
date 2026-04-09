@@ -46,7 +46,7 @@ INSERT INTO StatusVisita (descricao) VALUES
 
 CREATE TABLE StatusProjeto (
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    descricao VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL
 );
 
 --inserção dos  status padrão (StatusProjeto)--
@@ -65,7 +65,7 @@ CREATE TABLE Funcionario (
     Ativo BOOLEAN NOT NULL DEFAULT TRUE
 );
 
-CREATE TABLE Orcamento (
+CREATE TABLE IF NOT EXISTS Orcamento (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     IDContato INT NOT NULL,
     IDStatusOrcamento INT NOT NULL,
@@ -132,6 +132,17 @@ CREATE TABLE IF NOT EXISTS HistoricoOrcamento (
     FOREIGN KEY (IDFuncionario) REFERENCES Funcionario(ID)
 );
 
+CREATE TABLE Empresa (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL COMMENT 'Nome da empresa para qual está faznedo orçamento',
+    CNPJ VARCHAR(20)
+);
+ALTER TABLE Orcamento
+ADD IDEmpresa INT NOT NULL;
+
+ALTER TABLE Orcamento
+ADD FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID);
+
 CREATE TABLE Cliente (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     IDContato INT NOT NULL UNIQUE,
@@ -147,5 +158,5 @@ CREATE TABLE Cliente (
     FOREIGN KEY (IDContato) REFERENCES Contato(ID)
 );
 
-SHOW TABLES;
+
 
