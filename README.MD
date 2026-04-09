@@ -1,24 +1,72 @@
 
-# 🪚 Projeto: Modelo Marcenaria
+# 🪚 Projeto: Modelo Movelaria
 
-Este é o meu projeto de modelagem de dados focado em uma Marcenaria - móveis sob medida. Estou desenvolvendo este projeto para aplicar na prática o que estou aprendendo a minha graduação em Análise e Desenvolvimento de Sistema e no curso da TOTVS (Engenharia de Dados e ML) da DIO.
+Projeto de modelagem de banco de dados para uma movelaria - móveis sob medida, com foco na organização do fluxo comercial — desde o primeiro contato até o fechamento do orçamento.
 
-### 🎯 O que eu quis resolver?
-
-Minha ideia foi organizar o fluxo de uma marcenaria real para utilizar o que estou aprendendo com um projeto para empresa familiar, assim consolido os fundamentos da tecnologia e agrego valor e maior funcionalidade a empresa. Para este projeto, optamos pela estratégia de **MVP (Mínimo Produto Viável)**. O objetivo é entregar um banco de dados funcional focando no cadastro de clientes e orçamentos para depois evoluir com controle de estoque, fornecedores...
-
-### 🛠️ Ferramentas utilizadas até o momento
-
-* **QuickDBD:** Para desenhar o diagrama (DER).
-* **VS Code:** Onde organizo meus arquivos de estudo.
-
-### 🧠 Como o sistema funciona (Regras que definimos)
-
-Pensei em algumas regras importantes para os dados não ficarem bagunçados:
-
-* **Organização:** Usei chaves (PK e FK) para que nenhum pedido fique "solto" no sistema.
-* **Fluxo de Venda:** Um contato só vira cliente quando fecha o negócio.
-* **Relacionamento:** Um contato é de apenas um cliente, mas esse cliente pode fazer vários orçamentos e móveis diferentes comigo.
+Desenvolvido com base em um cenário real de empresa familiar, aplicando na prática conhecimentos da graduação em Análise e Desenvolvimento de Sistemas e do curso de Engenharia de Dados (DIO/TOTVS).
 
 ---
-![Diagrama do Banco de Dados](./diagrama.png)
+
+## 🎯 Objetivo
+
+Organizar o fluxo de vendas da movelaria:
+
+**Contato → Orçamento → Cliente **
+
+O projeto foi desenvolvido como um MVP (Minimum Viable Product), com possibilidade de evolução futura.
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+- MySQL  
+- VS Code  
+- QuickDBD  
+
+---
+
+## 🧠 Regras de negócio
+
+- Um contato só se torna cliente após o fechamento do orçamento  
+- Um cliente pode ter múltiplos orçamentos  
+- Um orçamento pode conter vários ambientes (ex: cozinha, sala)  
+- O sistema registra histórico de interações com o cliente  
+- Uso de chaves primárias (PK) e estrangeiras (FK) para garantir integridade  
+
+---
+
+## 🧪 Testes realizados
+
+Foram realizados testes para validar o funcionamento do banco:
+
+- Inserção de dados  
+- Integridade referencial (FK)  
+- Teste de duplicidade (UNIQUE)  
+- Relacionamento entre tabelas  
+- Simulação de fluxo real do sistema  
+
+O arquivo `teste.sql` contém os cenários utilizados.
+
+---
+
+## 📊 Estrutura do banco
+
+O banco é composto pelas seguintes entidades:
+
+- Contato  
+- Empresa 
+- Funciocário 
+- Orçamento 
+- Cliente 
+- Ambiente  
+- Visita  
+- Projeto  
+- Histórico do Orçamento  
+- Status (Orçamento, Visita, Projeto)  
+
+---
+
+## ⚠️ Observação
+
+O diagrama disponível no repositório pode não refletir 100% a versão mais atual.  
+A estrutura completa e últimas atualizações (como IDEmpresa e HistóricoOrçamento) está no arquivo SQL.

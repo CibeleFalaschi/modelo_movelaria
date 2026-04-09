@@ -138,10 +138,7 @@ CREATE TABLE Empresa (
     CNPJ VARCHAR(20)
 );
 ALTER TABLE Orcamento
-ADD IDEmpresa INT NOT NULL;
-
-ALTER TABLE Orcamento
-ADD FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID);
+ADD CONSTRAINT FK_Orcamento_Empresa FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID)
 
 CREATE TABLE Cliente (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -157,6 +154,8 @@ CREATE TABLE Cliente (
 
     FOREIGN KEY (IDContato) REFERENCES Contato(ID)
 );
+
+
 
 
 

@@ -99,7 +99,7 @@ SELECT * FROM Orcamento;
 --Testando novamente o orçamento para verificar o campo observação--
 INSERT INTO Orcamento 
 (IDContato, IDStatusOrcamento, IDFuncionario, IDEmpresa, NumeroOrcamento, DataSolicitacao, 
-valor, Observacao)
+ValorTotal, Observacao)
 VALUES
 (1, 1, 1, 1, 'TESTE-OBS-RAPIDO', CURDATE (), 0, 'O cliente pediu *urgência* no projeto');
 
