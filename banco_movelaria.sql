@@ -137,8 +137,12 @@ CREATE TABLE Empresa (
     Nome VARCHAR(100) NOT NULL COMMENT 'Nome da empresa para qual está faznedo orçamento',
     CNPJ VARCHAR(20)
 );
+
 ALTER TABLE Orcamento
-ADD CONSTRAINT FK_Orcamento_Empresa FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID)
+ADD CONSTRAINT FK_Orcamento_Empresa 
+FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID);
+
+DESC Orcamento
 
 CREATE TABLE Cliente (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -154,7 +158,8 @@ CREATE TABLE Cliente (
 
     FOREIGN KEY (IDContato) REFERENCES Contato(ID)
 );
-
+SELECT DATABASE();
+SHOW CREATE TABLE Orcamento
 
 
 
