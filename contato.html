@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+     <nav class="menu-superior">
+    <div class="logo">Movelaria Modelo</div>
+    <ul>
+        <li><a href="dashboard.html">Início</a></li>
+        <li><a href="contato.html">Novo Orçamento</a></li>
+        <li><a href="orcamento.html">Histórico/Busca</a></li>
+        <li><a href="index.html" class="btn-sair">Sair</a></li>>
+    </ul>
+</nav>
+    <div class="container-marcenaria">
+    <h2>📋 Novo Atendimento e Orçamento</h2>
+    
+    <form id="form-atendimento">
+        <!-- BLOCO 1: O CONTATO -->
+        <fieldset>
+            <legend>Dados do Contato</legend>
+            <div class="grid-contato">
+                <input type="text" id="nome" placeholder="Nome do Cliente" required>
+                <input type="tel" id="telefone" placeholder="Telefone">
+                <select id="origem">
+                    <option value="">Como nos conheceu?</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="indicacao">Indicação</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- BLOCO 2: AMBIENTES (Ligado à sua tabela Ambiente) -->
+        <fieldset>
+            <legend>Ambientes e Valores</legend>
+            <div id="lista-ambientes">
+                <div class="linha-ambiente">
+                    <input type="text" name="ambiente" placeholder="Ex: Cozinha Planejada">
+                    <input type="number" name="valor_ambiente" placeholder="R$ 0,00" step="0.01">
+                </div>
+            </div>
+            <button type="button" class="btn-secundario" onclick="adicionarAmbiente()">+ Adicionar outro ambiente</button>
+        </fieldset>
+
+        <!-- BLOCO 3: DETALHES TÉCNICOS (Observação Grande) -->
+        <fieldset>
+            <legend>Observações e Detalhes Técnicos</legend>
+            <textarea id="observacao" rows="10" placeholder="Descreva aqui materiais (MDF, ferragens), puxadores, prazos e detalhes específicos do projeto..."></textarea>
+        </fieldset>
+
+        <!-- BLOCO 4: FINALIZAÇÃO -->
+        <div class="footer-orcamento">
+            <h3>Valor Total Estimado: R$ <span id="total">0,00</span></h3>
+            <div class="acoes">
+                <button type="submit" class="btn">💾 Salvar no Banco</button>
+                <button type="button" class="btn btn-print" onclick="window.print()">🖨️ Imprimir Orçamento</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+ <script src="js/script.js"></script>
+</body>
+</html>
