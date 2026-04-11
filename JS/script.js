@@ -72,3 +72,58 @@ function adicionarAmbiente() {
 function removerAmbiente(botao) {
     botao.closest('.item-ambiente').remove();
 }
+
+function atualizarDadosImpressao() {
+    const empresa = document.getElementById('empresaSeletor').value;
+    
+    const logoImg = document.getElementById('logo-img');
+    const nomeTxt = document.getElementById('empresa-nome');
+    const enderecoTxt = document.getElementById('empresa-endereco');
+    const cnpjTxt = document.getElementById('empresa-cnpj');
+    const cabecalho = document.getElementById('cabecalho-print');
+
+    if (empresa === 'apparato') {
+        logoImg.src = 'imagens/logo_Apparato.jpg';
+        nomeTxt.innerText = 'APPARATO MOVELARIA';
+        enderecoTxt.innerText = 'R. dos Bambus, 336 - Jardim Sao Paulo, Americana - SP, 13468-120';
+        cnpjTxt.innerText = 'CNPJ: 11.222.333/0001-00';
+        cabecalho.style.backgroundColor = '#f7941d'; // Laranja
+    } else {
+        logoImg.src = 'imagens/logo_signore.jpg';
+        nomeTxt.innerText = 'MOVELARIA MODELO';
+        enderecoTxt.innerText = 'Rua Nove de Julho, 1062 - Sçao Domingps, Americana - SP'; // Ajuste aqui se souber o endereço da Modelo
+        cnpjTxt.innerText = 'CNPJ: 44.555.666/0001-99';
+        cabecalho.style.backgroundColor = '#8b4513'; // Marrom
+    }
+}
+
+function prepararImpressao(numero, cliente, valor, endereco, telefone, cidade) {
+    // 1. Atualiza Empresa, Logo e Endereço da Marcenaria
+    atualizarDadosImpressao();
+
+    // 2. Preenche os dados do Cliente
+    const campoNome = document.getElementById('p-nome');
+    const campoEnd  = document.getElementById('p-end');
+    const campoTel  = document.getElementById('p-tel');
+    const campoCid  = document.getElementById('p-cidade');
+
+    if (campoNome) campoNome.innerText = cliente    || '---';
+    if (campoEnd)  campoEnd.innerText  = endereco   || '---';
+    if (campoTel)  campoTel.innerText  = telefone   || '---';
+    if (campoCid)  campoCid.innerText  = cidade     || '---';
+
+    // 3. Preenche a tabela de valores
+    const corpoPrint = document.getElementById('corpo-print');
+    if (corpoPrint) {
+        corpoPrint.innerHTML = `
+            <tr>
+                <td>MÓVEIS PLANEJADOS CONFORME PROJETO</td>
+                <td>${valor}</td>
+                <td>-</td>
+            </tr>
+        `;
+    }
+
+    // 4. Abre a tela de impressão
+    window.print();
+}

@@ -4,7 +4,7 @@ body {
     padding: 0;
     padding-top: 80px; /* Espaço para o menu fixo não cobrir o conteúdo */
     min-height: 100vh;
-    background: linear-gradient(135deg, #8B5E3C, #D2B48C);
+    background: linear-gradient(135deg, hsl(26, 40%, 39%), #D2B48C);
     display: flex;
     flex-direction: column; /* Organiza em coluna: menu no topo, resto embaixo */
     align-items: center;    /* Centraliza o conteúdo horizontalmente */
@@ -148,16 +148,7 @@ th {
     background-color: #c0392b !important;
 }
 
-@media print {
-    /* Adicionei .ocultar-impressao e .acoes para limpar bem o papel */
-    .menu-superior, .btn, .btn-edit, .btn-print, .busca, .ocultar-impressao, .acoes { 
-        display: none !important; 
-    }
-    body { 
-        padding-top: 0; 
-        background: white; 
-    }
-}
+
 
 /* Container Principal do Planejamento */
 .grupo-status-container {
@@ -301,3 +292,91 @@ th {
         .badge-perdido  { background: #f8d7da; color: #721c24; }
         .badge-elaboracao { background: #cce5ff; color: #004085; }
     
+
+        /* PARA IMPRESSÃO DO ORÇAMENTO AO CLIENTE*/
+        /* Esconde a folha de impressão na navegação comum */
+.print-area { display: none; }
+
+.seletor-empresa-painel {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+
+    .logo-box img { max-width: 150px; }
+    
+    .info-empresa { flex-grow: 1; text-align: center; }
+
+    .tabela-print { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .tabela-print th, .tabela-print td { border: 1px solid #000; padding: 8px; text-align: left; }
+    
+    .tabela-print th { background-color: #f7941d !important; }
+
+    .rodape-print {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #000;
+        padding: 10px;
+    }
+
+@media print {
+    /* Força cores e imagens reais */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Esconde o que não deve imprimir */
+    .menu-superior, .busca, table, .no-print, h2,
+    .btn, .btn-edit, .btn-print, .ocultar-impressao, .acoes {
+        display: none !important;
+    }
+
+    /* Corpo limpo */
+    body {
+        padding-top: 0;
+        background: white;
+    }
+
+    /* Mostra a folha de orçamento */
+    .print-area {
+        display: block !important;
+        width: 100%;
+    }
+
+    /* Cabeçalho laranja */
+    #cabecalho-print {
+        display: flex !important;
+        background-color: #f7941d !important;
+        border: 2px solid #000;
+        padding: 10px;
+        color: #000;
+    }
+
+    .logo-box img { max-width: 150px; }
+    .info-empresa { flex-grow: 1; text-align: center; }
+
+    /* Tabela de produtos */
+    .tabela-print { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .tabela-print th, .tabela-print td { border: 1px solid #000; padding: 8px; text-align: left; }
+    .tabela-print th { background-color: #f7941d !important; }
+
+    /* Rodapé */
+    .rodape-print {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #000;
+        padding: 10px;
+    }
+}
+
+@media print {
+    .container-lista {
+        display: none !important;
+    }
+}

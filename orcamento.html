@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movelaria Modelo</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
- <link rel="stylesheet" href="css/style.css">
 <body>
     <nav class="menu-superior">
     <div class="logo">Movelaria Modelo</div>
@@ -48,18 +48,82 @@
                 <td>R$ 5.000,00</td>
                 <td><span class="badge">Em Aberto</span></td>
                 
-                <td>
-    <!-- Botão de Editar (que já configuramos a função no JS) -->
-                <button class="btn-edit" onclick="abrirOrcamento(1)">✏️ Editar / Abrir</button>
-    
-    <!-- Apenas UM botão de imprimir com a função correta -->
-                <button class="btn-print" onclick="window.print()">🖨️ Imprimir</button>
-            </td>
+                <!-- Procure este local na sua tabela principal de orçamentos -->
+<td>
+    <button class="btn-edit no-print" onclick="abrirOrcamento(1)">✏️ Editar</button>
+    <button class="btn-print no-print" onclick="prepararImpressao(
+        '001',
+        'João Silva',
+        'R$ 5.000,00',
+        'Rua das Flores, 123',
+        '(19) 99999-9999',
+        'Americana - SP'
+    )">🖨️ Imprimir
+    </button>
+</td>
+
             </tr>
         </tbody>
     </table>
 </div>
+   
+<!-- Seletor de Empresa (Visível apenas na tela) -->
+<div class="seletor-empresa-painel no-print">
+    <label>Gerar Orçamento por:</label>
+    <select id="empresaSeletor" onchange="atualizarDadosImpressao()">
+        <option value="apparato">Apparato Movelaria</option>
+        <option value="modelo">Signore Mobili</option>
+    </select>
+</div>
 
+<!-- Folha de Orçamento (O que sai na impressora) -->
+<div id="folha-impressao" class="print-area">
+    <header id="cabecalho-print">
+        <div class="logo-box">
+            <img id="logo-img" src="imagens/Logo_Apparato.jpg" alt="Logo apparato">
+        </div>
+        <div class="info-empresa">
+            <h3 id="titulo-doc">ORDEM DE FABRICAÇÃO</h3>
+            <p id="empresa-nome">APPARATO MOVELARIA</p>
+            <p id="empresa-endereco">R. dos Bambus, 336 - Jardim Sao Paulo, Americana - SP, 13468-120</p>
+            <p id="empresa-contato">Fone - Whatsapp (19) 97134-6269</p>
+            <p id="empresa-cnpj">CNPJ: 11.222.333/0001-00</p>
+        </div>
+    </header>
+
+    <section class="dados-cliente-print">
+    <div class="linha-print"><span>CLIENTE:</span>   <b id="p-nome">---</b></div>
+    <div class="linha-print"><span>ENDEREÇO:</span>  <b id="p-end">---</b></div>
+    <div class="linha-print"><span>CIDADE:</span>    <b id="p-cidade">---</b></div>
+    <div class="linha-print"><span>TELEFONE:</span>  <b id="p-tel">---</b></div>
+</section>
+
+    <table class="tabela-print">
+        <thead>
+            <tr>
+                <th>DESCRIÇÃO DOS PRODUTOS</th>
+                <th>A VISTA</th>
+                <th>A PRAZO</th>
+            </tr>
+        </thead>
+        <tbody id="corpo-print">
+            <!-- Preenchido via JS -->
+        </tbody>
+    </table>
+    
+    <footer class="rodape-print">
+        <div class="condicoes-col">
+            <p><strong>PRAZO DE ENTREGA:</strong> 30 DIAS ÚTEIS</p>
+            <p><strong>GARANTIA:</strong> 10 ANOS CONTRA DEFEITOS DE FABRICAÇÃO</p>
+        </div>
+        <div class="assinatura-col">
+            <p>ORÇAMENTO VÁLIDO POR 5 DIAS</p>
+            <br>
+            <div class="linha-ass">Assinatura: ___________________________</div>
+        </div>
+    </footer>
+</div>
     <script src="js/script.js"></script> 
 </body>
 </html>
+
