@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movelaria Modelo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="menu-superior">
+        <span>Movelaria Modelo</span>
+        <ul>
+            <li><a href="dashboard.html">Início</a></li>
+            <li><a href="contato.html">Briefing</a></li>
+            <li><a href="orcamento.html">Orçamento</a></li>
+            <li><a href="cliente.html">Cliente</a></li>
+            <li><a href="index.html" class="btn-sair">Sair</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-marcenaria">
+        <h2>Dashboard</h2>
+    <div style="margin-bottom: 20px;">
+    <label style="font-weight: bold; color: #5D3A1A; margin-right: 10px;">Empresa:</label>
+    <select id="filtro-empresa" style="padding: 8px 15px; border: 1px solid #8B5E3C; 
+            border-radius: 4px; font-size: 14px;">
+        <option value="todas">Todas</option>
+        <option value="apparato">Apparato</option>
+        <option value="signore">Signore</option>
+    </select>
+</div>    
+
+        <!-- CARDS DE RESUMO -->
+        <div class="cards">
+            <div class="card">
+                <h3>Orçamentos Em Aberto</h3>
+                <span>12</span>
+            </div>
+            <div class="card">
+                <h3>Fechados no Mês</h3>
+                <span>3</span>
+            </div>
+            <div class="card">
+                <h3>Perdidos no Mês</h3>
+                <span>2</span>
+            </div>
+            <div class="card">
+                <h3>Total de Clientes</h3>
+                <span>45</span>
+            </div>
+        </div>
+
+        <!-- PRÓXIMOS CONTATOS -->
+        <div class="secao-lista-dash">
+            <h3>📞 Próximos Contatos Agendados</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Contato</th>
+                        <th>Telefone</th>
+                        <th>Data</th>
+                        <th>Responsável</th>
+                        <th>Observação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo - depois vem do backend -->
+                    <tr>
+                        <td>João Silva</td>
+                        <td>(19) 99999-9999</td>
+                        <td>12/04/2026</td>
+                        <td>Vendedor A</td>
+                        <td>Retorno sobre cozinha planejada</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- VISITAS AGENDADAS -->
+        <div class="secao-lista-dash">
+            <h3>🏠 Visitas Agendadas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Contato</th>
+                        <th>Telefone</th>
+                        <th>Data da Visita</th>
+                        <th>Responsável</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Maria Santos</td>
+                        <td>(19) 98888-8888</td>
+                        <td>15/04/2026</td>
+                        <td>Vendedor A</td>
+                        <td><span class="badge badge-aberto">Agendada</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ORÇAMENTOS AGUARDANDO RETORNO -->
+        <div class="secao-lista-dash">
+            <h3>📋 Orçamentos Aguardando Retorno</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Contato</th>
+                        <th>Valor</th>
+                        <th>Data Envio</th>
+                        <th>Status</th>
+                        <th class="acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>João Silva</td>
+                        <td>R$ 5.000,00</td>
+                        <td>10/04/2026</td>
+                        <td><span class="badge badge-aberto">Em Aberto</span></td>
+                        <td>
+                            <button class="btn-edit" onclick="abrirOrcamento(1)">✏️ Abrir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

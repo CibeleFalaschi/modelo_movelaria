@@ -161,6 +161,15 @@ CREATE TABLE Cliente (
 SELECT DATABASE();
 SHOW CREATE TABLE Orcamento
 
+CREATE TABLE Arquivo (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDOrcamento INT NOT NULL,
+    NomeArquivo VARCHAR(255) NOT NULL,
+    Caminho VARCHAR(500) NOT NULL,
+    Tipo VARCHAR(50) NOT NULL COMMENT 'briefing_inspiracao, projeto_tecnico',
+    DataUpload DATETIME DEFAULT CURRENT_TIMESTAMP,
 
+    FOREIGN KEY (IDOrcamento) REFERENCES Orcamento(ID)
+);
 
 

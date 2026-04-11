@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movelaria Modelo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="menu-superior">
+        <span>Movelaria Modelo</span>
+        <ul>
+            <li><a href="dashboard.html">Início</a></li>
+            <li><a href="contato.html">Briefing</a></li>
+            <li><a href="orcamento.html">Orçamento</a></li>
+            <li><a href="cliente.html">Cliente</a></li>
+            <li><a href="index.html" class="btn-sair">Sair</a></li>
+        </ul>
+    </nav>
+
+    <!-- LISTAGEM -->
+    <div class="container-lista" id="secao-lista">
+        <h2>Clientes</h2>
+
+        <input type="text" id="busca" placeholder="Digite o nome do cliente..."
+               style="padding: 8px; margin-bottom: 15px; width: 300px;">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Cidade</th>
+                    <th>Orçamentos</th>
+                    <th class="acoes">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-clientes">
+                <tr>
+                    <td>001</td>
+                    <td>João Silva</td>
+                    <td>(19) 99999-9999</td>
+                    <td>Americana</td>
+                    <td>2 orçamentos</td>
+                    <td>
+                        <!-- BOTÃO EDITAR AQUI, na tabela -->
+                        <button class="btn-edit" onclick="abrirEdicaoCliente(1)">✏️ Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- FORMULÁRIO DE EDIÇÃO -->
+    <div class="container-marcenaria" id="secao-edicao" style="display: none;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Dados do Cliente</h2>
+            <button onclick="fecharEdicao()" 
+                    style="background: #ccc; border: none; padding: 8px 15px; 
+                           cursor: pointer; border-radius: 4px;">
+                ✖ Fechar
+            </button>
+        </div>
+
+        <fieldset>
+            <legend>Contato Vinculado</legend>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                <input type="text" id="nome" placeholder="Nome" disabled
+                       style="background: #f5f5f5;">
+                <input type="tel" id="telefone" placeholder="Telefone" disabled
+                       style="background: #f5f5f5;">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Dados Complementares</legend>
+            <div class="grid-contato" style="display: grid; 
+                 grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px;">
+
+                <input type="text" id="cpf_cnpj" placeholder="CPF / CNPJ"
+                       oninput="this.value = this.value.replace(/[^0-9.\-\/]/g, '')">
+                <input type="text" id="cep" placeholder="CEP" maxlength="9"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                <input type="date" id="data_nascimento" title="Data de Nascimento">
+                <input type="text" id="profissao" placeholder="Profissão"
+                       oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')">
+
+                <select id="estado_civil">
+                    <option value="">Estado Civil</option>
+                    <option value="solteiro">Solteiro(a)</option>
+                    <option value="casado">Casado(a)</option>
+                    <option value="divorciado">Divorciado(a)</option>
+                    <option value="viuvo">Viúvo(a)</option>
+                    <option value="uniao_estavel">União Estável</option>
+                </select>
+                <input type="text" id="endereco" placeholder="Endereço completo"
+                       style="grid-column: span 2;">
+                <input type="text" id="cidade" placeholder="Cidade">
+
+                <input type="text" id="estado" placeholder="Estado">
+                <textarea id="observacao" placeholder="Observações"
+                          style="grid-column: 1 / -1; min-height: 80px; 
+                                 padding: 8px; resize: vertical;">
+                </textarea>
+
+            </div>  <!-- fechando grid-contato -->
+        </fieldset>
+
+        <button class="btn" onclick="salvarCliente()">Salvar</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

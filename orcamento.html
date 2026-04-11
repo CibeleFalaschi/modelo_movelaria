@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movelaria Modelo</title>
 </head>
  <link rel="stylesheet" href="css/style.css">
 <body>
@@ -11,14 +11,15 @@
     <div class="logo">Movelaria Modelo</div>
     <ul>
         <li><a href="dashboard.html">Início</a></li>
-        <li><a href="contato.html">Novo Orçamento</a></li>
-        <li><a href="orcamento.html">Histórico/Busca</a></li>
+        <li><a href="contato.html">Briefing</a></li>
+        <li><a href="orcamento.html">Orçamento</a></li>
+        <li><a href="cliente.html">Cliente</a></li>
         <li><a href="index.html" class="btn-sair">Sair</a></li>
     </ul>
 </nav>
 
     <div class="container-lista">
-    <h2>📂 Histórico de Orçamentos</h2>
+    <h2> Orçamento</h2>
     
     <!-- Barra de busca rápida -->
     <div class="busca">
@@ -31,7 +32,7 @@
         <thead>
             <tr>
                 <th>Nº</th>
-                <th>Cliente</th>
+                <th>Contato</th>
                 <th>Data</th>
                 <th>Valor Total</th>
                 <th>Status</th>
@@ -46,10 +47,14 @@
                 <td>10/04/2026</td>
                 <td>R$ 5.000,00</td>
                 <td><span class="badge">Em Aberto</span></td>
+                
                 <td>
-                    <button class="btn-edit" onclick="abrirEdicao(1)">✏️ Editar / Abrir</button>
-                    <button class="btn-print">🖨️ Imprimir</button>
-                </td>
+    <!-- Botão de Editar (que já configuramos a função no JS) -->
+                <button class="btn-edit" onclick="abrirOrcamento(1)">✏️ Editar / Abrir</button>
+    
+    <!-- Apenas UM botão de imprimir com a função correta -->
+                <button class="btn-print" onclick="window.print()">🖨️ Imprimir</button>
+            </td>
             </tr>
         </tbody>
     </table>

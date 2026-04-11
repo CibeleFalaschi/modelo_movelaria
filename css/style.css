@@ -74,18 +74,20 @@ body {
 }
 
 .input-group {
-    margin-bottom: 15px; 
+    margin-bottom: 10px; 
 }
 
 .input-group label {
     display: block;     
-    margin-bottom: 5px;  
+    margin-bottom: 10px;  
 }
 
-.input-group input {
-    width: 100%;         
-    padding: 8px;        
-    box-sizing: border-box; 
+.grid-contato input,
+.grid-contato select {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 .container-marcenaria, .container-lista {
@@ -147,6 +149,155 @@ th {
 }
 
 @media print {
-    .menu-superior, .btn, .btn-edit { display: none; }
-    body { padding-top: 0; background: white; }
+    /* Adicionei .ocultar-impressao e .acoes para limpar bem o papel */
+    .menu-superior, .btn, .btn-edit, .btn-print, .busca, .ocultar-impressao, .acoes { 
+        display: none !important; 
+    }
+    body { 
+        padding-top: 0; 
+        background: white; 
+    }
 }
+
+/* Container Principal do Planejamento */
+.grupo-status-container {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Um fundo leve para destacar */
+}
+
+.grupo-status-container legend {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Status do Orçamento (Linha Superior) */
+.status-geral-linha {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #ccc;
+}
+
+.status-geral-linha label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Grid para dividir Visita e Projeto */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Colunas Individuais */
+.status-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.status-coluna:first-child {
+    border-right: 1px solid #eee;
+    padding-right: 20px;
+}
+
+.status-coluna span {
+    font-weight: bold;
+    color: #444;
+}
+
+/* Estilização dos Selects e Inputs de Data */
+.status-coluna select, 
+.status-geral-linha select,
+.status-coluna input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+}
+
+/* Estilo para os Radio Buttons (Sim/Não) */
+.radio-inline {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 5px 0 10px 0;
+}
+
+.radio-inline label {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 600px) {
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+    .status-coluna:first-child {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+}
+
+/* Dashboard */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: #f9f4f0;
+            border: 1px solid #8B5E3C;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .card span {
+            font-size: 36px;
+            font-weight: bold;
+            color: #8B5E3C;
+        }
+
+        .secao-lista-dash {
+            margin-top: 20px;
+        }
+
+        .secao-lista-dash h3 {
+            color: #5D3A1A;
+            border-bottom: 2px solid #8B5E3C;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .badge-aberto   { background: #fff3cd; color: #856404; }
+        .badge-fechado  { background: #d4edda; color: #155724; }
+        .badge-perdido  { background: #f8d7da; color: #721c24; }
+        .badge-elaboracao { background: #cce5ff; color: #004085; }
+    
