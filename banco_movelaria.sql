@@ -14,10 +14,6 @@ CREATE TABLE Contato (
     origem VARCHAR(255) NOT NULL COMMENT 'Indica como o contato teve conhecimento da movelaria, como "site", "indicação", "instagran", etc.'
 );
 
-DESC Contato;
-
-SHOW TABLES;
-
 CREATE TABLE StatusOrcamento (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     descricao VARCHAR(255) NOT NULL
@@ -84,8 +80,6 @@ CREATE TABLE IF NOT EXISTS Orcamento (
     FOREIGN KEY (IDFuncionario) REFERENCES Funcionario(ID)
 );
 
-SHOW TABLES;
-
 CREATE TABLE Visita (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     IDOrcamento INT NOT NULL,
@@ -142,8 +136,6 @@ ALTER TABLE Orcamento
 ADD CONSTRAINT FK_Orcamento_Empresa 
 FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID);
 
-DESC Orcamento
-
 CREATE TABLE Cliente (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     IDContato INT NOT NULL UNIQUE,
@@ -158,8 +150,6 @@ CREATE TABLE Cliente (
 
     FOREIGN KEY (IDContato) REFERENCES Contato(ID)
 );
-SELECT DATABASE();
-SHOW CREATE TABLE Orcamento
 
 CREATE TABLE Arquivo (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -170,6 +160,56 @@ CREATE TABLE Arquivo (
     DataUpload DATETIME DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (IDOrcamento) REFERENCES Orcamento(ID)
+);
+
+ALTER TABLE Cliente
+ADD CodigoCliente INT,
+ADD IDEmpresa INT;
+
+ALTER TABLE Cliente
+ADD CONSTRAINT FK_Cliente_Empresa
+FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID);
+
+ALTER TABLE Orcamento
+ADD NumeroSequencial INT,
+ADD Mes INT,
+ADD Ano INT;
+
+ALTER TABLE Cliente
+MODIFY CodigoCliente INT UNIQUE;
+
+ALTER TABLE Orcamento
+ADD CONSTRAINT UK_Orcamento_NumeroEmpresa
+UNIQUE (NumeroSequencial, IDEmpresa);
+
+ALTER TABLE Cliente
+ADD DataCadastro DATE;
+
+CREATE TABLE Prospeccao (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDFuncionario INT NOT NULL,
+    NomeProspecto VARCHAR(255),
+    Telefone VARCHAR(20),
+    Origem VARCHAR(100),
+
+    IDContato INT NULL,
+
+    Status VARCHAR(50), -- Em andamento, Convertido, Perdido
+    DataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (IDFuncionario) REFERENCES Funcionario(ID),
+    FOREIGN KEY (IDContato) REFERENCES Contato(ID)
+);
+
+CREATE TABLE HistoricoProspeccao (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDProspeccao INT NOT NULL,
+    DataAcao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    TipoAcao VARCHAR(50), -- ligação, whatsapp, visita
+    Observacao VARCHAR(255),
+    ProximoContato DATE,
+
+    FOREIGN KEY (IDProspeccao) REFERENCES Prospeccao(ID)
 );
 
 

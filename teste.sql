@@ -155,3 +155,131 @@ VALUES (1, 1, CURDATE(), 'Cliente interessado, em fase de finalização interna'
 
 SELECT * FROM HistoricoOrcamento
 WHERE IDOrcamento = 1;
+
+DESC orcamento
+
+INSERT INTO Contato (nome, telefone, email, origem)
+VALUES ('João Silva', '(19) 99999-9999', 'joao@email.com', 'instagram');
+
+SELECT * FROM contato
+
+INSERT INTO Cliente (
+    IDContato,
+    CPF_CNPJ,
+    Cidade,
+    Estado,
+    CodigoCliente,
+    IDEmpresa
+)
+VALUES (
+    3,
+    '12345678900',
+    'Americana',
+    'SP',
+    491,
+    1
+);
+
+INSERT INTO Orcamento (
+    IDContato,
+    IDStatusOrcamento,
+    IDFuncionario,
+    NumeroOrcamento,
+    DataSolicitacao,
+    Valor,
+    IDEmpresa,
+    NumeroSequencial,
+    Mes,
+    Ano
+)
+VALUES (
+    3, -- mesmo cliente
+    1,
+    1,
+    '2465_05_2026',
+    CURDATE(),
+    12000.00,
+    1,
+    2465,
+    5,
+    2026
+);
+
+DESC cliente
+
+INSERT INTO Cliente (
+    IDContato,
+    CPF_CNPJ,
+    Cidade,
+    Estado,
+    CodigoCliente,
+    IDEmpresa,
+    DataCadastro
+)
+VALUES (
+    2,
+    '99999999900',
+    'Campinas',
+    'SP',
+    492,
+    1,
+    '2026-03-15'
+);
+
+SELECT * FROM cliente
+
+SELECT COUNT(*) AS total_de_clientes
+FROM Orcamento
+WHERE DataSolicitacao BETWEEN '2026-04-01' AND '2026-04-31';
+
+SELECT IDEmpresa, COUNT(*) AS total
+FROM cliente
+WHERE DataSolicitacao BETWEEN '2026-03-01' AND '2026-03-31'
+GROUP BY IDEmpresa;
+
+SELECT IDEmpresa, COUNT(*) AS total
+FROM Cliente
+WHERE DataCadastro BETWEEN '2026-03-01' AND '2026-03-31'
+GROUP BY IDEmpresa;
+
+INSERT INTO Prospeccao (
+    IDFuncionario,
+    NomeProspecto,
+    Telefone,
+    Origem,
+    Status
+)
+VALUES (
+    1,
+    'Carlos Prospecção',
+    '11999999999',
+    'Instagram',
+    'Em andamento'
+);
+
+SELECT * FROM Prospeccao;
+
+INSERT INTO HistoricoProspeccao (
+    IDProspeccao,
+    TipoAcao,
+    Observacao,
+    ProximoContato
+)
+VALUES (
+    1,
+    'WhatsApp',
+    'Mensagem enviada',
+    '2026-04-15'
+);
+
+INSERT INTO Contato (nome, telefone, email, origem)
+VALUES ('Carlos Prospecção', '11999999999', 'carlos@email.com', 'instagram');
+
+UPDATE Prospeccao
+SET IDContato = 4, -- usa o ID real
+    Status = 'Convertido'
+WHERE ID = 1;
+
+SELECT COUNT(*) 
+FROM Prospeccao
+WHERE IDContato IS NOT NULL;

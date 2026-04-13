@@ -4,7 +4,7 @@ body {
     padding: 0;
     padding-top: 80px; /* Espaço para o menu fixo não cobrir o conteúdo */
     min-height: 100vh;
-    background: linear-gradient(135deg, hsl(26, 40%, 39%), #D2B48C);
+    background: linear-gradient(grey);
     display: flex;
     flex-direction: column; /* Organiza em coluna: menu no topo, resto embaixo */
     align-items: center;    /* Centraliza o conteúdo horizontalmente */
@@ -13,7 +13,7 @@ body {
 
 /* 2. O MENU SUPERIOR (CORRIGIDO) */
 .menu-superior {
-    background-color: #5D3A1A; 
+    background-color: rgb(4, 4, 61); 
     color: white;
     display: flex;
     justify-content: space-between;
@@ -53,7 +53,7 @@ body {
 }
 
 .menu-superior a:hover {
-    background-color: #8B5E3C;
+    background-color: rgb(2, 2, 82);
 }
 
 /* 3. RESTANTE DOS SEUS ESTILOS (MANTIDOS) */
@@ -379,4 +379,42 @@ th {
     .container-lista {
         display: none !important;
     }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.container-lista {
+    max-width: 1000px;
+    margin: auto;
+}
+
+#form-prospeccao {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+#form-prospeccao {
+    width: 300px;
+    margin: 30px auto;
+}
+
+#form-prospeccao input,
+#form-prospeccao select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+#form-prospeccao button {
+    width: 100%;
 }
