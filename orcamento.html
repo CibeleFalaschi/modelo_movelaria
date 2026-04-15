@@ -79,21 +79,27 @@
 
     <h3>Configurações do Orçamento</h3>
 
-    <label>Prazo de entrega</label><br>
-    <input type="text" id="prazoEntrega" placeholder="Ex: 30 dias úteis"><br><br>
+    <div class="campo">
+        <label>Prazo de entrega</label>
+        <input type="text" id="prazoEntrega" placeholder="Ex: 30 dias úteis">
+    </div>
 
-    <label>Forma de pagamento</label><br>
-    <input type="text" id="formaPagamento" placeholder="Ex: 50% entrada + 50% entrega">
-<!-- SELETOR DE EMPRESA -->
-<div class="seletor-empresa-painel no-print">
-    <label>Gerar Orçamento por:</label>
-    <select id="empresaSeletor" onchange="atualizarDadosImpressao()">
-        <option value="apparato">Apparato</option>
-        <option value="modelo">Modelo</option>
-    </select>
- </div>
+    <div class="campo">
+        <label>Forma de pagamento</label>
+        <input type="text" id="formaPagamento" placeholder="Ex: 50% entrada + 50% entrega">
+    </div>
+
+    <div class="empresa-box">
+        <div class="campo">
+            <label>Gerar orçamento por</label>
+            <select id="empresaSeletor" onchange="atualizarDadosImpressao()">
+                <option value="apparato">Apparato</option>
+                <option value="modelo">Modelo</option>
+            </select>
+        </div>
+    </div>
+
 </div>
-
 <!-- ÁREA DE IMPRESSÃO -->
 <div id="folha-impressao" class="print-area">
 
