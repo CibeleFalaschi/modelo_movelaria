@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Prospecção</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container-lista">
+        <button onclick="voltar()">← Voltar</button>
+        <h2>Histórico de Prospecção</h2>
+        <button onclick="abrirNovoHistorico()">+ Nova Ação</button>
+
+        <table id="tabela-historico">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Tipo</th>
+                    <th>Observação</th>
+                    <th>Próximo Contato</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12/04/2026</td>
+                    <td>Ligação</td>
+                    <td>Cliente pediu orçamento</td>
+                    <td>15/04/2026</td>
+                    <td>
+                        <button onclick="editarHistorico(this)">✏️</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- MODAL HISTÓRICO -->
+    <div id="overlay-historico">
+        <div id="form-historico">
+            <h3>Nova Ação</h3>
+            <label>Tipo de Ação</label>
+            <select id="tipoAcao">
+                <option>Ligação</option>
+                <option>WhatsApp</option>
+                <option>Visita</option>
+            </select>
+
+            <label>Observação</label>
+            <textarea id="observacaoHist"></textarea>
+
+            <label>Próximo Contato</label>
+            <input type="date" id="proximoContatoHist">
+            <br><br>
+            <button onclick="salvarHistorico()">Salvar</button>
+            <button onclick="fecharHistorico()">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

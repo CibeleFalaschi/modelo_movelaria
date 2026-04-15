@@ -128,71 +128,140 @@ function prepararImpressao(numero, cliente, valor, endereco, telefone, cidade) {
     window.print();
 }
 
-
+//PROSPECÇAO//
 let linhaSelecionada = null;
+let linhaHistSelecionada = null;
 
-// abre formulário vazio
+// === FUNÇÕES TELA PROSPECÇÃO ===
+
 function abrirNovaProspeccao() {
     linhaSelecionada = null;
-
     document.getElementById("nome").value = "";
     document.getElementById("telefone").value = "";
-
-    document.getElementById("form-prospeccao").style.display = "block";
+    document.getElementById("status").value = "Em andamento";
+    document.getElementById("overlay").style.display = "flex";
 }
 
-// clicar no ✏️
 function editarProspeccao(botao) {
+    linhaSelecionada = botao.closest("tr");
+    
+    document.getElementById("nome").value = linhaSelecionada.cells[1].textContent;
+    document.getElementById("telefone").value = linhaSelecionada.cells[2].textContent;
+    document.getElementById("status").value = linhaSelecionada.cells[3].textContent;
 
-    linhaSelecionada = botao.parentNode.parentNode;
-
-    const nome = linhaSelecionada.cells[1].innerText;
-    const telefone = linhaSelecionada.cells[2].innerText;
-
-    document.getElementById("nome").value = nome;
-    document.getElementById("telefone").value = telefone;
-
-    document.getElementById("form-prospeccao").style.display = "block";
-
-    // 🔥 ESCONDE A TABELA
-    document.querySelector("table").style.display = "table";
+    document.getElementById("overlay").style.display = "flex";
 }
 
-// salvar edição
 function salvarEdicao() {
-
     const nome = document.getElementById("nome").value;
     const telefone = document.getElementById("telefone").value;
     const status = document.getElementById("status").value;
 
-
-linhaSelecionada.cells[4].innerText = status;
-
-    // 👉 SE ESTÁ EDITANDO
-    if (linhaSelecionada != null) {
-
-        linhaSelecionada.cells[1].innerText = nome;
-        linhaSelecionada.cells[2].innerText = telefone;
-
-        alert("Prospecção atualizada!");
-
+    if (linhaSelecionada) {
+        linhaSelecionada.cells[1].textContent = nome;
+        linhaSelecionada.cells[2].textContent = telefone;
+        linhaSelecionada.cells[3].textContent = status;
     } else {
-        // 👉 SE É NOVA PROSPECÇÃO
-
-        const tabela = document.querySelector("tbody");
-
-        const novaLinha = tabela.rows.length + 1;
-
- 
-        alert("Nova prospecção criada!");
+        const tabela = document.querySelector("#tabela-prospeccao tbody");
+        const novaLinha = tabela.insertRow();
+        
+        novaLinha.insertCell(0).textContent = tabela.rows.length;
+        novaLinha.insertCell(1).textContent = nome;
+        novaLinha.insertCell(2).textContent = telefone;
+        novaLinha.insertCell(3).textContent = status;
+        novaLinha.insertCell(4).textContent = "Vendedor A";
+        
+        const acoes = novaLinha.insertCell(5);
+        acoes.innerHTML = `
+            <button onclick="editarProspeccao(this)">✏️</button>
+            <button onclick="abrirHistorico()">📋</button>
+        `;
     }
+    fecharModal();
+}
 
-    // limpa tudo
-    document.getElementById("form-prospeccao").style.display = "none";
-    document.getElementById("nome").value = "";
-    document.getElementById("telefone").value = "";
-    document.getElementById("form-prospeccao").style.display = "none";
+function fecharModal() {
+    document.getElementById("overlay").style.display = "none";
+}
 
+function abrirHistorico() {
+    window.location.href = "historico_prospeccao.html";
+}
 
-    linhaSelecionada = null;
+// === FUNÇÕES TELA HISTÓRICO ===
+
+function abrirNovoHistorico() {
+    linhaHistSelecionada = null;
+    document.getElementById("tipoAcao").value = "Ligação";
+    document.getElementById("observacaoHist").value = "";
+    document.getElementById("proximoContatoHist").value = "";
+    document.getElementById("overlay-historico").style.display = "flex";
+}
+
+function editarHistorico(botao) {
+    linhaHistSelecionada = botao.closest("tr");
+
+    document.getElementById("tipoAcao").value = linhaHistSelecionada.cells[1].textContent;
+    document.getElementById("observacaoHist").value = linhaHistSelecionada.cells[2].textContent;
+    document.getElementById("proximoContatoHist").value = linhaHistSelecionada.cells[3].textContent;
+
+    document.getElementById("overlay-historico").style.display = "flex";
+}
+
+function salvarHistorico() {
+    const tipo = document.getElementById("tipoAcao").value;
+    const obs = document.getElementById("observacaoHist").value;
+    const prox = document.getElementById("proximoContatoHist").value;
+    const hoje = new Date().toLocaleDateString('pt-BR');
+
+    if (linhaHistSelecionada) {
+        linhaHistSelecionada.cells[1].textContent = tipo;
+        linhaHistSelecionada.cells[2].textContent = obs;
+        linhaHistSelecionada.cells[3].textContent = prox;
+    } else {
+        const tabela = document.querySelector("#tabela-historico tbody");
+        const novaLinha = tabela.insertRow();
+
+        novaLinha.insertCell(0).textContent = hoje;
+        novaLinha.insertCell(1).textContent = tipo;
+        novaLinha.insertCell(2).textContent = obs;
+        novaLinha.insertCell(3).textContent = prox;
+        
+        const acoes = novaLinha.insertCell(4);
+        acoes.innerHTML = `<button onclick="editarHistorico(this)">✏️</button>`;
+    }
+    fecharHistorico();
+}
+
+function fecharHistorico() {
+    document.getElementById("overlay-historico").style.display = "none";
+}
+
+function voltar() {
+    window.location.href = "prospeccao.html";
+}
+
+// FUNÇÃO DE BUSCA/FILTRO
+function filtrarProspeccoes() {
+    // 1. Pega o valor da busca
+    const filtro = document.getElementById("inputBusca").value.toLowerCase();
+    
+    // 2. Seleciona apenas as linhas que estão dentro do tbody (ignora o cabeçalho)
+    const linhas = document.querySelectorAll("#tabela-prospeccao tbody tr");
+
+    linhas.forEach(linha => {
+        // 3. Pegamos o conteúdo da segunda célula (índice 1), que é o Nome
+        const celulaNome = linha.cells[1];
+        
+        if (celulaNome) {
+            const textoNome = celulaNome.textContent.toLowerCase();
+            
+            // 4. Verifica se o que foi digitado está contido no nome
+            if (textoNome.includes(filtro)) {
+                linha.style.display = ""; // Mostra a linha
+            } else {
+                linha.style.display = "none"; // Esconde a linha
+            }
+        }
+    });
 }

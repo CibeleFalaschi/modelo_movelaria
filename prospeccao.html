@@ -3,97 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Prospecção - Movelaria Modelo</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
+
     <nav class="menu-superior">
-    <div class="logo">Movelaria Modelo</div>
-    <ul>
-        <li><a href="dashboard.html">Início</a></li>
-        <li><a href="prospeccao.html">Prospecção</a></li>
-        <li><a href="contato.html">Briefing</a></li>
-        <li><a href="orcamento.html">Orçamento</a></li>
-        <li><a href="cliente.html">Cliente</a></li>
-        <li><a href="index.html" class="btn-sair">Sair</a></li>
-    </ul>
+        <div class="logo">Movelaria Modelo</div>
+        <ul>
+            <li><a href="dashboard.html">Início</a></li>
+            <li><a href="prospeccao.html">Prospecção</a></li>
+            <li><a href="contato.html">Briefing</a></li>
+            <li><a href="orcamento.html">Orçamento</a></li>
+            <li><a href="cliente.html">Cliente</a></li>
+            <li><a href="index.html" class="btn-sair">Sair</a></li>
+        </ul>
     </nav>
 
-<div class="container-lista">
-
+    <div class="container-lista">
     <h2>Prospecção</h2>
 
-    <button onclick="abrirNovaProspeccao()">+ Nova Prospecção</button>
+    <!-- Organizamos o botão e a busca em uma linha -->
+    <div class="topo-tabela">
+        <button onclick="abrirNovaProspeccao()">+ Nova Prospecção</button>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nº</th>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th>Data Primeiro Contato</th>
-                <th>Status</th>
-                <th>Vendedor</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <tr>
-                <td>1</td>
-                <td>Maria</td>
-                <td>(19) 99999-9999</td>
-                <td>12/04/2026</td>
-                <td>Em andamento</td>
-                <td>Vendedor A</td>
-                <td>
-                    <button onclick="editarProspeccao(this)">✏️</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>2</td>
-                <td>João</td>
-                <td>(19) 98888-8888</td>
-                <td>13/04/2026</td>
-                <td>Aguardando retorno</td>
-                <td>Vendedor B</td>
-                <td>
-                    <button onclick="editarProspeccao(this)">✏️</button>
-                </td>
-            </tr>
-        
-
-        </tbody>
-    </table>
-</div>
-
-    <!-- FORMULÁRIO -->
-    <div id="form-prospeccao" style="display: none; margin-top: 20px;">
-
-        <h3>Editar Prospecção</h3>
-
-        <input type="text" id="nome" placeholder="Nome"><br><br>
-        <input type="text" id="telefone" placeholder="Telefone"><br>
-        <input type="text" id="observacao" placeholder="Observação"><br><br>
-        <input type="date" id="proximoContato"><br><br><br>
-
-        <button onclick="salvarEdicao()">Salvar</button>
-
-        <select id="status">
-    <option>Em andamento</option>
-    <option>Aguardando retorno</option>
-    <option>Sem resposta</option>
-    <option>Convertido</option>
-     </select><br><br>
-
+        <div class="busca-box">
+            <label for="inputBusca">Filtrar Nome:</label>
+            <input type="text" id="inputBusca" onkeyup="filtrarProspeccoes()" placeholder="Digite para pesquisar...">
+        </div>
     </div>
 
-</div>
+    <table id="tabela-prospeccao">
+        <table id="tabela-prospeccao">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Status</th>
+                    <th>Vendedor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Maria</td>
+                    <td>(19) 99999-9999</td>
+                    <td>Em andamento</td>
+                    <td>Vendedor A</td>
+                    <td>
+                        <button onclick="editarProspeccao(this)">✏️</button>
+                        <button onclick="abrirHistorico()">📋</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-<script src="js/script.js"></script>
+    <!-- MODAL PROSPECÇÃO -->
+    <div id="overlay">
+        <div id="form-prospeccao">
+            <h3>Dados da Prospecção</h3>
+            <label>Nome</label>
+            <input type="text" id="nome">
+
+            <label>Telefone</label>
+            <input type="text" id="telefone">
+
+            <label>Status</label>
+            <select id="status">
+                <option>Em andamento</option>
+                <option>Realizar novo contato</option>
+                <option>Perdido</option>
+                <option>Convertido</option>
+            </select>
+            <br><br>
+            <button onclick="salvarEdicao()">Salvar</button>
+            <button onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

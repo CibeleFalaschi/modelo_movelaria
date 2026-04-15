@@ -212,4 +212,10 @@ CREATE TABLE HistoricoProspeccao (
     FOREIGN KEY (IDProspeccao) REFERENCES Prospeccao(ID)
 );
 
+-- IDEmpresa já existe, só adiciona a FK e o UNIQUE
+ALTER TABLE Orcamento
+ADD CONSTRAINT FK_Orcamento_Empresa
+    FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID),
+ADD CONSTRAINT UK_Orcamento_NumeroEmpresa
+    UNIQUE (NumeroSequencial, IDEmpresa);
 
