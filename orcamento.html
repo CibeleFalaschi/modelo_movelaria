@@ -6,8 +6,11 @@
     <title>Movelaria Modelo</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <nav class="menu-superior">
+
+<!-- MENU -->
+<nav class="menu-superior">
     <div class="logo">Movelaria Modelo</div>
     <ul>
         <li><a href="dashboard.html">Início</a></li>
@@ -19,17 +22,18 @@
     </ul>
 </nav>
 
-    <div class="container-lista">
-    <h2> Orçamento</h2>
-    
-    <!-- Barra de busca rápida -->
+<!-- LISTA DE ORÇAMENTOS -->
+<div class="container-lista">
+
+    <h2>Orçamento</h2>
+
+    <!-- BUSCA -->
     <div class="busca">
-    <!-- onkeyup="filtrar()" chama a função a cada letra digitada -->
-    <label for="inputBusca">Filtrar por nome:</label>
-    <input type="text" id="buscaCliente" onkeyup="filtrarClientes()" placeholder="Digite o nome do cliente...">
+        <label>Filtrar por nome:</label>
+        <input type="text" id="buscaCliente" onkeyup="filtrarClientes()" placeholder="Digite o nome do cliente...">
     </div>
 
-
+    <!-- TABELA -->
     <table>
         <thead>
             <tr>
@@ -41,91 +45,132 @@
                 <th>Ações</th>
             </tr>
         </thead>
+
         <tbody id="tabelaCorpo">
-            <!-- O Python vai preencher estas linhas automaticamente -->
             <tr>
                 <td>001</td>
                 <td>João Silva</td>
                 <td>10/04/2026</td>
                 <td>R$ 5.000,00</td>
                 <td><span class="badge">Em Aberto</span></td>
-                
-                <!-- Procure este local na sua tabela principal de orçamentos -->
-<td>
-    <button class="btn-edit no-print" onclick="abrirOrcamento(1)">✏️ Editar</button>
-    <button class="btn-print no-print" onclick="prepararImpressao(
-        '001',
-        'João Silva',
-        'R$ 5.000,00',
-        'Rua das Flores, 123',
-        '(19) 99999-9999',
-        'Americana - SP'
-    )">🖨️ Imprimir
-    </button>
-</td>
 
+                <td>
+                    <button onclick="abrirOrcamento(1)">✏️ Editar</button>
+
+                    <button onclick="prepararImpressao(
+                        '001',
+                        'João Silva',
+                        'R$ 5.000,00',
+                        'Rua das Flores, 123',
+                        '(19) 99999-9999',
+                        'Americana - SP'
+                    )">
+                        🖨️ Imprimir
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
+
 </div>
-   
-<!-- Seletor de Empresa (Visível apenas na tela) -->
+
+<!-- CAMPOS EDITÁVEIS (NÃO IMPRIME) -->
+<div class="config-orcamento no-print">
+
+    <h3>Configurações do Orçamento</h3>
+
+    <label>Prazo de entrega</label><br>
+    <input type="text" id="prazoEntrega" placeholder="Ex: 30 dias úteis"><br><br>
+
+    <label>Forma de pagamento</label><br>
+    <input type="text" id="formaPagamento" placeholder="Ex: 50% entrada + 50% entrega">
+<!-- SELETOR DE EMPRESA -->
 <div class="seletor-empresa-painel no-print">
     <label>Gerar Orçamento por:</label>
     <select id="empresaSeletor" onchange="atualizarDadosImpressao()">
-        <option value="marcenaria1">marcenaria1</option>
-        <option value="marcenaria2">Marcenaria2</option>
+        <option value="apparato">Apparato</option>
+        <option value="modelo">Modelo</option>
     </select>
+ </div>
 </div>
 
-<!-- Folha de Orçamento (O que sai na impressora) -->
+<!-- ÁREA DE IMPRESSÃO -->
 <div id="folha-impressao" class="print-area">
+
+    <!-- CABEÇALHO -->
     <header id="cabecalho-print">
+
         <div class="logo-box">
-            <img id="logo-img" src="imagens/Logo_Apparato.jpg" alt="Logo apparato">
+            <img id="logo-img" src="imagens/logo_Apparato.jpg" alt="Logo">
         </div>
+
         <div class="info-empresa">
-            <h3 id="titulo-doc">ORDEM DE FABRICAÇÃO</h3>
-            <p id="empresa-nome">MOVELARIA1</p>
-            <p id="empresa-endereco">R. dos Bambus, 000 - Jardim Morumbi, Campinas - SP, 13468-120</p>
-            <p id="empresa-contato">Fone - Whatsapp (19) 90000-0000</p>
-            <p id="empresa-cnpj">CNPJ: 11.222.333/0001-00</p>
+            <h3>ORÇAMENTO</h3>
+            <p id="empresa-nome">MOVELARIA</p>
+            <p id="empresa-endereco">Endereço</p>
+            <p id="empresa-contato">Contato</p>
         </div>
+
     </header>
 
-    <section class="dados-cliente-print">
-    <div class="linha-print"><span>CLIENTE:</span>   <b id="p-nome">---</b></div>
-    <div class="linha-print"><span>ENDEREÇO:</span>  <b id="p-end">---</b></div>
-    <div class="linha-print"><span>CIDADE:</span>    <b id="p-cidade">---</b></div>
-    <div class="linha-print"><span>TELEFONE:</span>  <b id="p-tel">---</b></div>
-</section>
+    <!-- DADOS -->
+    <div class="dados-doc">
+        <p><strong>Nº</strong> <span id="p-numero"></span></p>
+        <p><strong>Data:</strong> <span id="p-data"></span></p>
+    </div>
 
+    <!-- CLIENTE -->
+    <section class="dados-cliente-print">
+        <p><strong>CLIENTE:</strong> <span id="p-nome"></span></p>
+        <p><strong>ENDEREÇO:</strong> <span id="p-end"></span></p>
+        <p><strong>CIDADE:</strong> <span id="p-cidade"></span></p>
+        <p><strong>TELEFONE:</strong> <span id="p-tel"></span></p>
+    </section>
+
+    <!-- TABELA -->
     <table class="tabela-print">
         <thead>
             <tr>
-                <th>DESCRIÇÃO DOS PRODUTOS</th>
-                <th>A VISTA</th>
+                <th>DESCRIÇÃO</th>
+                <th>À VISTA</th>
                 <th>A PRAZO</th>
             </tr>
         </thead>
-        <tbody id="corpo-print">
-            <!-- Preenchido via JS -->
-        </tbody>
+
+        <tbody id="corpo-print"></tbody>
     </table>
-    
+
+    <!-- TOTAL -->
+    <div class="total-print">
+        TOTAL: <span id="p-total"></span>
+    </div>
+
+    <!-- RODAPÉ -->
     <footer class="rodape-print">
-        <div class="condicoes-col">
-            <p><strong>PRAZO DE ENTREGA:</strong> 30 DIAS ÚTEIS</p>
-            <p><strong>GARANTIA:</strong> 10 ANOS CONTRA DEFEITOS DE FABRICAÇÃO</p>
+
+        <p>
+            <strong>PRAZO DE ENTREGA:</strong> 
+            <span id="p-prazo">---</span>
+        </p>
+
+        <p>
+            <strong>FORMA DE PAGAMENTO:</strong> 
+            <span id="p-pagamento">---</span>
+        </p>
+
+        <p><strong>VALIDADE:</strong> 5 dias</p>
+
+        <br>
+
+        <div class="linha-ass">
+            Assinatura: ___________________________
         </div>
-        <div class="assinatura-col">
-            <p>ORÇAMENTO VÁLIDO POR 5 DIAS</p>
-            <br>
-            <div class="linha-ass">Assinatura: ___________________________</div>
-        </div>
+
     </footer>
+
 </div>
-    <script src="js/script.js"></script> 
+
+<script src="js/script.js"></script>
+
 </body>
 </html>
-

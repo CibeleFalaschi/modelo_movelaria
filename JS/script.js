@@ -41,6 +41,7 @@ function salvarCliente() {
     alert('Dados salvos!');
     fecharEdicao();
 }
+
 let contadorAmbiente = 2; // começa em 2 porque o primeiro já existe
 
 function adicionarAmbiente() {
@@ -85,49 +86,80 @@ function atualizarDadosImpressao() {
     if (empresa === 'apparato') {
         logoImg.src = 'imagens/logo_Apparato.jpg';
         nomeTxt.innerText = 'APPARATO MOVELARIA';
-        enderecoTxt.innerTSext = 'R. dos Bambus, 000 - Jardim Sao Paulo, Campinas - SP, 13468-120';
+        enderecoTxt.innerText = 'R. dos Bambus, 000 - Jardim Sao Paulo, Campinas - SP, 13468-120';
         cnpjTxt.innerText = 'CNPJ: 11.222.333/0001-00';
-        cabecalho.style.backgroundColor = '#f7941d'; // Laranja
+        cabecalho.style.backgroundColor = '#f7941d';
     } else {
         logoImg.src = 'imagens/logo_signore.jpg';
         nomeTxt.innerText = 'MOVELARIA MODELO';
-        enderecoTxt.innerText = 'Rua Nove de Julho, 000 - Morumbi, São Paulo - SP'; // Ajuste aqui se souber o endereço da Modelo
+        enderecoTxt.innerText = 'Rua Nove de Julho, 000 - Morumbi, São Paulo - SP';
         cnpjTxt.innerText = 'CNPJ: 44.555.666/0001-99';
-        cabecalho.style.backgroundColor = '#8b4513'; // Marrom
+        cabecalho.style.backgroundColor = '#8b4513';
     }
 }
 
 function prepararImpressao(numero, cliente, valor, endereco, telefone, cidade) {
-    // 1. Atualiza Empresa, Logo e Endereço da Marcenaria
-    atualizarDadosImpressao();
 
-    // 2. Preenche os dados do Cliente
-    const campoNome = document.getElementById('p-nome');
-    const campoEnd  = document.getElementById('p-end');
-    const campoTel  = document.getElementById('p-tel');
-    const campoCid  = document.getElementById('p-cidade');
+    document.getElementById("p-numero").innerText = numero;
 
-    if (campoNome) campoNome.innerText = cliente    || '---';
-    if (campoEnd)  campoEnd.innerText  = endereco   || '---';
-    if (campoTel)  campoTel.innerText  = telefone   || '---';
-    if (campoCid)  campoCid.innerText  = cidade     || '---';
+    const hoje = new Date();
+    document.getElementById("p-data").innerText = hoje.toLocaleDateString("pt-BR");
 
-    // 3. Preenche a tabela de valores
-    const corpoPrint = document.getElementById('corpo-print');
-    if (corpoPrint) {
-        corpoPrint.innerHTML = `
-            <tr>
-                <td>MÓVEIS PLANEJADOS CONFORME PROJETO</td>
-                <td>${valor}</td>
-                <td>-</td>
-            </tr>
-        `;
-    }
+    document.getElementById("p-nome").innerText = cliente;
+    document.getElementById("p-end").innerText = endereco;
+    document.getElementById("p-cidade").innerText = cidade;
+    document.getElementById("p-tel").innerText = telefone;
 
-    // 4. Abre a tela de impressão
+    // tabela simples (sem função externa)
+    const corpo = document.getElementById("corpo-print");
+    const itens = obterItensDoFormulario();
+
+corpo.innerHTML = "";
+let total = 0;
+
+itens.forEach(item => {
+    corpo.innerHTML += `
+        <tr>
+            <td>${item.descricao}</td>
+            <td>${formatarMoeda(item.avista)}</td>
+            <td>${formatarMoeda(item.prazo)}</td>
+        </tr>
+    `;
+
+    total += item.avista;
+});
+
+document.getElementById("p-total").innerText = formatarMoeda(total);
+
+    // prazo e pagamento simples
+    const prazo = document.getElementById("prazoEntrega").value;
+    const pagamento = document.getElementById("formaPagamento").value;
+
+    document.getElementById("p-prazo").innerText = prazo || "A combinar";
+    document.getElementById("p-pagamento").innerText = pagamento || "A combinar";
+
     window.print();
 }
 
+function obterItensDoFormulario() {
+
+    const nomes = document.getElementsByName("ambiente[]");
+    const valores = document.getElementsByName("valor_ambiente[]");
+    const obs = document.getElementsByName("obs_ambiente[]");
+
+    const itens = [];
+
+    for (let i = 0; i < nomes.length; i++) {
+        itens.push({
+            ambiente: nomes[i].value,
+            descricao: obs[i].value,
+            avista: parseFloat(valores[i].value) || 0,
+            prazo: (parseFloat(valores[i].value) || 0) * 1.1
+        });
+    }
+
+    return itens;
+}
 //PROSPECÇAO//
 let linhaSelecionada = null;
 let linhaHistSelecionada = null;
@@ -263,5 +295,12 @@ function filtrarProspeccoes() {
                 linha.style.display = "none"; // Esconde a linha
             }
         }
+    });
+}
+
+function formatarMoeda(valor) {
+    return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
     });
 }
