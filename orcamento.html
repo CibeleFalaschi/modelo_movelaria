@@ -75,28 +75,33 @@
 </div>
 
 <!-- CAMPOS EDITÁVEIS (NÃO IMPRIME) -->
-<div class="config-orcamento no-print">
+<div class="config-wrapper no-print">
 
-    <h3>Configurações do Orçamento</h3>
-
-    <div class="campo">
-        <label>Prazo de entrega</label>
-        <input type="text" id="prazoEntrega" placeholder="Ex: 30 dias úteis">
+    <div class="config-header">
+        <h2>Configurações do Orçamento</h2>
+        <p>Defina as condições para geração do orçamento</p>
     </div>
 
-    <div class="campo">
-        <label>Forma de pagamento</label>
-        <input type="text" id="formaPagamento" placeholder="Ex: 50% entrada + 50% entrega">
-    </div>
+    <div class="config-card">
 
-    <div class="empresa-box">
         <div class="campo">
-            <label>Gerar orçamento por</label>
+            <label>Prazo de entrega</label>
+            <input type="text" id="prazoEntrega" placeholder="Ex: 30 dias úteis">
+        </div>
+
+        <div class="campo">
+            <label>Forma de pagamento</label>
+            <input type="text" id="formaPagamento" placeholder="Ex: 50% entrada + 50% entrega">
+        </div>
+
+        <div class="campo">
+            <label>Empresa</label>
             <select id="empresaSeletor" onchange="atualizarDadosImpressao()">
                 <option value="apparato">Apparato</option>
                 <option value="modelo">Modelo</option>
             </select>
         </div>
+
     </div>
 
 </div>

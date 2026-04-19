@@ -74,6 +74,52 @@ function removerAmbiente(botao) {
     botao.closest('.item-ambiente').remove();
 }
 
+//Dados brifieng - alerta orçamento salvo
+function mostrarAlerta(msg) {
+    const alerta = document.getElementById("alerta-sucesso");
+
+    alerta.innerText = msg;
+    alerta.classList.add("mostrar");
+
+    setTimeout(() => {
+        alerta.classList.remove("mostrar");
+    }, 3000);
+}
+
+function salvarBriefing() {
+
+    const campo = document.getElementById("prazoEntrega");
+
+    if (campo.value === "") {
+        mostrarAlerta("⚠️ Preencha o prazo de entrega");
+        return;
+    }
+
+    mostrarAlerta("💾 Orçamento salvo com sucesso!");
+}
+//Filtrar clientes em Orçamento
+function filtrarClientes() {
+    const input = document.getElementById("buscaCliente");
+    const filtro = input.value.toLowerCase();
+
+    const tabela = document.getElementById("tabelaCorpo");
+    const linhas = tabela.getElementsByTagName("tr");
+
+    for (let i = 0; i < linhas.length; i++) {
+        const colunaNome = linhas[i].getElementsByTagName("td")[1];
+
+        if (colunaNome) {
+            const texto = colunaNome.innerText.toLowerCase();
+
+            if (texto.includes(filtro)) {
+                linhas[i].style.display = "";
+            } else {
+                linhas[i].style.display = "none";
+            }
+        }
+    }
+}
+
 function atualizarDadosImpressao() {
     const empresa = document.getElementById('empresaSeletor').value;
     

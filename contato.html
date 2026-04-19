@@ -179,13 +179,18 @@
             <div class="footer-orcamento">
                 <h3>Valor Total Estimado: R$ <span id="total">0,00</span></h3>
                 <div class="acoes">
-                    <button type="submit" class="btn">💾 Salvar no Banco</button>
+                    <button type="button" onclick="salvarBriefing()">💾 Salvar no Banco</button>
                     <button type="button" class="btn btn-print" onclick="window.print()">🖨️ Imprimir Orçamento</button>
+                   
                 </div>
             </div>
 
         </form>
     </div>
+
+        <div id="alerta-sucesso" class="alerta-sucesso">
+    ✔ Salvo com sucesso!
+        </div>
 
     <script src="js/script.js"></script>
 </body>
