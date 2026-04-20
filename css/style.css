@@ -1031,3 +1031,228 @@ label {
 .botao-secundario:hover {
     background: #d1d5db;
 }
+
+
+/* ========================= */
+/* CONTRATO - TELA           */
+/* ========================= */
+
+.contrato-print {
+    display: none;
+}
+
+/* ========================= */
+/* IMPRESSÃO - GERAL         */
+/* ========================= */
+
+@media print {
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        padding-top: 0;
+        background: white;
+        margin: 0;
+    }
+
+    /* Esconde tudo por padrão */
+    .menu-superior,
+    .alerta-sucesso,
+    .no-print,
+    .btn-contrato,
+    #btn-contrato {
+        display: none !important;
+    }
+
+    /* ========================= */
+    /* CASO 1: IMPRIMIR BRIEFING */
+    /* ========================= */
+
+    .imprimindo-briefing .container-marcenaria {
+        display: block !important;
+    }
+
+    .imprimindo-briefing .contrato-print,
+    .imprimindo-briefing #folha-impressao {
+        display: none !important;
+    }
+
+    .imprimindo-briefing .footer-orcamento .acoes {
+        display: none !important;
+    }
+
+    /* ========================= */
+    /* CASO 2: ORÇAMENTO CLIENTE */
+    /* ========================= */
+
+    .imprimindo-orcamento-cliente .container-lista,
+    .imprimindo-orcamento-cliente .config-wrapper,
+    .imprimindo-orcamento-cliente .contrato-print {
+        display: none !important;
+    }
+
+    .imprimindo-orcamento-cliente #folha-impressao {
+        display: block !important;
+        width: 100%;
+    }
+
+    .imprimindo-orcamento-cliente #cabecalho-print {
+        display: flex !important;
+        justify-content: space-between;
+        background-color: #26057b !important;
+        border: 2px solid #000;
+        padding: 10px;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .imprimindo-orcamento-cliente .tabela-print {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .imprimindo-orcamento-cliente .tabela-print th,
+    .imprimindo-orcamento-cliente .tabela-print td {
+        border: 1px solid #000;
+        padding: 8px;
+    }
+
+    .imprimindo-orcamento-cliente .tabela-print th {
+        background-color: #f7941d !important;
+    }
+
+    .imprimindo-orcamento-cliente .rodape-print {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #000;
+        padding: 10px;
+    }
+
+    .imprimindo-orcamento-cliente .dados-cliente-print {
+        border: 1px solid #000;
+        margin: 20px 0;
+        padding: 15px;
+    }
+
+    .imprimindo-orcamento-cliente .total-print {
+        text-align: right;
+        font-size: 26px;
+        font-weight: bold;
+        border-top: 2px solid #000;
+        padding-top: 10px;
+        margin-top: 20px;
+    }
+
+    /* ========================= */
+    /* CASO 3: CONTRATO          */
+    /* ========================= */
+
+    .imprimindo-contrato .container-marcenaria,
+    .imprimindo-contrato .container-lista,
+    .imprimindo-contrato .config-wrapper,
+    .imprimindo-contrato #folha-impressao,
+    .imprimindo-contrato .alerta-sucesso {
+        display: none !important;
+    }
+
+    .imprimindo-contrato .contrato-print {
+        display: block !important;
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        line-height: 1.4;
+        padding: 20px;
+        color: #000;
+    }
+
+    .imprimindo-contrato .contrato-cabecalho {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 15px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+    }
+
+    .imprimindo-contrato .contrato-logo {
+        display: block !important;
+        width: 100px !important;
+        height: auto !important;
+    }
+
+    .imprimindo-contrato .contrato-cabecalho-info {
+        display: block !important;
+        flex: 1;
+        font-size: 11px;
+    }
+
+    .imprimindo-contrato .contrato-cabecalho-numero {
+        display: block !important;
+        text-align: right;
+        font-size: 11px;
+        min-width: 150px;
+    }
+
+    .imprimindo-contrato .contrato-tabela {
+        display: table !important;
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+        font-size: 11px;
+    }
+
+    .imprimindo-contrato .contrato-tabela td {
+        display: table-cell !important;
+        border: 1px solid #000;
+        padding: 4px 6px;
+        width: 50%;
+    }
+
+    .imprimindo-contrato .contrato-tabela-header td {
+        background-color: #ddd !important;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .imprimindo-contrato .contrato-texto {
+        font-size: 11px;
+        margin: 5px 0;
+        text-align: justify;
+    }
+
+    .imprimindo-contrato .contrato-importante {
+        font-weight: bold;
+    }
+
+    .imprimindo-contrato .contrato-assinaturas {
+        display: flex !important;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    .imprimindo-contrato .contrato-ass-box {
+        text-align: center;
+        width: 45%;
+        font-size: 11px;
+    }
+
+    .imprimindo-contrato .contrato-ass-linha {
+        border-top: 1px solid #000;
+        margin-bottom: 5px;
+        margin-top: 25px;
+    }
+
+    .imprimindo-contrato .contrato-ass-box p {
+        margin: 2px 0;
+    }
+
+    .imprimindo-contrato .contrato-cidade {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 11px;
+    }
+}
