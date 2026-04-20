@@ -13,7 +13,7 @@
         <ul>
             <li><a href="dashboard.html">Início</a></li>
             <li><a href="prospeccao.html">Prospecção</a></li>
-            <li><a href="contato.html">Briefing</a></li>
+            <li><a href="briefing_orcamento.html">Briefing</a></li>
             <li><a href="orcamento.html">Orçamento</a></li>
             <li><a href="cliente.html">Cliente</a></li>
             <li><a href="index.html" class="btn-sair">Sair</a></li>
@@ -77,39 +77,40 @@
         </fieldset>
 
         <fieldset>
-            <legend>Dados Complementares</legend>
-            <div class="grid-contato" style="display: grid; 
-                 grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px;">
+    <legend>Dados Complementares</legend>
+    <div class="grid-contato" style="display: grid; 
+         grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px;">
 
-                <input type="text" id="cpf_cnpj" placeholder="CPF / CNPJ"
-                       oninput="this.value = this.value.replace(/[^0-9.\-\/]/g, '')">
-                <input type="text" id="cep" placeholder="CEP" maxlength="9"
-                       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                <input type="date" id="data_nascimento" title="Data de Nascimento">
-                <input type="text" id="profissao" placeholder="Profissão"
-                       oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')">
+        <input type="text" id="cpf_cnpj" placeholder="CPF / CNPJ"
+               oninput="this.value = this.value.replace(/[^0-9.\-\/]/g, '')">
+        <input type="text" id="rg" placeholder="RG"
+               oninput="this.value = this.value.replace(/[^0-9.\-\/]/g, '')">
+        <input type="text" id="cep" placeholder="CEP" maxlength="9"
+               oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        <input type="date" id="data_nascimento" title="Data de Nascimento">
 
-                <select id="estado_civil">
-                    <option value="">Estado Civil</option>
-                    <option value="solteiro">Solteiro(a)</option>
-                    <option value="casado">Casado(a)</option>
-                    <option value="divorciado">Divorciado(a)</option>
-                    <option value="viuvo">Viúvo(a)</option>
-                    <option value="uniao_estavel">União Estável</option>
-                </select>
-                <input type="text" id="endereco" placeholder="Endereço completo"
-                       style="grid-column: span 2;">
-                <input type="text" id="cidade" placeholder="Cidade">
+        <input type="text" id="profissao" placeholder="Profissão"
+               oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')">
+        <select id="estado_civil">
+            <option value="">Estado Civil</option>
+            <option value="solteiro">Solteiro(a)</option>
+            <option value="casado">Casado(a)</option>
+            <option value="divorciado">Divorciado(a)</option>
+            <option value="viuvo">Viúvo(a)</option>
+            <option value="uniao_estavel">União Estável</option>
+        </select>
+        <input type="text" id="endereco" placeholder="Endereço completo"
+               style="grid-column: span 2;">
 
-                <input type="text" id="estado" placeholder="Estado">
-                <textarea id="observacao" placeholder="Observações"
-                          style="grid-column: 1 / -1; min-height: 80px; 
-                                 padding: 8px; resize: vertical;">
-                </textarea>
+        <input type="text" id="cidade" placeholder="Cidade">
+        <input type="text" id="estado" placeholder="Estado">
+        <textarea id="observacao" placeholder="Observações"
+                  style="grid-column: 1 / -1; min-height: 80px; 
+                         padding: 8px; resize: vertical;">
+        </textarea>
 
-            </div>  <!-- fechando grid-contato -->
-        </fieldset>
-
+    </div>
+</fieldset>
         <button class="btn" onclick="salvarCliente()">Salvar</button>
     </div>
 

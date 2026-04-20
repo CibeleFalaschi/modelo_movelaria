@@ -17,7 +17,7 @@
 
 // Para o orçamento
 function abrirOrcamento(id) {
-    window.location.href = `contato.html?id=${id}`;
+    window.location.href = `briefing_orcamento.html?id=${id}`;
 }
 
 // Para o cliente
@@ -85,38 +85,34 @@ function mostrarAlerta(msg) {
         alerta.classList.remove("mostrar");
     }, 3000);
 }
-
 function salvarBriefing() {
 
-    const campo = document.getElementById("prazoEntrega");
+    const pagina = window.location.pathname;
 
-    if (campo.value === "") {
-        mostrarAlerta("⚠️ Preencha o prazo de entrega");
-        return;
+    // 📄 briefing_orcamento.html (briefing)
+    if (pagina.includes("briefing_orcamento.html")) {
+
+        const nome = document.querySelector('input[placeholder="Nome do contato"]');
+
+        if (!nome || nome.value === "") {
+            mostrarAlerta("⚠️ Preencha o nome");
+            return;
+        }
+
+        mostrarAlerta("💾 Briefing salvo!");
     }
 
-    mostrarAlerta("💾 Orçamento salvo com sucesso!");
-}
-//Filtrar clientes em Orçamento
-function filtrarClientes() {
-    const input = document.getElementById("buscaCliente");
-    const filtro = input.value.toLowerCase();
+    // 📄 orcamento.html
+    if (pagina.includes("orcamento.html")) {
 
-    const tabela = document.getElementById("tabelaCorpo");
-    const linhas = tabela.getElementsByTagName("tr");
+        const prazo = document.getElementById("prazoEntrega");
 
-    for (let i = 0; i < linhas.length; i++) {
-        const colunaNome = linhas[i].getElementsByTagName("td")[1];
-
-        if (colunaNome) {
-            const texto = colunaNome.innerText.toLowerCase();
-
-            if (texto.includes(filtro)) {
-                linhas[i].style.display = "";
-            } else {
-                linhas[i].style.display = "none";
-            }
+        if (!prazo || prazo.value === "") {
+            mostrarAlerta("⚠️ Preencha o prazo de entrega");
+            return;
         }
+
+        mostrarAlerta("💾 Orçamento salvo!");
     }
 }
 
@@ -126,14 +122,12 @@ function atualizarDadosImpressao() {
     const logoImg = document.getElementById('logo-img');
     const nomeTxt = document.getElementById('empresa-nome');
     const enderecoTxt = document.getElementById('empresa-endereco');
-    const cnpjTxt = document.getElementById('empresa-cnpj');
     const cabecalho = document.getElementById('cabecalho-print');
 
     if (empresa === 'apparato') {
         logoImg.src = 'imagens/logo_Apparato.jpg';
         nomeTxt.innerText = 'APPARATO MOVELARIA';
         enderecoTxt.innerText = 'R. dos Bambus, 000 - Jardim Sao Paulo, Campinas - SP, 13468-120';
-        cnpjTxt.innerText = 'CNPJ: 11.222.333/0001-00';
         cabecalho.style.backgroundColor = '#f7941d';
     } else {
         logoImg.src = 'imagens/logo_signore.jpg';

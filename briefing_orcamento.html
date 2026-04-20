@@ -12,7 +12,7 @@
         <ul>
             <li><a href="dashboard.html">Início</a></li>
             <li><a href="prospeccao.html">Prospecção</a></li>
-            <li><a href="contato.html">Briefing</a></li>
+            <li><a href="briefing_orcamento.html">Briefing</a></li>
             <li><a href="orcamento.html">Orçamento</a></li>
             <li><a href="cliente.html">Cliente</a></li>
             <li><a href="index.html" class="btn-sair">Sair</a></li>
@@ -95,9 +95,16 @@
                     <!-- Coluna Visita -->
                     <div style="border-right: 1px solid #eee; padding-right: 10px;">
                         <span style="font-weight: bold;">Precisa de Visita?</span>
-                        <div style="margin: 10px 0;">
-                            <input type="radio" id="v-sim" name="visita" value="sim"> <label for="v-sim">Sim</label>
-                            <input type="radio" id="v-nao" name="visita" value="nao" checked> <label for="v-nao">Não</label>
+                        <div class="radio-inline" style="margin: 10px 0;">
+    
+                        <label>
+                        <input type="radio" name="visita" value="sim"> Sim
+                        </label>
+
+                        <label>
+                        <input type="radio" name="visita" value="nao" checked> Não
+                        </label>
+
                         </div>
                         <label style="font-size: 13px;">Status da Visita Técnica?</label>
                         <select name="status_visita" style="width: 100%; margin-bottom: 10px;">
@@ -113,10 +120,16 @@
                     <!-- Coluna Projeto -->
                     <div>
                         <span style="font-weight: bold;">Precisa de Projeto?</span>
-                        <div style="margin: 10px 0;">
-                            <input type="radio" id="p-sim" name="projeto" value="sim"> <label for="p-sim">Sim</label>
-                            <input type="radio" id="p-nao" name="projeto" value="nao" checked> <label for="p-nao">Não</label>
-                        </div>
+                        <div class="radio-inline" style="margin: 10px 0;">
+                        <label>
+                        <input type="radio" name="projeto" value="sim"> Sim
+                        </label>
+
+                        <label>
+                        <input type="radio" name="projeto" value="nao" checked> Não
+                        </label>
+                     </div>
+                        
                         <label style="font-size: 13px;">Status do Projeto:</label>
                         <select name="status_projeto" style="width: 100%;">
                             <option value="1">Em planejamento</option>
@@ -179,7 +192,7 @@
             <div class="footer-orcamento">
                 <h3>Valor Total Estimado: R$ <span id="total">0,00</span></h3>
                 <div class="acoes">
-                    <button type="button" onclick="salvarBriefing()">💾 Salvar no Banco</button>
+                    <button class="botao botao-salvar" onclick="salvarBriefing()"> 💾 Salvar no Banco</button>
                     <button type="button" class="btn btn-print" onclick="window.print()">🖨️ Imprimir Orçamento</button>
                    
                 </div>

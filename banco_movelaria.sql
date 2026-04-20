@@ -219,3 +219,5 @@ ADD CONSTRAINT FK_Orcamento_Empresa
 ADD CONSTRAINT UK_Orcamento_NumeroEmpresa
     UNIQUE (NumeroSequencial, IDEmpresa);
 
+ALTER TABLE Cliente ADD RG VARCHAR(20) AFTER CPF_CNPJ;
+
