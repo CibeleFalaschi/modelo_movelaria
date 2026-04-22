@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prospecção - Movelaria Modelo</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <nav class="menu-superior">
@@ -21,19 +23,36 @@
     </nav>
 
     <div class="container-lista">
-    <h2>Prospecção</h2>
 
-    <!-- Organizamos o botão e a busca em uma linha -->
-    <div class="topo-tabela">
-        <button onclick="abrirNovaProspeccao()">+ Nova Prospecção</button>
+        <h2>Prospecção</h2>
 
-        <div class="busca-box">
-            <label for="inputBusca">Filtrar Nome:</label>
-            <input type="text" id="inputBusca" onkeyup="filtrarProspeccoes()" placeholder="Digite para pesquisar...">
+        <!-- Organizamos o botão e a busca em uma linha -->
+        <div class="topo-tabela">
+
+            <button class="btn-padrao" onclick="abrirNovaProspeccao()">
+                Nova Prospecção
+            </button>
+
+            <div class="filtros">
+
+                <div class="busca-box">
+                    <label>Filtrar por Nome:</label>
+                    <input type="text" id="inputBusca" onkeyup="filtrarProspeccoes()" placeholder="Digite...">
+                </div>
+
+                <div class="filtro-vendedor">
+                    <label>Filtrar por Vendedor:</label>
+                    <select id="filtro-vendedor" onchange="filtrarPorVendedor()">
+                        <option value="todos">Todos</option>
+                        <option value="Vendedor A">Vendedor A</option>
+                        <option value="Vendedor B">Vendedor B</option>
+                    </select>
+                </div>
+
+            </div>
+
         </div>
-    </div>
 
-    <table id="tabela-prospeccao">
         <table id="tabela-prospeccao">
             <thead>
                 <tr>
@@ -45,6 +64,7 @@
                     <th>Ações</th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr>
                     <td>1</td>
@@ -54,22 +74,32 @@
                     <td>Vendedor A</td>
                     <td>
                         <button onclick="editarProspeccao(this)">✏️</button>
-                        <button onclick="abrirHistorico()">📋</button>
+                        <button onclick="abrirHistorico(this)">📋</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+
     </div>
 
     <!-- MODAL PROSPECÇÃO -->
     <div id="overlay">
         <div id="form-prospeccao">
+
             <h3>Dados da Prospecção</h3>
+
             <label>Nome</label>
             <input type="text" id="nome">
 
             <label>Telefone</label>
             <input type="text" id="telefone">
+
+            <label>Vendedor</label>
+            <select id="vendedor">
+                <option value="">Selecione</option>
+                <option value="Vendedor A">Vendedor A</option>
+                <option value="Vendedor B">Vendedor B</option>
+            </select>
 
             <label>Status</label>
             <select id="status">
@@ -78,12 +108,18 @@
                 <option>Perdido</option>
                 <option>Convertido</option>
             </select>
+
             <br><br>
-            <button onclick="salvarEdicao()">Salvar</button>
-            <button onclick="fecharModal()">Cancelar</button>
+
+            <div class="acoes-botoes">
+                <button class="btn-padrao" onclick="salvarEdicao()">Salvar</button>
+                <button class="btn-padrao" onclick="fecharModal()">Cancelar</button>
+            </div>
+
         </div>
     </div>
 
     <script src="js/script.js"></script>
+
 </body>
 </html>

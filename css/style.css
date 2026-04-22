@@ -4,7 +4,7 @@ body {
     padding: 0;
     padding-top: 80px; /* Espaço para o menu fixo não cobrir o conteúdo */
     min-height: 100vh;
-    background: linear-gradient(grey);
+    background: #bfc5cc;
     display: flex;
     flex-direction: column; /* Organiza em coluna: menu no topo, resto embaixo */
     align-items: center;    /* Centraliza o conteúdo horizontalmente */
@@ -67,7 +67,8 @@ body {
 .btn {
     width: 100%;
     padding: 10px;
-    background: #8B5E3C;
+    border: 1px solid #130241;
+    background: #130241;
     color: white;
     border: none;
     cursor: pointer;
@@ -91,7 +92,7 @@ body {
 }
 
 .container-marcenaria, .container-lista {
-    background: white;
+    background: #f1f5f9;
     padding: 30px;
     border-radius: 10px;
     width: 90%;
@@ -101,18 +102,78 @@ body {
 }
 
 fieldset {
-    border: 1px solid #8B5E3C;
+    border: 1px solid rgb(2, 2, 61);
     border-radius: 8px;
     margin-bottom: 20px;
     padding: 15px;
 }
 
+.bloco-empresa {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #fff;
+}
+
+.bloco-empresa legend {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 10px;
+    color: #333;
+}
+
+#empresa {
+    width: 100%;
+    height: 55px; /* 🔥 AQUI aumenta o tamanho */
+    padding: 0 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+#empresa:hover {
+    border-color: #8B5E3C;
+}
+
+/* Foco (quando clica) */
+#empresa:focus {
+    border-color: #8B5E3C;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
+}
+
 textarea {
     width: 100%;
-    resize: vertical;
+    min-height: 50px;
+
     padding: 10px;
     font-family: inherit;
+    font-size: 14px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+
+    resize: vertical;
+
+    transition: border 0.2s, box-shadow 0.2s;
 }
+
+textarea:focus {
+    border-color: rgb(4, 4, 61);
+    box-shadow: 0 0 0 2px rgba(4, 4, 61, 0.15);
+    outline: none;
+}
+
+textarea::placeholder {
+    color: #9ca3af;
+}
+
 
 .linha-ambiente {
     display: flex;
@@ -133,7 +194,7 @@ th, td {
 }
 
 th {
-    background-color: #8B5E3C;
+    background-color: rgb(4, 4, 61);
     color: white;
 }
 
@@ -162,7 +223,7 @@ th {
 .grupo-status-container legend {
     padding: 0 10px;
     font-weight: bold;
-    color: #333;
+    color: rgb(2, 2, 61);
 }
 
 /* Status do Orçamento (Linha Superior) */
@@ -249,8 +310,8 @@ th {
         }
 
         .card {
-            background: #f9f4f0;
-            border: 1px solid #8B5E3C;
+            background: hsl(0, 0%, 50%);
+            border: 1px solid rgb(4, 4, 61);
             border-radius: 8px;
             padding: 20px;
             text-align: center;
@@ -259,13 +320,13 @@ th {
         .card h3 {
             margin: 0 0 10px 0;
             font-size: 14px;
-            color: #666;
+            color: rgb(2, 2, 61);
         }
 
         .card span {
             font-size: 36px;
             font-weight: bold;
-            color: #8B5E3C;
+            color: rgb(243, 161, 8);
         }
 
         .secao-lista-dash {
@@ -273,8 +334,8 @@ th {
         }
 
         .secao-lista-dash h3 {
-            color: #5D3A1A;
-            border-bottom: 2px solid #8B5E3C;
+            color: rgb(4, 4, 61);
+            border-bottom: 2px solid #F97316;
             padding-bottom: 8px;
             margin-bottom: 15px;
         }
@@ -330,7 +391,7 @@ th {
     }
 
     /* Esconde o que não deve imprimir */
-    .menu-superior, .busca, table, .no-print, h2,
+    .menu-superior, .busca, .no-print, h2,
     .btn, .btn-edit, .btn-print, .ocultar-impressao, .acoes {
         display: none !important;
     }
@@ -425,10 +486,11 @@ th, td {
 #form-prospeccao button {
     width: 100%;
     padding: 10px;
-    background: #8B5E3C;
+    background: rgb(2, 2, 61);
     color: white;
     border: none;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 label {
@@ -505,6 +567,100 @@ label {
     max-width: 90%;
 
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.btn-padrao {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+
+    background: #1e3a8a; /* azul padrão */
+    color: white;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.btn-padrao:hover {
+    background: #F97316;
+}
+
+.acoes-botoes {
+    display: flex;
+    gap: 10px;
+}
+
+.acoes-briefing {
+    margin-top: 30px;
+    justify-content: flex-start;
+}
+
+.acoes-botoes .btn-padrao {
+    width: auto; 
+}
+
+#form-prospeccao .btn-padrao {
+    background: #1e3a8a;
+}
+
+#form-prospeccao .btn-padrao:hover {
+    background: #F97316;
+}
+
+#form-historico select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+
+    background-color: #f9fafb;
+    color: #111827;
+
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#form-historico select:focus {
+    outline: none;
+    border: 1px solid #1e3a8a;
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+}
+
+#form-historico input[type="date"] {
+    width: 100%;
+    padding: 10px;
+
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+
+    background-color: #f9fafb;
+    color: #111827;
+
+    font-size: 14px;
+}
+
+#form-historico input[type="date"]:focus {
+    outline: none;
+    border: 1px solid #1e3a8a;
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+}
+
+#form-historico label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.cliente-selecionado {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: #1e3a8a;
+    font-weight: 600;
 }
 
 /* ========================= */
@@ -918,12 +1074,13 @@ label {
 
 /* Card */
 .config-card {
-    background: #ffffff;
+    background: #f1f5f9;;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    border: 1px solid #eee;
+    border: 1px solid rgb(4, 4, 61);
 }
+
 
 /* Campos */
 .campo {
@@ -988,11 +1145,11 @@ label {
 
     z-index: 9999;
 
-    display: none; /* 🔴 faltava isso */
+    display: none; 
 }
 
 .alerta-sucesso.mostrar {
-    display: block; /* 🔴 e isso */
+    display: block; 
     opacity: 1;
     transform: translateY(0);
 }
@@ -1041,15 +1198,24 @@ label {
     display: none;
 }
 
+
 /* ========================= */
-/* IMPRESSÃO - GERAL         */
+/* BRIEFING PRINT - TELA     */
 /* ========================= */
+
+.briefing-print {
+    display: none;
+}
 
 @media print {
 
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        
+        .imprimindo-briefing .briefing-header-oculto {
+    display: none !important;
+}
     }
 
     body {
@@ -1067,23 +1233,167 @@ label {
         display: none !important;
     }
 
+
     /* ========================= */
-    /* CASO 1: IMPRIMIR BRIEFING */
-    /* ========================= */
+/* CASO 1: IMPRIMIR BRIEFING */
+/* ========================= */
 
-    .imprimindo-briefing .container-marcenaria {
-        display: block !important;
-    }
+.imprimindo-briefing .container-marcenaria,
+.imprimindo-briefing .contrato-print,
+.imprimindo-briefing #folha-impressao {
+    display: none !important;
+}
 
-    .imprimindo-briefing .contrato-print,
-    .imprimindo-briefing #folha-impressao {
-        display: none !important;
-    }
+.imprimindo-briefing .briefing-print {
+    display: block !important;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    padding: 20px;
+    color: #000;
+}
 
-    .imprimindo-briefing .footer-orcamento .acoes {
-        display: none !important;
-    }
+/* Cabeçalho Apparato - laranja + azul marinho */
+.imprimindo-briefing .briefing-header-apparato {
+    display: flex !important;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f7941d !important;
+    border-bottom: 4px solid #04043d !important;
+    margin-bottom: 15px;
+}
 
+/* Cabeçalho Signore - azul marinho + cinza claro */
+.imprimindo-briefing .briefing-header-signore {
+    display: flex !important;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #04043d !important;
+    border-bottom: 4px solid #cccccc !important;
+    margin-bottom: 15px;
+}
+
+.imprimindo-briefing .briefing-header-signore h2,
+.imprimindo-briefing .briefing-header-signore p,
+.imprimindo-briefing .briefing-header-signore h3 {
+    color: #f0f0f0 !important;
+}
+
+.imprimindo-briefing .briefing-logo {
+    width: 90px !important;
+    height: auto !important;
+}
+
+.imprimindo-briefing .briefing-header-info {
+    flex: 1;
+    font-size: 11px;
+}
+
+.imprimindo-briefing .briefing-header-info h2 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    color: #04043d;
+}
+
+.imprimindo-briefing .briefing-header-info p {
+    margin: 1px 0;
+    color: #04043d;
+}
+
+.imprimindo-briefing .briefing-header-titulo {
+    text-align: right;
+    color: #04043d;
+}
+
+.imprimindo-briefing .briefing-header-titulo h3 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #04043d;
+}
+
+.imprimindo-briefing .briefing-header-titulo p {
+    margin: 3px 0 0 0;
+    font-size: 11px;
+    color: #04043d;
+}
+
+/* Seções */
+.imprimindo-briefing .bp-secao {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.imprimindo-briefing .bp-secao-titulo {
+    background-color: #04043d !important;
+    color: white !important;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.imprimindo-briefing .bp-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 8px;
+}
+
+.imprimindo-briefing .bp-campo {
+    padding: 4px 8px;
+    border-bottom: 1px dotted #eee;
+}
+
+.imprimindo-briefing .bp-label {
+    font-weight: bold;
+    font-size: 10px;
+    color: #555;
+    display: block;
+}
+
+.imprimindo-briefing .bp-valor {
+    font-size: 11px;
+    color: #000;
+    display: block;
+}
+
+/* Tabela de ambientes */
+.imprimindo-briefing .bp-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+.imprimindo-briefing .bp-tabela th {
+    background-color: #f7941d !important;
+    color: #04043d !important;
+    padding: 5px 8px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+}
+
+.imprimindo-briefing .bp-tabela td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+}
+
+.imprimindo-briefing .bp-tabela tr:nth-child(even) td {
+    background-color: #fafafa !important;
+}
+
+/* Observações */
+.imprimindo-briefing .bp-obs-texto {
+    padding: 8px 10px;
+    font-size: 11px;
+    min-height: 40px;
+    white-space: pre-wrap;
+}
     /* ========================= */
     /* CASO 2: ORÇAMENTO CLIENTE */
     /* ========================= */
@@ -1256,3 +1566,62 @@ label {
         font-size: 11px;
     }
 }
+
+.filtros {
+    display: flex;
+    gap: 20px;
+    align-items: end;
+}
+
+.filtro-vendedor select,
+.busca-box input {
+    padding: 6px 10px;
+    border: 1px solid #8B5E3C;
+    border-radius: 4px;
+}
+
+.filtro-vendedor label,
+.busca-box label {
+    font-size: 13px;
+    color: rgb(2, 2, 61);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.filtro-dashboard {
+    margin-bottom: 20px;
+}
+
+.filtro-dashboard label {
+    font-weight: 600;
+    color: rgb(2, 2, 61);
+    margin-right: 10px;
+}
+
+.filtro-dashboard select {
+    padding: 10px 14px;
+    border: 1px solid rgb(2, 2, 61);
+    border-radius: 6px;
+    font-size: 14px;
+    background: orange;
+    color: rgb(4, 4, 61);
+    min-width: 200px; /* 👈 aumenta tamanho */
+    cursor: pointer;
+
+    appearance: none; /* 👈 remove estilo feio padrão */
+}
+
+.filtro-dashboard {
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: #f1f5f9;
+    padding: 12px 15px;
+    border-radius: 8px;
+
+    border: 1px solid #d1d5db;
+}
+

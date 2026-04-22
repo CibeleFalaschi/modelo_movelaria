@@ -121,9 +121,8 @@ function atualizarDadosImpressao() {
 function imprimirOrcamento() {
     document.body.classList.remove('imprimindo-contrato');
     document.body.classList.remove('imprimindo-orcamento-cliente');
-    document.body.classList.add('imprimindo-briefing');
+   
     window.print();
-    document.body.classList.remove('imprimindo-briefing');
 }
 
 function prepararImpressao(numero, cliente, valor, endereco, telefone, cidade) {
@@ -241,7 +240,12 @@ function fecharModal() {
     document.getElementById("overlay").style.display = "none";
 }
 
-function abrirHistorico() {
+function abrirHistorico(botao) {
+    const linha = botao.closest("tr");
+    const nome = linha.cells[1].textContent;
+
+    localStorage.setItem("contatoNome", nome);
+
     window.location.href = "historico_prospeccao.html";
 }
 
@@ -283,7 +287,10 @@ function salvarHistorico() {
         novaLinha.insertCell(3).textContent = prox;
 
         const acoes = novaLinha.insertCell(4);
-        acoes.innerHTML = `<button onclick="editarHistorico(this)">✏️</button>`;
+        acoes.innerHTML = `
+    <button onclick="editarProspeccao(this)">✏️</button>
+    <button onclick="abrirHistorico(this)">📋</button>
+`;
     }
     fecharHistorico();
 }
@@ -430,3 +437,15 @@ function gerarContrato() {
     };
     logo.src = emp.logo;
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const nome = localStorage.getItem("contatoNome");
+
+    if (nome) {
+        const campo = document.getElementById("nome-contato");
+
+        if (campo) {
+            campo.textContent = "Cliente: " + nome;
+        }
+    }
+});
+
