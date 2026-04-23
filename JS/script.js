@@ -229,9 +229,9 @@ function salvarEdicao() {
 
         const acoes = novaLinha.insertCell(5);
         acoes.innerHTML = `
-            <button onclick="editarProspeccao(this)">✏️</button>
-            <button onclick="abrirHistorico()">📋</button>
-        `;
+        <button onclick="editarProspeccao(this)">✏️</button>
+          <button onclick="abrirHistorico(this)">📋</button>
+`;
     }
     fecharModal();
 }

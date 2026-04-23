@@ -1,19 +1,25 @@
-/* 1. CONFIGURAÇÃO DO CORPO DA PÁGINA */
+/* ========================= */
+/* 1. BODY                   */
+/* ========================= */
+
 body {
     margin: 0;
     padding: 0;
-    padding-top: 80px; /* Espaço para o menu fixo não cobrir o conteúdo */
+    padding-top: 80px;
     min-height: 100vh;
     background: #bfc5cc;
     display: flex;
-    flex-direction: column; /* Organiza em coluna: menu no topo, resto embaixo */
-    align-items: center;    /* Centraliza o conteúdo horizontalmente */
+    flex-direction: column;
+    align-items: center;
     font-family: Arial, sans-serif;
 }
 
-/* 2. O MENU SUPERIOR (CORRIGIDO) */
+/* ========================= */
+/* 2. MENU SUPERIOR          */
+/* ========================= */
+
 .menu-superior {
-    background-color: rgb(4, 4, 61); 
+    background-color: rgb(4, 4, 61);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -21,12 +27,12 @@ body {
     padding: 0 20px;
     height: 60px;
     width: 100%;
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; 
+    z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    box-sizing: border-box;
 }
 
 .menu-superior ul {
@@ -56,7 +62,29 @@ body {
     background-color: rgb(2, 2, 82);
 }
 
-/* 3. RESTANTE DOS SEUS ESTILOS (MANTIDOS) */
+.btn-sair {
+    background-color: #F97316 !important;
+}
+
+/* ========================= */
+/* 3. CONTAINERS             */
+/* ========================= */
+
+.container-marcenaria,
+.container-lista {
+    background: #f1f5f9;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* ========================= */
+/* 4. LOGIN                  */
+/* ========================= */
+
 .login-container {
     background: white;
     padding: 30px;
@@ -64,23 +92,31 @@ body {
     width: 300px;
 }
 
-.btn {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #130241;
-    background: #130241;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
 .input-group {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 .input-group label {
-    display: block;     
-    margin-bottom: 10px;  
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* ========================= */
+/* 5. FORMULÁRIOS / INPUTS   */
+/* ========================= */
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+fieldset {
+    border: 1px solid rgb(2, 2, 61);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
 }
 
 .grid-contato input,
@@ -91,77 +127,114 @@ body {
     box-sizing: border-box;
 }
 
-.container-marcenaria, .container-lista {
-    background: #f1f5f9;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 900px;
-    margin-bottom: 50px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+input[type="text"],
+input[type="tel"],
+input[type="number"] {
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9fafb;
+    color: #111827;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
 }
 
-fieldset {
-    border: 1px solid rgb(2, 2, 61);
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 15px;
+input[type="text"]:hover,
+input[type="tel"]:hover,
+input[type="number"]:hover {
+    border-color: rgb(4, 4, 61);
 }
 
-.bloco-empresa {
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 25px;
-    background: #fff;
-}
-
-.bloco-empresa legend {
-    font-size: 16px;
-    font-weight: 600;
-    padding: 0 10px;
-    color: #333;
-}
-
-#empresa {
-    width: 100%;
-    height: 55px; /* 🔥 AQUI aumenta o tamanho */
-    padding: 0 15px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-/* Hover */
-#empresa:hover {
-    border-color: #8B5E3C;
-}
-
-/* Foco (quando clica) */
-#empresa:focus {
-    border-color: #8B5E3C;
-    background-color: #fff;
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
+    border-color: rgb(4, 4, 61);
+    box-shadow: 0 0 0 2px rgba(4, 4, 61, 0.15);
+    background-color: #fff;
+}
+
+input[type="date"] {
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9fafb;
+    color: #111827;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="date"]:hover {
+    border-color: rgb(4, 4, 61);
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: rgb(4, 4, 61);
+    box-shadow: 0 0 0 2px rgba(4, 4, 61, 0.15);
+    background-color: #fff;
+}
+
+input[type="file"] {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 2px dashed #a0aec0;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    color: #555;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+input[type="file"]:hover {
+    border-color: rgb(4, 4, 61);
+    background-color: #eef2ff;
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: #F97316;
+    background-color: #fff8f0;
+}
+
+select {
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9fafb;
+    color: #111827;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+select:hover {
+    border-color: rgb(4, 4, 61);
+}
+
+select:focus {
+    outline: none;
+    border-color: rgb(4, 4, 61);
+    box-shadow: 0 0 0 2px rgba(4, 4, 61, 0.15);
+    background-color: #fff;
 }
 
 textarea {
     width: 100%;
     min-height: 50px;
-
     padding: 10px;
     font-family: inherit;
     font-size: 14px;
-
     border: 1px solid #d1d5db;
     border-radius: 6px;
-
     resize: vertical;
-
     transition: border 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
 }
 
 textarea:focus {
@@ -174,12 +247,96 @@ textarea::placeholder {
     color: #9ca3af;
 }
 
-
-.linha-ambiente {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+#observacao {
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
 }
+
+/* ========================= */
+/* 6. BOTÕES                 */
+/* ========================= */
+
+button {
+    cursor: pointer;
+}
+
+.btn-padrao {
+    background: #F97316;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-padrao:hover {
+    background: rgb(4, 4, 61);
+    transform: translateY(-1px);
+}
+
+.botao {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.botao-salvar {
+    background: #F97316;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(249,115,22,0.3);
+}
+
+.botao-salvar:hover {
+    background: rgb(2, 2, 61);
+    transform: translateY(-2px);
+}
+
+.botao-secundario {
+    background: #e5e7eb;
+    color: #333;
+}
+
+.botao-secundario:hover {
+    background: #d1d5db;
+}
+
+.btn-edit,
+.btn-print {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #130241;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* ========================= */
+/* 7. TABELA                 */
+/* ========================= */
 
 table {
     width: 100%;
@@ -188,7 +345,7 @@ table {
 }
 
 th, td {
-    padding: 12px;
+    padding: 10px 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
@@ -198,280 +355,211 @@ th {
     color: white;
 }
 
-.btn-edit, .btn-print {
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.btn-sair {
-    background-color: #c0392b !important;
-}
-
-
-
-/* Container Principal do Planejamento */
-.grupo-status-container {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9; /* Um fundo leve para destacar */
-}
-
-.grupo-status-container legend {
-    padding: 0 10px;
+.badge {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
     font-weight: bold;
-    color: rgb(2, 2, 61);
 }
 
-/* Status do Orçamento (Linha Superior) */
-.status-geral-linha {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px dotted #ccc;
-}
+.badge-aberto     { background: #fff3cd; color: #856404; }
+.badge-fechado    { background: #d4edda; color: #155724; }
+.badge-perdido    { background: #f8d7da; color: #721c24; }
+.badge-elaboracao { background: #cce5ff; color: #004085; }
 
-.status-geral-linha label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-}
+/* ========================= */
+/* 8. TOPO DA TABELA         */
+/* ========================= */
 
-/* Grid para dividir Visita e Projeto */
-.status-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-/* Colunas Individuais */
-.status-coluna {
+.topo-tabela {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 15px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filtros {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.busca-box label,
+.filtro-vendedor label {
+    font-size: 13px;
+    color: rgb(2, 2, 61);
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.busca-box input,
+.filtro-vendedor select {
+    padding: 6px 10px;
+    border: 1px solid rgb(4, 4, 61);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* ========================= */
+/* 9. FOOTER DO FORMULÁRIO   */
+/* ========================= */
+
+.footer-orcamento {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
-.status-coluna:first-child {
-    border-right: 1px solid #eee;
-    padding-right: 20px;
+.footer-orcamento h3 {
+    margin: 0;
+    color: rgb(4, 4, 61);
+    font-size: 16px;
 }
 
-.status-coluna span {
-    font-weight: bold;
-    color: #444;
-}
-
-/* Estilização dos Selects e Inputs de Data */
-.status-coluna select, 
-.status-geral-linha select,
-.status-coluna input[type="date"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: white;
-}
-
-/* Estilo para os Radio Buttons (Sim/Não) */
-.radio-inline {
+.footer-orcamento .acoes {
     display: flex;
-    gap: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-left: auto;
 }
 
-.radio-inline label {
+.acoes-botoes {
+    display: flex;
+    gap: 10px;
+}
+
+/* ========================= */
+/* 10. ALERTA SUCESSO        */
+/* ========================= */
+
+.alerta-sucesso {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: #22c55e;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: 0.3s;
+    z-index: 9999;
+    display: none;
+}
+
+.alerta-sucesso.mostrar {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================= */
+/* 11. DASHBOARD             */
+/* ========================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: hsl(0, 0%, 50%);
+    border: 1px solid rgb(4, 4, 61);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.card h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: rgb(2, 2, 61);
+}
+
+.card span {
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(243, 161, 8);
+}
+
+.secao-lista-dash {
+    margin-top: 20px;
+}
+
+.secao-lista-dash h3 {
+    color: rgb(4, 4, 61);
+    border-bottom: 2px solid #F97316;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.filtro-dashboard {
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
+    background: #f1f5f9;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
 }
 
-/* Responsividade para celulares */
-@media (max-width: 600px) {
-    .status-grid {
-        grid-template-columns: 1fr;
-    }
-    .status-coluna:first-child {
-        border-right: none;
-        border-bottom: 1px solid #eee;
-        padding-right: 0;
-        padding-bottom: 20px;
-    }
+.filtro-dashboard label {
+    font-weight: 600;
+    color: rgb(2, 2, 61);
+    margin-right: 10px;
 }
 
-/* Dashboard */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .card {
-            background: hsl(0, 0%, 50%);
-            border: 1px solid rgb(4, 4, 61);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .card h3 {
-            margin: 0 0 10px 0;
-            font-size: 14px;
-            color: rgb(2, 2, 61);
-        }
-
-        .card span {
-            font-size: 36px;
-            font-weight: bold;
-            color: rgb(243, 161, 8);
-        }
-
-        .secao-lista-dash {
-            margin-top: 20px;
-        }
-
-        .secao-lista-dash h3 {
-            color: rgb(4, 4, 61);
-            border-bottom: 2px solid #F97316;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-        }
-
-        .badge {
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .badge-aberto   { background: #fff3cd; color: #856404; }
-        .badge-fechado  { background: #d4edda; color: #155724; }
-        .badge-perdido  { background: #f8d7da; color: #721c24; }
-        .badge-elaboracao { background: #cce5ff; color: #004085; }
-    
-
-        /* PARA IMPRESSÃO DO ORÇAMENTO AO CLIENTE*/
-        /* Esconde a folha de impressão na navegação comum */
-.print-area { display: none; }
-
-.seletor-empresa-painel {
-    background: #f4f4f4;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
+.filtro-dashboard select {
+    padding: 10px 14px;
+    border: 1px solid rgb(2, 2, 61);
+    border-radius: 6px;
+    font-size: 14px;
+    background: orange;
+    color: rgb(4, 4, 61);
+    min-width: 200px;
+    cursor: pointer;
+    appearance: none;
 }
 
+/* ========================= */
+/* 12. MODAIS / OVERLAY      */
+/* ========================= */
 
-    .logo-box img { max-width: 150px; }
-    
-    .info-empresa { flex-grow: 1; text-align: center; }
-
-    .tabela-print { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    .tabela-print th, .tabela-print td { border: 1px solid #000; padding: 8px; text-align: left; }
-    
-    .tabela-print th { background-color: #f7941d !important; }
-
-    .rodape-print {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        border: 1px solid #000;
-        padding: 10px;
-    }
-
-@media print {
-    /* Força cores e imagens reais */
-    * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    /* Esconde o que não deve imprimir */
-    .menu-superior, .busca, .no-print, h2,
-    .btn, .btn-edit, .btn-print, .ocultar-impressao, .acoes {
-        display: none !important;
-    }
-
-    /* Corpo limpo */
-    body {
-        padding-top: 0;
-        background: white;
-    }
-
-    /* Mostra a folha de orçamento */
-    .print-area {
-        display: block !important;
-        width: 100%;
-    }
-
-    /* Cabeçalho laranja */
-    #cabecalho-print {
-        display: flex !important;
-        justify-content: space-between;
-        background-color: #26057b !important;
-        border: 2px solid #000;
-        padding: 10px;
-        color: #000;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .logo-box img { max-width: 150px; }
-    .info-empresa { flex-grow: 1; text-align: center; }
-
-    /* Tabela de produtos */
-    .tabela-print { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    .tabela-print th, .tabela-print td { border: 1px solid #000; padding: 8px; text-align: left; }
-    .tabela-print th { background-color: #f7941d !important; }
-
-    /* Rodapé */
-    .rodape-print {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        border: 1px solid #000;
-        padding: 10px;
-    }
-}
-
-@media print {
-    .container-lista {
-        display: none !important;
-    }
-}
-
-table {
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-.container-lista {
-    max-width: 1000px;
-    margin: 20px auto;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding-top: 50px;
+    z-index: 999;
 }
 
 #form-prospeccao {
     background: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
-    margin-top: 30px;
-}
-
-#form-prospeccao {
-    width: 320px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
 #form-prospeccao input,
@@ -483,78 +571,16 @@ th, td {
     border: 1px solid #ccc;
 }
 
-#form-prospeccao button {
-    width: 100%;
-    padding: 10px;
-    background: rgb(2, 2, 61);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-#observacao {
-    width: 100%;
-    height: 80px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: none; /* impede redimensionar */
-}
-
-/* FUNDO ESCURO (overlay) */
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0,0,0,0.5);
-
-    display: none;
-
-    justify-content: center;
-    align-items: flex-start;
-
-    overflow-y: auto;
-    padding-top: 50px;
-
-    z-index: 999;
-}
-
-#form-prospeccao {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-
-    width: 400px;
-    max-width: 90%;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-}
-
 #overlay-historico {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
     background: rgba(0,0,0,0.5);
-
     display: none;
-
     justify-content: center;
     align-items: center;
-
     z-index: 9999;
 }
 
@@ -562,87 +588,24 @@ label {
     background: white;
     padding: 30px;
     border-radius: 10px;
-
     width: 400px;
     max-width: 90%;
-
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-.btn-padrao {
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: none;
-
-    background: #1e3a8a; /* azul padrão */
-    color: white;
-
-    font-size: 14px;
-    font-weight: 500;
-
-    cursor: pointer;
-
-    transition: all 0.2s ease;
-}
-
-.btn-padrao:hover {
-    background: #F97316;
-}
-
-.acoes-botoes {
-    display: flex;
-    gap: 10px;
-}
-
-.acoes-briefing {
-    margin-top: 30px;
-    justify-content: flex-start;
-}
-
-.acoes-botoes .btn-padrao {
-    width: auto; 
-}
-
-#form-prospeccao .btn-padrao {
-    background: #1e3a8a;
-}
-
-#form-prospeccao .btn-padrao:hover {
-    background: #F97316;
-}
-
-#form-historico select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #d1d5db;
-
-    background-color: #f9fafb;
-    color: #111827;
-
-    font-size: 14px;
-    cursor: pointer;
-}
-
-#form-historico select:focus {
-    outline: none;
-    border: 1px solid #1e3a8a;
-    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
-}
-
+#form-historico select,
 #form-historico input[type="date"] {
     width: 100%;
     padding: 10px;
-
     border-radius: 6px;
     border: 1px solid #d1d5db;
-
     background-color: #f9fafb;
     color: #111827;
-
     font-size: 14px;
+    cursor: pointer;
 }
 
+#form-historico select:focus,
 #form-historico input[type="date"]:focus {
     outline: none;
     border: 1px solid #1e3a8a;
@@ -664,402 +627,28 @@ label {
 }
 
 /* ========================= */
-/* ORÇAMENTO - VISUAL CLIENTE */
+/* 13. RADIO BUTTONS         */
 /* ========================= */
 
-/* Dados do documento (número + data) */
-.dados-doc {
+.radio-inline {
     display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* Cliente */
-.dados-cliente-print {
-    margin: 20px 0;
-    padding: 15px;
-    border: 1px solid #ccc;
-    background: #fafafa;
-}
-
-.linha-print {
-    margin-bottom: 5px;
-}
-
-/* Total */
-.total-print {
-    text-align: right;
-    margin-top: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    border-top: 2px solid #000;
-    padding-top: 10px;
-}
-
-/* Melhorar tabela */
-.tabela-print td {
-    vertical-align: middle;
-}
-
-/* Ambiente (quando vier do JS) */
-.linha-ambiente-print {
-    background: #eee;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Cabeçalho mais bonito */
-#cabecalho-print {
-    align-items: center;
-}
-
-.info-empresa h3 {
-    margin-bottom: 5px;
-}
-
-/* Ajuste visual geral */
-.print-area {
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-/* ========================= */
-/* IMPRESSÃO */
-/* ========================= */
-
-@media print {
-
-    .dados-cliente-print {
-        border: 1px solid #000;
-    }
-
-    .total-print {
-        font-size: 26px;
-    }
-
-}
-/* === ORÇAMENTO === */
-
-.config-orcamento {
-    background: #fff;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    max-width: 400px;
-}
-
-.config-orcamento h3 {
-    margin-bottom: 15px;
-}
-
-.campo {
-    margin-bottom: 15px;
-}
-
-.campo label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.campo input,
-.campo select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* === IMPRESSÃO === */
-
-.print-area {
-    background: #fff;
-    padding: 30px;
-    max-width: 800px;
-    margin: auto;
-    font-family: Arial, sans-serif;
-    margin: 0 auto;
-}
-
-.dados-doc {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-}
-
-.dados-cliente-print {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.tabela-print {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.tabela-print th {
-    background: #8b4513;
-    color: #fff;
-    padding: 10px;
-    text-align: left;
-}
-
-.tabela-print td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-}
-
-.linha-ambiente-print {
-    background: #f5f5f5;
-    font-weight: bold;
-}
-
-.total-print {
-    text-align: right;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.rodape-print {
-    border-top: 2px solid #000;
-    padding-top: 15px;
-    margin-top: 30px;
-    font-size: 14px;
-}
-
-.linha-ass {
-    margin-top: 20px;
-}
-
-.config-orcamento {
-    margin: 20px auto;
-}
-
-@media print {
-    .no-print {
-        display: none;
-    }
-
-    body {
-        margin: 20px;
-        font-family: Arial, sans-serif;
-    }
-
-    .print-area {
-        width: 100%;
-    }
-
-    .tabela-print {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .tabela-print th,
-    .tabela-print td {
-        border: 1px solid #000;
-        padding: 8px;
-    }
-
-    .tabela-print th {
-        background: #ccc;
-    }
-}
-/* ========================= */
-/* ORÇAMENTO - VISUAL CLIENTE */
-/* ========================= */
-
-/* Dados do documento (número + data) */
-.dados-doc {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* Cliente */
-.dados-cliente-print {
-    margin: 20px 0;
-    padding: 15px;
-    border: 1px solid #ccc;
-    background: #fafafa;
-}
-
-.linha-print {
-    margin-bottom: 5px;
-}
-
-/* Total */
-.total-print {
-    text-align: right;
-    margin-top: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    border-top: 2px solid #000;
-    padding-top: 10px;
-}
-
-/* Melhorar tabela */
-.tabela-print td {
-    vertical-align: middle;
-}
-
-/* Ambiente (quando vier do JS) */
-.linha-ambiente-print {
-    background: #eee;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Cabeçalho mais bonito */
-#cabecalho-print {
-    align-items: center;
-}
-
-.info-empresa h3 {
-    margin-bottom: 5px;
-}
-
-/* Ajuste visual geral */
-.print-area {
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-/* ========================= */
-/* IMPRESSÃO */
-/* ========================= */
-
-@media print {
-
-    .dados-cliente-print {
-        border: 1px solid #000;
-    }
-
-    .total-print {
-        font-size: 26px;
-    }
-
-}
-
-@media print {
-
-    body {
-        margin: 0;
-    }
-
-    .print-area {
-        width: 100%;
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 10px;
-    }
-
-    /* evita quebra feia */
-    .tabela-print {
-        page-break-inside: auto;
-    }
-
-    .tabela-print tr {
-        page-break-inside: avoid;
-        page-break-after: auto;
-    }
-
-    .dados-cliente-print,
-    .rodape-print,
-    #cabecalho-print {
-        page-break-inside: avoid;
-    }
-}
-
-#cabecalho-print {
-    display: flex;
-    align-items: center;
     gap: 15px;
-    padding: 10px;
 }
 
-.logo-box img {
-    width: 90px;
+.radio-inline label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.info-empresa {
-    font-size: 12px;
-    line-height: 1.2;
-}
-
-.config-orcamento {
-    max-width: 420px;
-    margin: 40px auto;
-    padding: 25px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
-}
-
-/* Título */
-.config-orcamento h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 18px;
-    color: #333;
-}
-
-/* Grupo de campos */
-.campo {
-    margin-bottom: 15px;
-}
-
-/* Labels */
-.campo label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 13px;
-    color: #555;
-}
-
-/* Inputs e select */
-.campo input,
-.campo select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: 0.2s;
-}
-
-/* Efeito ao clicar */
-.campo input:focus,
-.campo select:focus {
-    border-color: #8b4513;
-    outline: none;
-    box-shadow: 0 0 5px rgba(139, 69, 19, 0.2);
-}
-
-/* Caixa da empresa (destaque) */
-.empresa-box {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f7f7f7;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
+/* ========================= */
+/* 14. ORÇAMENTO CONFIG      */
+/* ========================= */
 
 .config-wrapper {
-    margin: 30px auto; /* antes estava 60px */
+    margin: 30px auto;
 }
 
-.container-lista {
-    margin-bottom: 20px;
-}
-
-/* Cabeçalho */
 .config-header h2 {
     margin-bottom: 5px;
     font-size: 22px;
@@ -1072,17 +661,14 @@ label {
     margin-bottom: 20px;
 }
 
-/* Card */
 .config-card {
-    background: #f1f5f9;;
+    background: #f1f5f9;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     border: 1px solid rgb(4, 4, 61);
 }
 
-
-/* Campos */
 .campo {
     margin-bottom: 18px;
 }
@@ -1094,7 +680,6 @@ label {
     color: #555;
 }
 
-/* Inputs */
 .campo input,
 .campo select {
     width: 100%;
@@ -1106,116 +691,148 @@ label {
     transition: 0.2s;
 }
 
-/* Hover */
-.campo input:hover,
-.campo select:hover {
-    border-color: #bbb;
-}
-
-/* Focus (efeito SaaS) */
 .campo input:focus,
 .campo select:focus {
-    border-color: #4f46e5;
+    border-color: rgb(4, 4, 61);
     background: #fff;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    box-shadow: 0 0 0 3px rgba(4, 4, 61, 0.1);
 }
-
-/* Responsivo */
-@media (max-width: 600px) {
-    .config-wrapper {
-        margin: 20px;
-    }
-}
-
-.alerta-sucesso {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    background: #22c55e;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: 0.3s;
-
-    z-index: 9999;
-
-    display: none; 
-}
-
-.alerta-sucesso.mostrar {
-    display: block; 
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.botao {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
-}
-
-/* BOTÃO PRINCIPAL (SALVAR) */
-.botao-salvar {
-    background: #22c55e;
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(34,197,94,0.3);
-}
-
-.botao-salvar:hover {
-    background: #16a34a;
-    transform: translateY(-2px);
-}
-
-/* BOTÃO SECUNDÁRIO */
-.botao-secundario {
-    background: #e5e7eb;
-    color: #333;
-}
-
-.botao-secundario:hover {
-    background: #d1d5db;
-}
-
 
 /* ========================= */
-/* CONTRATO - TELA           */
+/* 15. IMPRESSÃO - ORÇAMENTO */
+/* ========================= */
+
+.print-area {
+    display: none;
+    background: #fff;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.dados-doc {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.dados-cliente-print {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.tabela-print {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.tabela-print th {
+    background: #f7941d;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.tabela-print td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+.linha-ambiente-print {
+    background: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.total-print {
+    text-align: right;
+    font-size: 24px;
+    font-weight: bold;
+    border-top: 2px solid #000;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
+.rodape-print {
+    border-top: 2px solid #000;
+    padding-top: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.linha-ass {
+    margin-top: 20px;
+}
+
+#cabecalho-print {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.logo-box img {
+    width: 90px;
+    max-width: 150px;
+}
+
+.info-empresa {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.info-empresa h3 {
+    margin-bottom: 5px;
+}
+
+/* ========================= */
+/* 16. CONTRATO - TELA       */
 /* ========================= */
 
 .contrato-print {
     display: none;
 }
 
-
-/* ========================= */
-/* BRIEFING PRINT - TELA     */
-/* ========================= */
-
 .briefing-print {
     display: none;
 }
 
-@media print {
+/* ========================= */
+/* 17. RESPONSIVO            */
+/* ========================= */
 
+@media (max-width: 600px) {
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .config-wrapper {
+        margin: 20px;
+    }
+}
+
+/* ========================= */
+/* 18. MEDIA PRINT           */
+/* ========================= */
+
+@media print {
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        
-        .imprimindo-briefing .briefing-header-oculto {
-    display: none !important;
-}
     }
 
     body {
@@ -1224,180 +841,14 @@ label {
         margin: 0;
     }
 
-    /* Esconde tudo por padrão */
     .menu-superior,
     .alerta-sucesso,
     .no-print,
-    .btn-contrato,
     #btn-contrato {
         display: none !important;
     }
 
-
-    /* ========================= */
-/* CASO 1: IMPRIMIR BRIEFING */
-/* ========================= */
-
-.imprimindo-briefing .container-marcenaria,
-.imprimindo-briefing .contrato-print,
-.imprimindo-briefing #folha-impressao {
-    display: none !important;
-}
-
-.imprimindo-briefing .briefing-print {
-    display: block !important;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    padding: 20px;
-    color: #000;
-}
-
-/* Cabeçalho Apparato - laranja + azul marinho */
-.imprimindo-briefing .briefing-header-apparato {
-    display: flex !important;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    background-color: #f7941d !important;
-    border-bottom: 4px solid #04043d !important;
-    margin-bottom: 15px;
-}
-
-/* Cabeçalho Signore - azul marinho + cinza claro */
-.imprimindo-briefing .briefing-header-signore {
-    display: flex !important;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    background-color: #04043d !important;
-    border-bottom: 4px solid #cccccc !important;
-    margin-bottom: 15px;
-}
-
-.imprimindo-briefing .briefing-header-signore h2,
-.imprimindo-briefing .briefing-header-signore p,
-.imprimindo-briefing .briefing-header-signore h3 {
-    color: #f0f0f0 !important;
-}
-
-.imprimindo-briefing .briefing-logo {
-    width: 90px !important;
-    height: auto !important;
-}
-
-.imprimindo-briefing .briefing-header-info {
-    flex: 1;
-    font-size: 11px;
-}
-
-.imprimindo-briefing .briefing-header-info h2 {
-    margin: 0 0 4px 0;
-    font-size: 14px;
-    color: #04043d;
-}
-
-.imprimindo-briefing .briefing-header-info p {
-    margin: 1px 0;
-    color: #04043d;
-}
-
-.imprimindo-briefing .briefing-header-titulo {
-    text-align: right;
-    color: #04043d;
-}
-
-.imprimindo-briefing .briefing-header-titulo h3 {
-    margin: 0;
-    font-size: 18px;
-    letter-spacing: 2px;
-    color: #04043d;
-}
-
-.imprimindo-briefing .briefing-header-titulo p {
-    margin: 3px 0 0 0;
-    font-size: 11px;
-    color: #04043d;
-}
-
-/* Seções */
-.imprimindo-briefing .bp-secao {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.imprimindo-briefing .bp-secao-titulo {
-    background-color: #04043d !important;
-    color: white !important;
-    padding: 5px 10px;
-    font-weight: bold;
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-.imprimindo-briefing .bp-grid-2 {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    padding: 8px;
-}
-
-.imprimindo-briefing .bp-campo {
-    padding: 4px 8px;
-    border-bottom: 1px dotted #eee;
-}
-
-.imprimindo-briefing .bp-label {
-    font-weight: bold;
-    font-size: 10px;
-    color: #555;
-    display: block;
-}
-
-.imprimindo-briefing .bp-valor {
-    font-size: 11px;
-    color: #000;
-    display: block;
-}
-
-/* Tabela de ambientes */
-.imprimindo-briefing .bp-tabela {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 11px;
-}
-
-.imprimindo-briefing .bp-tabela th {
-    background-color: #f7941d !important;
-    color: #04043d !important;
-    padding: 5px 8px;
-    text-align: left;
-    font-size: 10px;
-    letter-spacing: 0.5px;
-}
-
-.imprimindo-briefing .bp-tabela td {
-    padding: 5px 8px;
-    border-bottom: 1px solid #eee;
-    vertical-align: top;
-}
-
-.imprimindo-briefing .bp-tabela tr:nth-child(even) td {
-    background-color: #fafafa !important;
-}
-
-/* Observações */
-.imprimindo-briefing .bp-obs-texto {
-    padding: 8px 10px;
-    font-size: 11px;
-    min-height: 40px;
-    white-space: pre-wrap;
-}
-    /* ========================= */
-    /* CASO 2: ORÇAMENTO CLIENTE */
-    /* ========================= */
-
+    /* CASO 1: ORÇAMENTO CLIENTE */
     .imprimindo-orcamento-cliente .container-lista,
     .imprimindo-orcamento-cliente .config-wrapper,
     .imprimindo-orcamento-cliente .contrato-print {
@@ -1419,11 +870,6 @@ label {
         gap: 10px;
     }
 
-    .imprimindo-orcamento-cliente .tabela-print {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
     .imprimindo-orcamento-cliente .tabela-print th,
     .imprimindo-orcamento-cliente .tabela-print td {
         border: 1px solid #000;
@@ -1432,14 +878,6 @@ label {
 
     .imprimindo-orcamento-cliente .tabela-print th {
         background-color: #f7941d !important;
-    }
-
-    .imprimindo-orcamento-cliente .rodape-print {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        border: 1px solid #000;
-        padding: 10px;
     }
 
     .imprimindo-orcamento-cliente .dados-cliente-print {
@@ -1457,10 +895,7 @@ label {
         margin-top: 20px;
     }
 
-    /* ========================= */
-    /* CASO 3: CONTRATO          */
-    /* ========================= */
-
+    /* CASO 2: CONTRATO */
     .imprimindo-contrato .container-marcenaria,
     .imprimindo-contrato .container-lista,
     .imprimindo-contrato .config-wrapper,
@@ -1566,62 +1001,3 @@ label {
         font-size: 11px;
     }
 }
-
-.filtros {
-    display: flex;
-    gap: 20px;
-    align-items: end;
-}
-
-.filtro-vendedor select,
-.busca-box input {
-    padding: 6px 10px;
-    border: 1px solid #8B5E3C;
-    border-radius: 4px;
-}
-
-.filtro-vendedor label,
-.busca-box label {
-    font-size: 13px;
-    color: rgb(2, 2, 61);
-    display: block;
-    margin-bottom: 4px;
-}
-
-.filtro-dashboard {
-    margin-bottom: 20px;
-}
-
-.filtro-dashboard label {
-    font-weight: 600;
-    color: rgb(2, 2, 61);
-    margin-right: 10px;
-}
-
-.filtro-dashboard select {
-    padding: 10px 14px;
-    border: 1px solid rgb(2, 2, 61);
-    border-radius: 6px;
-    font-size: 14px;
-    background: orange;
-    color: rgb(4, 4, 61);
-    min-width: 200px; /* 👈 aumenta tamanho */
-    cursor: pointer;
-
-    appearance: none; /* 👈 remove estilo feio padrão */
-}
-
-.filtro-dashboard {
-    margin-bottom: 20px;
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    background: #f1f5f9;
-    padding: 12px 15px;
-    border-radius: 8px;
-
-    border: 1px solid #d1d5db;
-}
-

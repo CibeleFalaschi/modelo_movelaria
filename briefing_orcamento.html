@@ -23,6 +23,14 @@
         <h2>📋 Briefing</h2>
         
         <form id="form-atendimento">
+            <fieldset>
+                            <legend>Empresa</legend>
+            <select id="empresa">
+                        <option value="">Selecionar Empresa</option>
+                        <option value="apparato">Apparato</option>
+                        <option value="signore">Signore</option>
+                    </select>
+            </fieldset>
 
             <!-- BLOCO 1: CONTATO -->
             <fieldset>
@@ -30,11 +38,6 @@
                 <div class="grid-contato" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px;">
                     <input type="text" id="nome" placeholder="Nome do contato" required>
                     <input type="tel" id="telefone" placeholder="Telefone">
-                    <select id="empresa">
-                        <option value="">Empresa</option>
-                        <option value="apparato">Apparato</option>
-                        <option value="signore">Signore</option>
-                    </select>
                     <select id="origem">
                         <option value="">Como nos conheceu?</option>
                         <option value="instagram">Instagram</option>
