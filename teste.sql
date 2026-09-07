@@ -288,3 +288,11 @@ SHOW CREATE TABLE Orcamento;
 
 SHOW CREATE TABLE Cliente;
 SHOW CREATE TABLE Empresa;
+
+DESCRIBE Funcionario;
+
+SELECT ID, nome, login, Ativo FROM Funcionario;
+
+SELECT id, nome, login, senhaHash FROM funcionarios WHERE login = 'admin';
+
+SHOW TABLES LIKE '%uncionario%';

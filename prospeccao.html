@@ -6,6 +6,7 @@
     <title>Prospecção - Movelaria Modelo</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/prospeccao.css">
 </head>
 
 <body>
@@ -65,19 +66,7 @@
                 </tr>
             </thead>
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Maria</td>
-                    <td>(19) 99999-9999</td>
-                    <td>Em andamento</td>
-                    <td>Vendedor A</td>
-                    <td>
-                        <button onclick="editarProspeccao(this)">✏️</button>
-                        <button onclick="abrirHistorico(this)">📋</button>
-                    </td>
-                </tr>
-            </tbody>
+            <tbody></tbody>
         </table>
 
     </div>
@@ -104,7 +93,6 @@
             <label>Status</label>
             <select id="status">
                 <option>Em andamento</option>
-                <option>Realizar novo contato</option>
                 <option>Perdido</option>
                 <option>Convertido</option>
             </select>
@@ -120,6 +108,8 @@
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/prospeccao.js"></script>
+    <script type="module" src="js/api-bridge.js"></script>
 
 </body>
 </html>

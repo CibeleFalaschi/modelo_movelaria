@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movelaria Modelo</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
 <body>
@@ -40,27 +41,27 @@
 
             <div class="card">
                 <h3>Orçamentos Em Aberto</h3>
-                <span>12</span>
+                <span id="total-abertos">0</span>
             </div>
 
             <div class="card">
                 <h3>Fechados no Mês</h3>
-                <span>3</span>
+                <span id="total-fechados">0</span>
             </div>
 
             <div class="card">
                 <h3>Perdidos no Mês</h3>
-                <span>2</span>
+                <span id="total-perdidos">0</span>
             </div>
 
             <div class="card">
                 <h3>Total de Clientes (Histórico)</h3>
-                <span>45</span>
+                <span id="total-clientes">0</span>
             </div>
 
             <div class="card">
                 <h3>Conversão de Prospecção</h3>
-                <span>30%</span>
+                <span id="taxa-conversao">0%</span>
             </div>
 
         </div>
@@ -80,15 +81,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>João Silva</td>
-                        <td>(19) 99999-9999</td>
-                        <td>12/04/2026</td>
-                        <td>Vendedor A</td>
-                        <td>Retorno sobre cozinha planejada</td>
-                    </tr>
-                </tbody>
+                <tbody id="tabela-proximos-contatos"></tbody>
             </table>
         </div>
 
@@ -107,17 +100,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>Maria Santos</td>
-                        <td>(19) 98888-8888</td>
-                        <td>15/04/2026</td>
-                        <td>Vendedor A</td>
-                        <td>
-                            <span class="badge badge-aberto">Agendada</span>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody id="tabela-visitas"></tbody>
             </table>
         </div>
 
@@ -137,28 +120,15 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>João Silva</td>
-                        <td>R$ 5.000,00</td>
-                        <td>10/04/2026</td>
-                        <td>
-                            <span class="badge badge-aberto">Em Aberto</span>
-                        </td>
-                        <td>
-                            <button class="btn-edit" onclick="abrirOrcamento(1)">
-                                ✏️ Abrir
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody id="tabela-orcamentos"></tbody>
             </table>
         </div>
 
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script type="module" src="js/api-bridge.js"></script>
 
 </body>
 </html>

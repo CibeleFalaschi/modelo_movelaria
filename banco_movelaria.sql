@@ -1,5 +1,7 @@
 -- Active: 1775003047502@@127.0.0.1@3306@modelo_movelaria
-CREATE DATABASE IF NOT EXISTS MODELO_MOVELARIA;
+CREATE DATABASE IF NOT EXISTS MODELO_MOVELARIA
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
 USE MODELO_MOVELARIA;
 
 /*
@@ -66,6 +68,7 @@ CREATE TABLE IF NOT EXISTS Orcamento (
     IDContato INT NOT NULL,
     IDStatusOrcamento INT NOT NULL,
     IDFuncionario INT NOT NULL,
+    IDEmpresa INT NOT NULL,
     NumeroOrcamento VARCHAR(50) NOT NULL UNIQUE,
     DataSolicitacao DATE NOT NULL,
     NecessitaProjeto BOOLEAN NOT NULL DEFAULT FALSE,
@@ -131,10 +134,6 @@ CREATE TABLE Empresa (
     Nome VARCHAR(100) NOT NULL COMMENT 'Nome da empresa para qual está faznedo orçamento',
     CNPJ VARCHAR(20)
 );
-
-ALTER TABLE Orcamento
-ADD CONSTRAINT FK_Orcamento_Empresa 
-FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID);
 
 CREATE TABLE Cliente (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -212,12 +211,9 @@ CREATE TABLE HistoricoProspeccao (
     FOREIGN KEY (IDProspeccao) REFERENCES Prospeccao(ID)
 );
 
--- IDEmpresa já existe, só adiciona a FK e o UNIQUE
 ALTER TABLE Orcamento
 ADD CONSTRAINT FK_Orcamento_Empresa
-    FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID),
-ADD CONSTRAINT UK_Orcamento_NumeroEmpresa
-    UNIQUE (NumeroSequencial, IDEmpresa);
+    FOREIGN KEY (IDEmpresa) REFERENCES Empresa(ID);
 
 ALTER TABLE Cliente ADD RG VARCHAR(20) AFTER CPF_CNPJ;
 

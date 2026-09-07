@@ -1,25 +1,32 @@
-/* ========================= */
-/* 1. BODY                   */
-/* ========================= */
+:root {
+    --cor-primaria: #04043d;
+    --cor-primaria-hover: #020252;
+    --cor-destaque: #F97316;
+    --cor-destaque-hover: #d95f0e;
+    --cor-fundo: #bfc5cc;
+    --cor-superficie: #f1f5f9;
+    --cor-superficie-suave: #f8fafc;
+    --cor-borda: #d1d5db;
+    --cor-texto: #111827;
+    --cor-texto-suave: #6b7280;
+    --sombra-suave: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
 
 body {
     margin: 0;
     padding: 0;
     padding-top: 80px;
     min-height: 100vh;
-    background: #bfc5cc;
+    background: var(--cor-fundo);
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: Arial, sans-serif;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--cor-texto);
 }
 
-/* ========================= */
-/* 2. MENU SUPERIOR          */
-/* ========================= */
-
 .menu-superior {
-    background-color: rgb(4, 4, 61);
+    background-color: var(--cor-primaria);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -59,20 +66,16 @@ body {
 }
 
 .menu-superior a:hover {
-    background-color: rgb(2, 2, 82);
+    background-color: var(--cor-primaria-hover);
 }
 
 .btn-sair {
-    background-color: #F97316 !important;
+    background-color: var(--cor-destaque) !important;
 }
-
-/* ========================= */
-/* 3. CONTAINERS             */
-/* ========================= */
 
 .container-marcenaria,
 .container-lista {
-    background: #f1f5f9;
+    background: var(--cor-superficie);
     padding: 30px;
     border-radius: 10px;
     width: 90%;
@@ -80,30 +83,6 @@ body {
     margin-bottom: 50px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
-
-/* ========================= */
-/* 4. LOGIN                  */
-/* ========================= */
-
-.login-container {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 300px;
-}
-
-.input-group {
-    margin-bottom: 10px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-/* ========================= */
-/* 5. FORMULÁRIOS / INPUTS   */
-/* ========================= */
 
 label {
     font-weight: bold;
@@ -113,7 +92,7 @@ label {
 }
 
 fieldset {
-    border: 1px solid rgb(2, 2, 61);
+    border: 1px solid var(--cor-primaria);
     border-radius: 8px;
     margin-bottom: 20px;
     padding: 15px;
@@ -131,48 +110,50 @@ input[type="text"],
 input[type="tel"],
 input[type="number"] {
     padding: 8px 10px;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--cor-borda);
     border-radius: 6px;
     font-size: 14px;
     background-color: #f9fafb;
-    color: #111827;
+    color: var(--cor-texto);
     transition: border-color 0.2s, box-shadow 0.2s;
     box-sizing: border-box;
 }
 
 input[type="text"]:hover,
 input[type="tel"]:hover,
-input[type="number"]:hover {
-    border-color: rgb(4, 4, 61);
+input[type="number"]:hover,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus {
+    border-color: var(--cor-primaria);
 }
 
 input[type="text"]:focus,
 input[type="tel"]:focus,
 input[type="number"]:focus {
     outline: none;
-    border-color: rgb(4, 4, 61);
     box-shadow: 0 0 0 2px rgba(4, 4, 61, 0.15);
     background-color: #fff;
 }
 
 input[type="date"] {
     padding: 8px 10px;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--cor-borda);
     border-radius: 6px;
     font-size: 14px;
     background-color: #f9fafb;
-    color: #111827;
+    color: var(--cor-texto);
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-input[type="date"]:hover {
-    border-color: rgb(4, 4, 61);
+input[type="date"]:hover,
+input[type="date"]:focus {
+    border-color: var(--cor-primaria);
 }
 
 input[type="date"]:focus {
     outline: none;
-    border-color: rgb(4, 4, 61);
     box-shadow: 0 0 0 2px rgba(4, 4, 61, 0.15);
     background-color: #fff;
 }
@@ -184,42 +165,42 @@ input[type="file"] {
     padding: 10px 14px;
     border: 2px dashed #a0aec0;
     border-radius: 8px;
-    background-color: #f8fafc;
-    color: #555;
+    background-color: var(--cor-superficie-suave);
+    color: var(--cor-texto-suave);
     font-size: 13px;
     cursor: pointer;
     transition: border-color 0.2s, background-color 0.2s;
 }
 
 input[type="file"]:hover {
-    border-color: rgb(4, 4, 61);
+    border-color: var(--cor-primaria);
     background-color: #eef2ff;
 }
 
 input[type="file"]:focus {
     outline: none;
-    border-color: #F97316;
+    border-color: var(--cor-destaque);
     background-color: #fff8f0;
 }
 
 select {
     padding: 8px 10px;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--cor-borda);
     border-radius: 6px;
     font-size: 14px;
     background-color: #f9fafb;
-    color: #111827;
+    color: var(--cor-texto);
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-select:hover {
-    border-color: rgb(4, 4, 61);
+select:hover,
+select:focus {
+    border-color: var(--cor-primaria);
 }
 
 select:focus {
     outline: none;
-    border-color: rgb(4, 4, 61);
     box-shadow: 0 0 0 2px rgba(4, 4, 61, 0.15);
     background-color: #fff;
 }
@@ -230,7 +211,7 @@ textarea {
     padding: 10px;
     font-family: inherit;
     font-size: 14px;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--cor-borda);
     border-radius: 6px;
     resize: vertical;
     transition: border 0.2s, box-shadow 0.2s;
@@ -238,7 +219,7 @@ textarea {
 }
 
 textarea:focus {
-    border-color: rgb(4, 4, 61);
+    border-color: var(--cor-primaria);
     box-shadow: 0 0 0 2px rgba(4, 4, 61, 0.15);
     outline: none;
 }
@@ -247,25 +228,12 @@ textarea::placeholder {
     color: #9ca3af;
 }
 
-#observacao {
-    width: 100%;
-    height: 80px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: none;
-}
-
-/* ========================= */
-/* 6. BOTÕES                 */
-/* ========================= */
-
 button {
     cursor: pointer;
 }
 
 .btn-padrao {
-    background: #F97316;
+    background: var(--cor-destaque);
     color: white;
     padding: 10px 18px;
     border: none;
@@ -280,7 +248,7 @@ button {
 }
 
 .btn-padrao:hover {
-    background: rgb(4, 4, 61);
+    background: var(--cor-primaria);
     transform: translateY(-1px);
 }
 
@@ -297,15 +265,24 @@ button {
 }
 
 .botao-salvar {
-    background: #F97316;
+    background: var(--cor-destaque);
     color: white;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(249,115,22,0.3);
 }
 
 .botao-salvar:hover {
-    background: rgb(2, 2, 61);
+    background: var(--cor-primaria);
     transform: translateY(-2px);
+}
+
+.botao-contrato {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+.botao-contrato:hover {
+    background: var(--cor-primaria-hover);
 }
 
 .botao-secundario {
@@ -322,26 +299,76 @@ button {
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--cor-borda);
 }
 
 .btn {
     width: 100%;
     padding: 10px;
-    background: #130241;
+    background: var(--cor-primaria);
     color: white;
     border: none;
     cursor: pointer;
 }
 
-/* ========================= */
-/* 7. TABELA                 */
-/* ========================= */
+.btn:hover {
+    background: var(--cor-primaria-hover);
+}
+
+button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.esta-carregando::after {
+    content: " ";
+    width: 0.8em;
+    height: 0.8em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: girar 0.7s linear infinite;
+}
+
+.notificacoes {
+    position: fixed;
+    top: 76px;
+    right: 20px;
+    z-index: 2000;
+    display: grid;
+    gap: 10px;
+    width: min(360px, calc(100vw - 40px));
+}
+
+.notificacao {
+    padding: 14px 16px;
+    border-radius: 8px;
+    color: white;
+    background: var(--cor-primaria);
+    box-shadow: var(--sombra-suave);
+    animation: entrar 0.2s ease-out;
+}
+
+.notificacao-success { background: #15803d; }
+.notificacao-error { background: #b91c1c; }
+
+@keyframes girar { to { transform: rotate(360deg); } }
+@keyframes entrar {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-print {
+    background: var(--cor-primaria);
+    color: white;
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background: white;
 }
 
 th, td {
@@ -351,7 +378,7 @@ th, td {
 }
 
 th {
-    background-color: rgb(4, 4, 61);
+    background-color: var(--cor-primaria);
     color: white;
 }
 
@@ -362,642 +389,30 @@ th {
     font-weight: bold;
 }
 
-.badge-aberto     { background: #fff3cd; color: #856404; }
-.badge-fechado    { background: #d4edda; color: #155724; }
-.badge-perdido    { background: #f8d7da; color: #721c24; }
+.badge-aberto { background: #fff3cd; color: #856404; }
+.badge-fechado { background: #d4edda; color: #155724; }
+.badge-perdido { background: #f8d7da; color: #721c24; }
 .badge-elaboracao { background: #cce5ff; color: #004085; }
 
-/* ========================= */
-/* 8. TOPO DA TABELA         */
-/* ========================= */
-
-.topo-tabela {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 15px;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.filtros {
-    display: flex;
-    gap: 20px;
-    align-items: flex-end;
-}
-
-.busca-box label,
-.filtro-vendedor label {
-    font-size: 13px;
-    color: rgb(2, 2, 61);
-    display: block;
-    margin-bottom: 4px;
-    font-weight: 600;
-}
-
-.busca-box input,
-.filtro-vendedor select {
-    padding: 6px 10px;
-    border: 1px solid rgb(4, 4, 61);
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-/* ========================= */
-/* 9. FOOTER DO FORMULÁRIO   */
-/* ========================= */
-
-.footer-orcamento {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 2px solid #e5e7eb;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.footer-orcamento h3 {
-    margin: 0;
-    color: rgb(4, 4, 61);
-    font-size: 16px;
-}
-
-.footer-orcamento .acoes {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-left: auto;
-}
-
-.acoes-botoes {
-    display: flex;
-    gap: 10px;
-}
-
-/* ========================= */
-/* 10. ALERTA SUCESSO        */
-/* ========================= */
-
-.alerta-sucesso {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    background: #22c55e;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: 0.3s;
-    z-index: 9999;
-    display: none;
-}
-
-.alerta-sucesso.mostrar {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ========================= */
-/* 11. DASHBOARD             */
-/* ========================= */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.card {
-    background: hsl(0, 0%, 50%);
-    border: 1px solid rgb(4, 4, 61);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-}
-
-.card h3 {
-    margin: 0 0 10px 0;
-    font-size: 14px;
-    color: rgb(2, 2, 61);
-}
-
-.card span {
-    font-size: 36px;
-    font-weight: bold;
-    color: rgb(243, 161, 8);
-}
-
-.secao-lista-dash {
-    margin-top: 20px;
-}
-
-.secao-lista-dash h3 {
-    color: rgb(4, 4, 61);
-    border-bottom: 2px solid #F97316;
-    padding-bottom: 8px;
-    margin-bottom: 15px;
-}
-
-.filtro-dashboard {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #f1f5f9;
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-}
-
-.filtro-dashboard label {
-    font-weight: 600;
-    color: rgb(2, 2, 61);
-    margin-right: 10px;
-}
-
-.filtro-dashboard select {
-    padding: 10px 14px;
-    border: 1px solid rgb(2, 2, 61);
-    border-radius: 6px;
-    font-size: 14px;
-    background: orange;
-    color: rgb(4, 4, 61);
-    min-width: 200px;
-    cursor: pointer;
-    appearance: none;
-}
-
-/* ========================= */
-/* 12. MODAIS / OVERLAY      */
-/* ========================= */
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    justify-content: center;
-    align-items: flex-start;
-    overflow-y: auto;
-    padding-top: 50px;
-    z-index: 999;
-}
-
-#form-prospeccao {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    width: 400px;
-    max-width: 90%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-}
-
-#form-prospeccao input,
-#form-prospeccao select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-#overlay-historico {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-#form-historico {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 400px;
-    max-width: 90%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-}
-
-#form-historico select,
-#form-historico input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #d1d5db;
-    background-color: #f9fafb;
-    color: #111827;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-#form-historico select:focus,
-#form-historico input[type="date"]:focus {
-    outline: none;
-    border: 1px solid #1e3a8a;
-    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
-}
-
-#form-historico label {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-weight: 500;
-}
-
-.cliente-selecionado {
-    margin-top: 5px;
-    margin-bottom: 15px;
-    color: #1e3a8a;
-    font-weight: 600;
-}
-
-/* ========================= */
-/* 13. RADIO BUTTONS         */
-/* ========================= */
-
-.radio-inline {
-    display: flex;
-    gap: 15px;
-}
-
-.radio-inline label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* ========================= */
-/* 14. ORÇAMENTO CONFIG      */
-/* ========================= */
-
-.config-wrapper {
-    margin: 30px auto;
-}
-
-.config-header h2 {
-    margin-bottom: 5px;
-    font-size: 22px;
-    color: #1a1a1a;
-}
-
-.config-header p {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 20px;
-}
-
-.config-card {
-    background: #f1f5f9;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    border: 1px solid rgb(4, 4, 61);
-}
-
-.campo {
-    margin-bottom: 18px;
-}
-
-.campo label {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 6px;
-    color: #555;
-}
-
-.campo input,
-.campo select {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    background: #fafafa;
-    transition: 0.2s;
-}
-
-.campo input:focus,
-.campo select:focus {
-    border-color: rgb(4, 4, 61);
-    background: #fff;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(4, 4, 61, 0.1);
-}
-
-/* ========================= */
-/* 15. IMPRESSÃO - ORÇAMENTO */
-/* ========================= */
-
-.print-area {
-    display: none;
-    background: #fff;
-    padding: 30px;
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.dados-doc {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-    font-weight: bold;
-}
-
-.dados-cliente-print {
-    margin: 20px 0;
-    padding: 15px;
-    border: 1px solid #ccc;
-    background: #fafafa;
-}
-
-.tabela-print {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
-
-.tabela-print th {
-    background: #f7941d;
-    color: #fff;
-    padding: 10px;
-    text-align: left;
-}
-
-.tabela-print td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    vertical-align: middle;
-}
-
-.linha-ambiente-print {
-    background: #eee;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.total-print {
-    text-align: right;
-    font-size: 24px;
-    font-weight: bold;
-    border-top: 2px solid #000;
-    padding-top: 10px;
-    margin-top: 20px;
-}
-
-.rodape-print {
-    border-top: 2px solid #000;
-    padding-top: 15px;
-    margin-top: 30px;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.linha-ass {
-    margin-top: 20px;
-}
-
-#cabecalho-print {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 10px;
-}
-
-.logo-box img {
-    width: 90px;
-    max-width: 150px;
-}
-
-.info-empresa {
-    flex-grow: 1;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.2;
-}
-
-.info-empresa h3 {
-    margin-bottom: 5px;
-}
-
-/* ========================= */
-/* 16. CONTRATO - TELA       */
-/* ========================= */
-
-.contrato-print {
-    display: none;
-}
-
-.briefing-print {
-    display: none;
-}
-
-/* ========================= */
-/* 17. RESPONSIVO            */
-/* ========================= */
-
-@media (max-width: 600px) {
-    .status-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 760px) {
+    body { padding-top: 120px; }
+    .menu-superior {
+        height: auto;
+        min-height: 60px;
+        flex-wrap: wrap;
+        padding: 10px 14px;
+        gap: 8px;
     }
-
-    .config-wrapper {
-        margin: 20px;
-    }
-}
-
-/* ========================= */
-/* 18. MEDIA PRINT           */
-/* ========================= */
-
-@media print {
-    * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    body {
-        padding-top: 0;
-        background: white;
-        margin: 0;
-    }
-
-    .menu-superior,
-    .alerta-sucesso,
-    .no-print,
-    #btn-contrato {
-        display: none !important;
-    }
-
-    /* CASO 1: ORÇAMENTO CLIENTE */
-    .imprimindo-orcamento-cliente .container-lista,
-    .imprimindo-orcamento-cliente .config-wrapper,
-    .imprimindo-orcamento-cliente .contrato-print {
-        display: none !important;
-    }
-
-    .imprimindo-orcamento-cliente #folha-impressao {
-        display: block !important;
+    .menu-superior ul {
         width: 100%;
+        overflow-x: auto;
+        height: 42px;
     }
-
-    .imprimindo-orcamento-cliente #cabecalho-print {
-        display: flex !important;
-        justify-content: space-between;
-        background-color: #26057b !important;
-        border: 2px solid #000;
-        padding: 10px;
-        align-items: center;
-        gap: 10px;
+    .menu-superior a { padding: 0 12px; white-space: nowrap; }
+    .container-marcenaria, .container-lista {
+        width: calc(100% - 28px);
+        padding: 18px;
+        box-sizing: border-box;
     }
-
-    .imprimindo-orcamento-cliente .tabela-print th,
-    .imprimindo-orcamento-cliente .tabela-print td {
-        border: 1px solid #000;
-        padding: 8px;
-    }
-
-    .imprimindo-orcamento-cliente .tabela-print th {
-        background-color: #f7941d !important;
-    }
-
-    .imprimindo-orcamento-cliente .dados-cliente-print {
-        border: 1px solid #000;
-        margin: 20px 0;
-        padding: 15px;
-    }
-
-    .imprimindo-orcamento-cliente .total-print {
-        text-align: right;
-        font-size: 26px;
-        font-weight: bold;
-        border-top: 2px solid #000;
-        padding-top: 10px;
-        margin-top: 20px;
-    }
-
-    /* CASO 2: CONTRATO */
-    .imprimindo-contrato .container-marcenaria,
-    .imprimindo-contrato .container-lista,
-    .imprimindo-contrato .config-wrapper,
-    .imprimindo-contrato #folha-impressao,
-    .imprimindo-contrato .alerta-sucesso {
-        display: none !important;
-    }
-
-    .imprimindo-contrato .contrato-print {
-        display: block !important;
-        font-family: Arial, sans-serif;
-        font-size: 11px;
-        line-height: 1.4;
-        padding: 20px;
-        color: #000;
-    }
-
-    .imprimindo-contrato .contrato-cabecalho {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 15px;
-        border-bottom: 2px solid #000;
-        padding-bottom: 12px;
-        margin-bottom: 12px;
-    }
-
-    .imprimindo-contrato .contrato-logo {
-        display: block !important;
-        width: 100px !important;
-        height: auto !important;
-    }
-
-    .imprimindo-contrato .contrato-cabecalho-info {
-        display: block !important;
-        flex: 1;
-        font-size: 11px;
-    }
-
-    .imprimindo-contrato .contrato-cabecalho-numero {
-        display: block !important;
-        text-align: right;
-        font-size: 11px;
-        min-width: 150px;
-    }
-
-    .imprimindo-contrato .contrato-tabela {
-        display: table !important;
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 10px;
-        font-size: 11px;
-    }
-
-    .imprimindo-contrato .contrato-tabela td {
-        display: table-cell !important;
-        border: 1px solid #000;
-        padding: 4px 6px;
-        width: 50%;
-    }
-
-    .imprimindo-contrato .contrato-tabela-header td {
-        background-color: #ddd !important;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    .imprimindo-contrato .contrato-texto {
-        font-size: 11px;
-        margin: 5px 0;
-        text-align: justify;
-    }
-
-    .imprimindo-contrato .contrato-importante {
-        font-weight: bold;
-    }
-
-    .imprimindo-contrato .contrato-assinaturas {
-        display: flex !important;
-        justify-content: space-between;
-        margin-top: 30px;
-    }
-
-    .imprimindo-contrato .contrato-ass-box {
-        text-align: center;
-        width: 45%;
-        font-size: 11px;
-    }
-
-    .imprimindo-contrato .contrato-ass-linha {
-        border-top: 1px solid #000;
-        margin-bottom: 5px;
-        margin-top: 25px;
-    }
-
-    .imprimindo-contrato .contrato-ass-box p {
-        margin: 2px 0;
-    }
-
-    .imprimindo-contrato .contrato-cidade {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 11px;
-    }
+    table { display: block; overflow-x: auto; white-space: nowrap; }
 }

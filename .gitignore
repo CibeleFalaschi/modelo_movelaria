@@ -1,0 +1,13 @@
+# Arquivos locais e credenciais
+.env
+.env.*
+!.env.example
+
+# Sessões e configurações do editor
+*.session.sql
+.vscode/
+.claude/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

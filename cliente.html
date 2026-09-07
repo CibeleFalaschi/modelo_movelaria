@@ -38,19 +38,7 @@
                     <th class="acoes">Ações</th>
                 </tr>
             </thead>
-            <tbody id="tabela-clientes">
-                <tr>
-                    <td>001</td>
-                    <td>João Silva</td>
-                    <td>(19) 99999-9999</td>
-                    <td>Americana</td>
-                    <td>2 orçamentos</td>
-                    <td>
-                        <!-- BOTÃO EDITAR AQUI, na tabela -->
-                        <button class="btn-edit" onclick="abrirEdicaoCliente(1)">✏️ Editar</button>
-                    </td>
-                </tr>
-            </tbody>
+            <tbody id="tabela-clientes"></tbody>
         </table>
     </div>
 
@@ -115,5 +103,7 @@
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/cliente.js"></script>
+    <script type="module" src="js/api-bridge.js"></script>
 </body>
 </html>

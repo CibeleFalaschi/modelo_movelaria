@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movelaria Modelo</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/orcamento.css">
 </head>
 
 <body>
@@ -46,30 +47,7 @@
             </tr>
         </thead>
 
-        <tbody id="tabelaCorpo">
-            <tr>
-                <td>001</td>
-                <td>João Silva</td>
-                <td>10/04/2026</td>
-                <td>R$ 5.000,00</td>
-                <td><span class="badge">Em Aberto</span></td>
-
-                <td>
-                    <button onclick="abrirOrcamento(1)">✏️ Editar</button>
-
-                    <button onclick="prepararImpressao(
-                        '001',
-                        'João Silva',
-                        'R$ 5.000,00',
-                        'Rua das Flores, 123',
-                        '(19) 99999-9999',
-                        'Americana - SP'
-                    )">
-                        🖨️ Imprimir
-                    </button>
-                </td>
-            </tr>
-        </tbody>
+        <tbody id="tabelaCorpo"></tbody>
     </table>
 
 </div>
@@ -153,8 +131,9 @@
 
     <!-- TOTAL -->
     <div class="total-print">
-        TOTAL: <span id="p-total"></span>
-    </div>
+    <span>TOTAL:</span>
+    <span id="p-total"></span>
+</div>
 
     <!-- RODAPÉ -->
     <footer class="rodape-print">
@@ -182,6 +161,8 @@
 </div>
 
 <script src="js/script.js"></script>
+<script src="js/orcamento.js"></script>
+<script type="module" src="js/api-bridge.js"></script>
 
 </body>
 </html>
