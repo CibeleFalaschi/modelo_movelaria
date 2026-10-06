@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing - Movelaria Modelo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/briefing.css">
+</head>
+<body>
+    <nav class="menu-superior">
+        <div class="logo">Movelaria Modelo</div>
+        <ul>
+            <li><a href="dashboard.html">Início</a></li>
+            <li><a href="prospeccao.html">Prospecção</a></li>
+            <li><a href="briefing_orcamento.html">Briefing</a></li>
+            <li><a href="orcamento.html">Orçamento</a></li>
+            <li><a href="cliente.html">Cliente</a></li>
+            <li class="somente-admin" hidden><a href="funcionarios.html">Funcionários</a></li>
+            <li><a href="index.html" class="btn-sair">Sair</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-marcenaria">
+        <h2>📋 Briefing</h2>
+        
+        <form id="form-atendimento">
+            <fieldset>
+                            <legend>Empresa</legend>
+            <select id="empresa" required>
+                        <option value="">Selecionar Empresa</option>
+                    </select>
+            </fieldset>
+
+            <!-- BLOCO 1: CONTATO -->
+            <fieldset>
+                <legend>Dados do Contato</legend>
+                <div class="grid-contato" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px;">
+                    <input type="text" id="nome" placeholder="Nome do contato" required>
+                    <input type="tel" id="telefone" placeholder="Telefone" required>
+                    <input type="email" id="email" placeholder="E-mail" required>
+                    <select id="origem">
+                        <option value="">Como nos conheceu?</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="indicacao">Indicação</option>
+                        <option value="prospeccao">Prospecção</option>
+                        <option value="google">Google</option>
+                        <option value="ja_e_cliente">Já é cliente</option>
+                    </select>
+                    <input type="date" id="data_contato" title="Data do Contato">
+                </div>
+            </fieldset>
+
+            <!-- BLOCO 2: AMBIENTES -->
+            <div id="lista-ambientes">
+                <fieldset class="item-ambiente" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px;">
+                    <legend style="padding: 0 10px; font-weight: bold;">Ambiente 1</legend>
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <input type="text" name="ambiente[]" placeholder="Ex: Cozinha Planejada" style="flex: 3; padding: 5px;" required>
+                        <input type="text" name="valor_ambiente[]" placeholder="R$ 0,00" class="campo-moeda">
+                    </div>
+                    <textarea name="obs_ambiente[]" placeholder="Observações e detalhes..." rows="2" style="width: 100%; box-sizing: border-box; padding: 5px;"></textarea>
+                </fieldset>
+            </div>
+
+            <button type="button" onclick="adicionarAmbiente()" style="padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                + Adicionar Novo Ambiente
+            </button>
+
+            <div id="arquivos-existentes"></div>
+
+            <!-- BLOCO 3: UPLOAD DE INSPIRAÇÕES -->
+            <fieldset style="margin-top: 20px;">
+                <legend>📎 Fotos de Inspiração do Cliente</legend>
+                <div style="padding: 5px 0;">
+                    <input type="file" id="arquivos_briefing" multiple 
+                           accept=".jpg,.jpeg,.png,.pdf">
+                    <small style="display: block; margin-top: 5px; color: #888;">
+                        Fotos enviadas pelo cliente como referência. Formatos: JPG, PNG, PDF.
+                    </small>
+                </div>
+            </fieldset>
+
+            <!-- BLOCO 4: PLANEJAMENTO E STATUS -->
+            <fieldset style="margin-top: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 5px;">
+                <legend style="padding: 0 10px; font-weight: bold;">Planejamento e Status</legend>
+
+                <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dotted #ccc;">
+                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Status do Orçamento Geral:</label>
+                    <select name="status_orcamento" id="status_orcamento" 
+        style="width: 100%; padding: 8px;"
+        onchange="verificarStatusContrato(this.value)">
+    </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    
+                    <!-- Coluna Visita -->
+                    <div style="border-right: 1px solid #eee; padding-right: 10px;">
+                        <span style="font-weight: bold;">Precisa de Visita?</span>
+                        <div class="radio-inline" style="margin: 10px 0;">
+    
+                        <label>
+                        <input type="radio" name="visita" value="sim"> Sim
+                        </label>
+
+                        <label>
+                        <input type="radio" name="visita" value="nao" checked> Não
+                        </label>
+
+                        </div>
+                        <label style="font-size: 13px;">Status da Visita Técnica?</label>
+                        <select name="status_visita" style="width: 100%; margin-bottom: 10px;">
+                            <option value="1">Pendente</option>
+                            <option value="2">Agendada</option>
+                            <option value="3">Realizada</option>
+                            <option value="4">Cancelada</option>
+                        </select>
+                        <label style="font-size: 13px;">Data da Visita Técnica:</label>
+                        <input type="date" name="data_visita" style="width: 100%;">
+                    </div>
+
+                    <!-- Coluna Projeto -->
+                    <div>
+                        <span style="font-weight: bold;">Precisa de Projeto?</span>
+                        <div class="radio-inline" style="margin: 10px 0;">
+                        <label>
+                        <input type="radio" name="projeto" value="sim"> Sim
+                        </label>
+
+                        <label>
+                        <input type="radio" name="projeto" value="nao" checked> Não
+                        </label>
+                     </div>
+                        
+                        <label style="font-size: 13px;">Status do Projeto:</label>
+                        <select name="status_projeto" style="width: 100%;">
+                            <option value="1">Em planejamento</option>
+                            <option value="2">Em execução</option>
+                            <option value="3">Concluído</option>
+                            <option value="4">Cancelado</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- BLOCO 5: OBSERVAÇÕES TÉCNICAS -->
+            <fieldset>
+                <legend>Observações e Detalhes Técnicos</legend>
+                <textarea id="observacao" rows="10" placeholder="Descreva aqui materiais (MDF, ferragens), puxadores, prazos e detalhes específicos do projeto..."></textarea>
+            </fieldset>
+
+            <!-- BLOCO 6: UPLOAD DO PROJETO TÉCNICO -->
+            <fieldset style="margin-top: 20px;">
+                <legend>📐 Projeto Técnico</legend>
+                <div style="padding: 5px 0;">
+                    <input type="file" id="arquivos_projeto" multiple 
+                           accept=".jpg,.jpeg,.png,.pdf,.dwg,.skp">
+                    <small style="display: block; margin-top: 5px; color: #888;">
+                        Projeto finalizado da marcenaria ou do arquiteto. Formatos: JPG, PNG, PDF, DWG (AutoCAD), SKP (SketchUp).
+                    </small>
+                </div>
+            </fieldset>
+
+            <!-- BLOCO 7: ACOMPANHAMENTO E ENTREGA -->
+            <fieldset class="fieldset-destaque">
+                <legend>Acompanhamento e Entrega</legend>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                    <div>
+                        <label style="display: block; font-size: 13px; font-weight: bold;">Responsável:</label>
+                        <select name="id_funcionario" style="width: 100%; padding: 8px;">
+                            <option value="">Selecione o funcionário</option>
+                            <option value="1">Vendedor A</option>
+                            <option value="2">Projetista B</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 13px; font-weight: bold;">Data de Entrega ao Cliente:</label>
+                        <input type="date" name="data_entrega" style="width: 100%; padding: 7px;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 13px; font-weight: bold;">Data Próximo Contato:</label>
+                        <input type="date" name="proximo_contato" style="width: 100%; padding: 7px;">
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <label style="display: block; font-size: 13px; font-weight: bold;">Observação desta Alteração/Registro:</label>
+                    <textarea name="obs_historico" rows="2" placeholder="Ex: Cliente solicitou troca de cor do MDF na cozinha..." style="width: 100%; box-sizing: border-box; padding: 8px;"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- BLOCO 8: FINALIZAÇÃO -->
+<div class="footer-orcamento">
+    <h3>Valor Total Estimado: R$ <span id="total">0,00</span></h3>
+    <div class="acoes">
+        <button type="button" class="botao botao-salvar" onclick="salvarBriefing()"> 💾 Salvar no Banco</button>
+        <button type="button" class="btn btn-print" onclick="imprimirOrcamento()">🖨️ Imprimir Orçamento</button>        <button type="button" id="btn-contrato" class="botao botao-contrato" 
+                style="display:none;"
+                onclick="gerarContrato()">
+            📄 Gerar Contrato
+        </button>
+    </div>
+</div>
+        </form>
+    </div>
+
+        <div id="alerta-sucesso" class="alerta-sucesso">
+    ✔ Salvo com sucesso!
+        </div>
+
+   <!-- ÁREA DE IMPRESSÃO DO CONTRATO -->
+    <div id="contrato-print" class="contrato-print">
+
+        <!-- CABEÇALHO -->
+        <div class="contrato-cabecalho">
+    <img id="c-logo" src="" alt="Logo" class="contrato-logo">
+    <div class="contrato-cabecalho-info">
+        <h2 id="c-empresa-nome"></h2>
+        <p id="c-empresa-endereco"></p>
+        <p id="c-empresa-telefone"></p>
+        <p id="c-empresa-email"></p>
+    </div>
+    <div class="contrato-cabecalho-numero">
+        <h3>CONTRATO</h3>
+        <p><strong>Nº ORÇAMENTO:</strong> <span id="c-numero">____</span></p>
+        <p><strong>Data:</strong> <span id="c-data"></span></p>
+    </div>
+</div>
+
+        <!-- DADOS DA CONTRATADA -->
+        <table class="contrato-tabela">
+            <tr class="contrato-tabela-header">
+                <td colspan="2">CONTRATADA</td>
+            </tr>
+            <tr>
+                <td><strong>RAZÃO SOCIAL:</strong> <span id="c-empresa-razao"></span></td>
+                <td><strong>CNPJ:</strong> <span id="c-empresa-cnpj"></span></td>
+            </tr>
+            <tr>
+                <td><strong>ENDEREÇO:</strong> <span id="c-empresa-end"></span></td>
+                <td><strong>BAIRRO:</strong> <span id="c-empresa-bairro"></span></td>
+            </tr>
+            <tr>
+                <td><strong>CIDADE:</strong> <span id="c-empresa-cidade"></span></td>
+                <td><strong>CEP:</strong> <span id="c-empresa-cep"></span></td>
+            </tr>
+            <tr>
+                <td><strong>TELEFONE:</strong> <span id="c-empresa-tel"></span></td>
+                <td><strong>WHATSAPP:</strong> <span id="c-empresa-whats"></span></td>
+            </tr>
+            <tr>
+                <td><strong>E-MAIL:</strong> <span id="c-empresa-email-tab"></span></td>
+                <td><strong>E-MAIL FINANCEIRO:</strong> <span id="c-empresa-email-fin"></span></td>
+            </tr>
+        </table>
+
+        <!-- DADOS DO CONTRATANTE -->
+        <table class="contrato-tabela">
+            <tr class="contrato-tabela-header">
+                <td colspan="2">CONTRATANTE</td>
+            </tr>
+            <tr>
+                <td><strong>NOME:</strong> <span id="c-nome"></span></td>
+                <td><strong>ESTADO CIVIL:</strong> _______________</td>
+            </tr>
+            <tr>
+                <td><strong>CPF:</strong> _______________</td>
+                <td><strong>RG:</strong> _______________</td>
+            </tr>
+            <tr>
+                <td><strong>DATA DE NASCIMENTO:</strong> _______________</td>
+                <td><strong>PROFISSÃO:</strong> _______________</td>
+            </tr>
+            <tr>
+                <td><strong>TELEFONE:</strong> <span id="c-telefone"></span></td>
+                <td><strong>CELULAR:</strong> _______________</td>
+            </tr>
+            <tr>
+                <td><strong>E-MAIL:</strong> _______________</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>ENDEREÇO:</strong> _______________</td>
+                <td><strong>BAIRRO:</strong> _______________</td>
+            </tr>
+            <tr>
+                <td><strong>CIDADE:</strong> _______________</td>
+                <td><strong>CEP:</strong> _______________</td>
+            </tr>
+            <tr>
+                <td><strong>CONDOMÍNIO:</strong> _______________</td>
+                <td><strong>APT / BLOCO:</strong> _______________</td>
+            </tr>
+        </table>
+
+        <!-- INTRODUÇÃO -->
+        <p class="contrato-texto">
+            Pelo presente instrumento particular de contrato, as partes supra qualificadas, 
+            de comum acordo, estabelecem o que segue:
+        </p>
+        <p class="contrato-texto">
+            <strong>1 -</strong> A CONTRATADA promete, através deste instrumento, fabricar, montar e instalar, 
+            repassando ao CONTRATANTE os bens móveis discriminados no contrato, os quais nominamos como:
+        </p>
+
+        <!-- TABELA DE AMBIENTES -->
+        <table class="contrato-tabela">
+            <thead>
+                <tr class="contrato-tabela-header">
+                    <td>AMBIENTE</td>
+                    <td>DESCRIÇÃO</td>
+                    <td style="text-align:right;">VALOR</td>
+                </tr>
+            </thead>
+            <tbody id="c-ambientes"></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" style="text-align:right; font-weight:bold; 
+                        border:1px solid #000; padding:6px;">TOTAL:</td>
+                    <td style="text-align:right; font-weight:bold; 
+                        border:1px solid #000; padding:6px;">
+                        <span id="c-total"></span>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- PAGAMENTO -->
+        <p class="contrato-texto">
+            O cliente pagará pelos produtos o valor de <strong><span id="c-total-ext"></span></strong>, 
+            sendo da seguinte forma: 50% do valor de entrada (<strong><span id="c-entrada"></span></strong>) 
+            e o restante de 50% (<strong><span id="c-restante"></span></strong>) na entrega total dos produtos.
+        </p>
+
+        <!-- CLÁUSULAS -->
+        <p class="contrato-texto">
+            <strong>Parágrafo Primeiro:</strong> Os pagamentos deverão ser feitos nas datas estipuladas 
+            no presente instrumento, independente do faturamento das mercadorias ou da finalização dos serviços.
+        </p>
+        <p class="contrato-texto">
+            <strong>Parágrafo Segundo:</strong> O inadimplemento de qualquer parcela implicará no vencimento 
+            antecipado do débito e na aplicação de multa contratual de 2%, além de juros de mora de 1% ao mês 
+            acrescidos da variação do IGP-M.
+        </p>
+        <p class="contrato-texto">
+            <strong>Parágrafo Terceiro:</strong> Caso o projeto aprovado seja modificado por pedido ou mediante 
+            autorização do CONTRATANTE durante sua execução, poderá a CONTRATADA emitir, a qualquer tempo, 
+            o título correspondente à diferença de preço, ficando desde já autorizada.
+        </p>
+        <p class="contrato-texto">
+            <strong>3 -</strong> O CONTRATANTE aprova o esboço do projeto apresentado, declarando estar ciente 
+            de que quando da montagem dos móveis poderão sobrar algumas peças que serão restituídas à CONTRATADA.
+        </p>
+        <p class="contrato-texto">
+            <strong>3.1 -</strong> Os preços estabelecidos somente serão mantidos se pago o preço à vista. 
+            Para pagamento parcelado, caso haja reajuste de matéria-prima antes do início da produção, 
+            o percentual será repassado ao cliente em novo contrato.
+        </p>
+        <p class="contrato-texto">
+            <strong>3.1.2 -</strong> A previsão de entrega dos móveis será de <strong>45 dias</strong> após 
+            a data de medição, podendo ser prorrogado por até 7 (sete) dias decorrentes de imprevistos de 
+            produção e instalação.
+        </p>
+        <p class="contrato-texto contrato-importante">
+            IMPORTANTE: Por se tratar de um projeto personalizado e pré-aprovado pelo CONTRATANTE, 
+            não serão aceitas devoluções ou trocas de produtos após firmado o projeto e pedido.
+        </p>
+        <p class="contrato-texto">
+            <strong>4 -</strong> Caso ocorra desistência após aprovação expressa do projeto, esta implicará 
+            em responsabilidade civil do CONTRATANTE, estimando-se a aplicação de 
+            <strong>35% do valor total do projeto</strong> como reparação de danos.
+        </p>
+        <p class="contrato-texto">
+            <strong>5 -</strong> O projeto não inclui instalações de qualquer natureza exceto a instalação 
+            do bem em si. É de responsabilidade do CONTRATANTE as informações sobre localização de tomadas, 
+            encanamentos, bem como tamanho e modelo dos eletrodomésticos a embutir.
+        </p>
+        <p class="contrato-texto">
+            <strong>6 -</strong> A responsabilidade por danos causados por terceiros (pedreiros, encanadores, 
+            etc.) que estejam trabalhando na residência antes, durante e depois da instalação, será 
+            inteiramente do CONTRATANTE.
+        </p>
+        <p class="contrato-texto">
+            <strong>7 - Constituem obrigações do CONTRATANTE:</strong><br>
+            a) Disponibilizar o local da montagem livre de obras;<br>
+            b) Apresentar a planta hidráulica, elétrica e de gás ao profissional responsável;<br>
+            c) Apresentar-se no local da montagem nos dias e horários combinados.
+        </p>
+        <p class="contrato-texto">
+            <strong>8 - Constituem obrigações da CONTRATADA:</strong><br>
+            a) Atender dentro dos prazos convencionados às solicitações do CONTRATANTE;<br>
+            b) Notificar previamente o CONTRATANTE em caso de prorrogação involuntária do prazo;<br>
+            c) Executar a montagem dentro da melhor técnica e zelo;<br>
+            d) Responsabilizar-se por defeitos de fabricação ou decorrentes da montagem.
+        </p>
+        <p class="contrato-texto">
+            <strong>9 -</strong> A CONTRATADA não se compromete por qualquer acordo verbal. 
+            Todo ajuste deverá constar por escrito.
+        </p>
+        <p class="contrato-texto">
+            <strong>11 -</strong> O prazo de instalação poderá ir até 07 dias após o início, 
+            podendo ser prorrogado por mais 07 dias em caso de necessidade de reparo de componentes.
+        </p>
+        <p class="contrato-texto">
+            <strong>16 -</strong> Em caso de atraso superior a 45 dias no pagamento, o CONTRATANTE 
+            considera-se ciente de que seus dados serão incluídos nos Serviços de Proteção ao Crédito.
+        </p>
+        <p class="contrato-texto">
+            <strong>18 -</strong> As partes elegem o Foro da Comarca de Americana para dirimir as questões 
+            oriundas deste contrato, com renúncia expressa a qualquer outro foro.
+        </p>
+        <p class="contrato-texto">
+            <strong>19 -</strong> E por estarem as partes de pleno acordo, assinam o presente instrumento 
+            em duas vias de igual teor e forma, na presença de duas testemunhas.
+        </p>
+
+        <!-- ASSINATURAS -->
+        <div class="contrato-assinaturas">
+            <div class="contrato-ass-box">
+                <div class="contrato-ass-linha"></div>
+                <p id="c-nome-ass"></p>
+                <p>CONTRATANTE</p>
+            </div>
+            <div class="contrato-ass-box">
+                <div class="contrato-ass-linha"></div>
+                <p id="c-empresa-ass"></p>
+                <p>CONTRATADA</p>
+            </div>
+        </div>
+
+        <div class="contrato-assinaturas" style="margin-top:20px;">
+            <div class="contrato-ass-box">
+                <div class="contrato-ass-linha"></div>
+                <p>TESTEMUNHA 1</p>
+            </div>
+            <div class="contrato-ass-box">
+                <div class="contrato-ass-linha"></div>
+                <p>TESTEMUNHA 2</p>
+            </div>
+        </div>
+
+        <p class="contrato-cidade">
+            AMERICANA, <span id="c-data-ass"></span>
+        </p>
+
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/briefing.js"></script>
+    <script type="module" src="js/api-bridge.js"></script>
+</body>
+</html>

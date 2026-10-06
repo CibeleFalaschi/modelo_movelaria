@@ -1,0 +1,66 @@
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: var(--cor-superficie-suave);
+    border: 1px solid var(--cor-primaria);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.card h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: var(--cor-primaria);
+}
+
+.card span {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--cor-destaque);
+}
+
+.secao-lista-dash {
+    margin-top: 20px;
+}
+
+.secao-lista-dash h3 {
+    color: var(--cor-primaria);
+    border-bottom: 2px solid var(--cor-destaque);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.filtro-dashboard {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cor-superficie);
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+}
+
+.filtro-dashboard label {
+    font-weight: 600;
+    color: var(--cor-primaria);
+    margin-right: 10px;
+}
+
+.filtro-dashboard select {
+    padding: 10px 14px;
+    border: 1px solid var(--cor-primaria);
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--cor-superficie-suave);
+    color: var(--cor-primaria);
+    min-width: 200px;
+    cursor: pointer;
+    appearance: none;
+}

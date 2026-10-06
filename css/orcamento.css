@@ -1,0 +1,237 @@
+.config-wrapper {
+    margin: 30px auto;
+}
+
+.config-header h2 {
+    margin-bottom: 5px;
+    font-size: 22px;
+    color: #1a1a1a;
+}
+
+.config-header p {
+    font-size: 13px;
+    color: var(--cor-texto-suave);
+    margin-bottom: 20px;
+}
+
+.config-card {
+    background: var(--cor-superficie);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--cor-primaria);
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: var(--cor-texto-suave);
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+    font-size: 14px;
+    background: #fafafa;
+    transition: 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--cor-primaria);
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(4, 4, 61, 0.1);
+}
+
+.print-area {
+    display: none;
+    background: #fff;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.dados-doc {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.dados-cliente-print {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+.tabela-print {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.tabela-print th {
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #000;
+}
+
+.tabela-print td {
+    padding: 8px;
+    border: 1px solid #000;
+    vertical-align: middle;
+}
+
+.linha-ambiente-print {
+    background: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.total-print {
+    text-align: right;
+    font-size: 24px;
+    font-weight: bold;
+    border-top: 2px solid #000;
+    padding-top: 10px;
+    margin-top: 20px;
+    padding-right: 40px;
+}
+
+.rodape-print {
+    border-top: 2px solid #000;
+    padding-top: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.linha-ass {
+    margin-top: 20px;
+}
+
+#cabecalho-print {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background-color: white;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.logo-box img {
+    width: 90px;
+    max-width: 150px;
+    filter: none;
+}
+
+.info-empresa {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.info-empresa h3 {
+    margin-bottom: 5px;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        padding-top: 0;
+        background: white;
+        margin: 0;
+    }
+
+    .menu-superior,
+    .alerta-sucesso,
+    .no-print,
+    #btn-contrato {
+        display: none !important;
+    }
+
+    .imprimindo-orcamento-cliente .container-lista,
+    .imprimindo-orcamento-cliente .config-wrapper,
+    .imprimindo-orcamento-cliente .contrato-print {
+        display: none !important;
+    }
+
+    .imprimindo-orcamento-cliente #folha-impressao {
+        display: block !important;
+        width: 100%;
+    }
+
+    .imprimindo-orcamento-cliente #cabecalho-print {
+        display: flex !important;
+        justify-content: space-between;
+        background-color: white !important;
+        color: #000 !important;
+        border: 1px solid #000;
+        padding: 10px;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .imprimindo-orcamento-cliente #cabecalho-print img {
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+
+    .imprimindo-orcamento-cliente .tabela-print th,
+    .imprimindo-orcamento-cliente .tabela-print td {
+        border: 1px solid #000;
+        padding: 8px;
+        color: #000 !important;
+    }
+
+    .imprimindo-orcamento-cliente .tabela-print th {
+        background-color: white !important;
+        font-weight: bold;
+    }
+
+    .imprimindo-orcamento-cliente .dados-cliente-print {
+        border: 1px solid #000;
+        background: white !important;
+        margin: 20px 0;
+        padding: 15px;
+    }
+
+    .imprimindo-orcamento-cliente .total-print {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        font-size: 26px;
+        font-weight: bold;
+        border-top: 2px solid #000;
+        padding-top: 10px;
+        margin-top: 20px;
+    }
+
+    .imprimindo-orcamento-cliente #p-total {
+        display: inline-block;
+        min-width: 150px;
+    }
+}

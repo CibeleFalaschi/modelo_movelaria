@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movelaria Modelo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/orcamento.css">
+</head>
+
+<body>
+
+<!-- MENU -->
+<nav class="menu-superior">
+    <div class="logo">Movelaria Modelo</div>
+    <ul>
+        <li><a href="dashboard.html">Início</a></li>
+        <li><a href="prospeccao.html">Prospecção</a></li>
+        <li><a href="briefing_orcamento.html">Briefing</a></li>
+        <li><a href="orcamento.html">Orçamento</a></li>
+        <li><a href="cliente.html">Cliente</a></li>
+            <li class="somente-admin" hidden><a href="funcionarios.html">Funcionários</a></li>
+        <li><a href="index.html" class="btn-sair">Sair</a></li>
+    </ul>
+</nav>
+
+<!-- LISTA DE ORÇAMENTOS -->
+<div class="container-lista">
+
+    <h2>Orçamento</h2>
+
+    <!-- BUSCA -->
+    <div class="busca">
+        <label>Filtrar por nome:</label>
+        <input type="text" id="buscaCliente" onkeyup="filtrarClientes()" placeholder="Digite o nome do cliente...">
+    </div>
+
+    <!-- TABELA -->
+    <table>
+        <thead>
+            <tr>
+                <th>Nº Orçamento</th>
+                <th>Contato</th>
+                <th>Data</th>
+                <th>Valor Total</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelaCorpo"></tbody>
+    </table>
+
+</div>
+
+<!-- CAMPOS EDITÁVEIS (NÃO IMPRIME) -->
+<div class="config-wrapper no-print">
+
+    <div class="config-header">
+        <h2>Configurações do Orçamento</h2>
+        <p>Defina as condições para geração do orçamento</p>
+    </div>
+
+    <div class="config-card">
+
+        <div class="campo">
+            <label>Prazo de entrega</label>
+            <input type="text" id="prazoEntrega" placeholder="Ex: 30 dias úteis">
+        </div>
+
+        <div class="campo">
+            <label>Forma de pagamento</label>
+            <input type="text" id="formaPagamento" placeholder="Ex: 50% entrada + 50% entrega">
+        </div>
+
+        <div class="campo">
+            <label>Empresa</label>
+            <select id="empresaSeletor" onchange="atualizarDadosImpressao()">
+                <option value="apparato">Apparato</option>
+                <option value="signore">Signore</option>
+            </select>
+        </div>
+
+    </div>
+
+</div>
+<!-- ÁREA DE IMPRESSÃO -->
+<div id="folha-impressao" class="print-area">
+
+    <!-- CABEÇALHO -->
+    <header id="cabecalho-print">
+
+        <div class="logo-box">
+            <img id="logo-img" src="imagens/Logo_Apparato.jpg" alt="Logo">
+        </div>
+
+        <div class="info-empresa">
+            <h3>ORÇAMENTO</h3>
+            <p id="empresa-nome">MOVELARIA</p>
+            <p id="empresa-endereco">Endereço</p>
+            <p id="empresa-contato">Contato</p>
+        </div>
+
+    </header>
+
+    <!-- DADOS -->
+    <div class="dados-doc">
+        <p><strong>Nº</strong> <span id="p-numero"></span></p>
+        <p><strong>Data:</strong> <span id="p-data"></span></p>
+    </div>
+
+    <!-- CLIENTE -->
+    <section class="dados-cliente-print">
+        <p><strong>CLIENTE:</strong> <span id="p-nome"></span></p>
+        <p><strong>ENDEREÇO:</strong> <span id="p-end"></span></p>
+        <p><strong>CIDADE:</strong> <span id="p-cidade"></span></p>
+        <p><strong>TELEFONE:</strong> <span id="p-tel"></span></p>
+    </section>
+
+    <!-- TABELA -->
+    <table class="tabela-print">
+        <thead>
+            <tr>
+                <th>DESCRIÇÃO</th>
+                <th>À VISTA</th>
+                <th>A PRAZO</th>
+            </tr>
+        </thead>
+
+        <tbody id="corpo-print"></tbody>
+    </table>
+
+    <!-- TOTAL -->
+    <div class="total-print">
+    <span>TOTAL:</span>
+    <span id="p-total"></span>
+</div>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape-print">
+
+        <p>
+            <strong>PRAZO DE ENTREGA:</strong> 
+            <span id="p-prazo">---</span>
+        </p>
+
+        <p>
+            <strong>FORMA DE PAGAMENTO:</strong> 
+            <span id="p-pagamento">---</span>
+        </p>
+
+        <p><strong>VALIDADE:</strong> 5 dias</p>
+
+        <br>
+
+        <div class="linha-ass">
+            Assinatura: ___________________________
+        </div>
+
+    </footer>
+
+</div>
+
+<script src="js/script.js"></script>
+<script src="js/orcamento.js"></script>
+<script type="module" src="js/api-bridge.js"></script>
+
+</body>
+</html>

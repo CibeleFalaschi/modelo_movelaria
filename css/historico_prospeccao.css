@@ -1,0 +1,59 @@
+.acoes-botoes {
+    display: flex;
+    gap: 10px;
+}
+
+#overlay-historico {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#form-historico {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+#form-historico select,
+#form-historico input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    color: #111827;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#form-historico select:focus,
+#form-historico input[type="date"]:focus {
+    outline: none;
+    border: 1px solid #1e3a8a;
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+}
+
+#form-historico label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.cliente-selecionado {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: #1e3a8a;
+    font-weight: 600;
+}

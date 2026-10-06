@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movelaria Modelo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <nav class="menu-superior">
+        <span>Movelaria Modelo</span>
+        <ul>
+            <li><a href="dashboard.html">Início</a></li>
+            <li><a href="prospeccao.html">Prospecção</a></li>
+            <li><a href="briefing_orcamento.html">Briefing</a></li>
+            <li><a href="orcamento.html">Orçamento</a></li>
+            <li><a href="cliente.html">Cliente</a></li>
+            <li class="somente-admin" hidden><a href="funcionarios.html">Funcionários</a></li>
+            <li><a href="index.html" class="btn-sair">Sair</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-marcenaria">
+
+        <h2>Dashboard</h2>
+
+        <!-- FILTRO EMPRESA -->
+        <div class="filtro-dashboard">
+            <label class="label-filtro">Empresa:</label>
+            <select id="filtro-empresa">
+                <option value="todas">Todas</option>
+            </select>
+        </div>
+
+        <!-- CARDS -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Orçamentos Em Aberto</h3>
+                <span id="total-abertos">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Fechados no Mês</h3>
+                <span id="total-fechados">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Perdidos no Mês</h3>
+                <span id="total-perdidos">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Total de Clientes (Histórico)</h3>
+                <span id="total-clientes">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Conversão de Prospecção</h3>
+                <span id="taxa-conversao">0%</span>
+            </div>
+
+        </div>
+
+        <!-- PRÓXIMOS CONTATOS -->
+        <div class="secao-lista-dash">
+            <h3>📞 Próximos Contatos Agendados</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Contato</th>
+                        <th>Telefone</th>
+                        <th>Data</th>
+                        <th>Responsável</th>
+                        <th>Observação</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabela-proximos-contatos"></tbody>
+            </table>
+        </div>
+
+        <!-- VISITAS -->
+        <div class="secao-lista-dash">
+            <h3>🏠 Visitas Agendadas</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Contato</th>
+                        <th>Telefone</th>
+                        <th>Data da Visita</th>
+                        <th>Responsável</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabela-visitas"></tbody>
+            </table>
+        </div>
+
+        <!-- ORÇAMENTOS -->
+        <div class="secao-lista-dash">
+            <h3>📋 Orçamentos Aguardando Retorno</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Contato</th>
+                        <th>Valor</th>
+                        <th>Data Envio</th>
+                        <th>Status</th>
+                        <th class="acoes">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabela-orcamentos"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script type="module" src="js/api-bridge.js"></script>
+
+</body>
+</html>

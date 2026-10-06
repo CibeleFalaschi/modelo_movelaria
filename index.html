@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movelaria Modelo</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+     
+
+     <div class="login-container">
+        <h2>Login</h2>
+
+        <div class="input-group">
+             <label for="usuario">Usuário</label>
+             <input type="text" id="usuario"  placeholder="Digite seu usuário">
+        </div>
+
+        <div class="input-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="Digite sua senha">
+        </div>
+
+        <button class="btn" onclick="login()">Entrar</button>
+
+        <div id="erro" class="error" role="alert" aria-live="assertive"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script type="module" src="js/login.js"></script>
+</body>
+</html>

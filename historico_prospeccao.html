@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Prospecção</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/historico_prospeccao.css">
+</head>
+<body>
+    <div class="container-lista">
+        <button class="btn-padrao" onclick="voltar()">Voltar</button>
+        <h2>Histórico de Prospecção</h2>
+        <h3 id="nome-contato" class="cliente-selecionado"></h3>
+        <button class="btn-padrao" onclick="abrirNovoHistorico()">Nova Ação</button>
+
+        <table id="tabela-historico">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Tipo</th>
+                    <th>Observação</th>
+                    <th>Próximo Contato</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- MODAL HISTÓRICO -->
+    <div id="overlay-historico">
+        <div id="form-historico">
+            <h3>Nova Ação</h3>
+            <label>Tipo de Ação</label>
+            <select id="tipoAcao">
+                <option>Ligação</option>
+                <option>WhatsApp</option>
+                <option>Visita</option>
+            </select>
+
+            <label>Observação</label>
+            <textarea id="observacaoHist"></textarea>
+
+            <label>Próximo Contato</label>
+            <input type="date" id="proximoContatoHist">
+            <br><br>
+            <div class="acoes-botoes">
+    <button class="btn-padrao" onclick="salvarHistorico()">Salvar</button>
+    <button class="btn-padrao" onclick="fecharHistorico()">Cancelar</button>
+        </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/historico_prospeccao.js"></script>
+    <script type="module" src="js/api-bridge.js"></script>
+</body>
+</html>

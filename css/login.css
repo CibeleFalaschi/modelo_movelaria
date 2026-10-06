@@ -1,0 +1,30 @@
+.login-container {
+    background: white;
+    padding: 34px;
+    border-radius: 14px;
+    width: min(360px, calc(100vw - 40px));
+    box-sizing: border-box;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+}
+
+.error {
+    min-height: 20px;
+    margin-top: 14px;
+    color: #b91c1c;
+    font-size: 0.9rem;
+}
