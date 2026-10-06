@@ -18,6 +18,24 @@ function mostrarAlerta(msg) {
     }, 3000);
 }
 
+function escapeHtml(texto) {
+    return String(texto ?? '').replace(/[&<>"']/g, caractere => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[caractere]));
+}
+
+// Data local (YYYY-MM-DD); toISOString() usa UTC e vira "amanhã" após as 21h no Brasil.
+function hojeLocal() {
+    const agora = new Date();
+    const dois = n => String(n).padStart(2, '0');
+    return `${agora.getFullYear()}-${dois(agora.getMonth() + 1)}-${dois(agora.getDate())}`;
+}
+
+function formatarDataBR(data) {
+    if (!data) return '';
+    return new Date(`${String(data).slice(0, 10)}T00:00:00`).toLocaleDateString('pt-BR');
+}
+
 function formatarMoeda(valor) {
     return Number(valor || 0).toLocaleString("pt-BR", {
         style: "currency",

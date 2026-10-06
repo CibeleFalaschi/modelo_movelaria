@@ -19,6 +19,7 @@
             <li><a href="briefing_orcamento.html">Briefing</a></li>
             <li><a href="orcamento.html">Orçamento</a></li>
             <li><a href="cliente.html">Cliente</a></li>
+            <li class="somente-admin" hidden><a href="funcionarios.html">Funcionários</a></li>
             <li><a href="index.html" class="btn-sair">Sair</a></li>
         </ul>
     </nav>
@@ -45,8 +46,6 @@
                     <label>Filtrar por Vendedor:</label>
                     <select id="filtro-vendedor" onchange="filtrarPorVendedor()">
                         <option value="todos">Todos</option>
-                        <option value="Vendedor A">Vendedor A</option>
-                        <option value="Vendedor B">Vendedor B</option>
                     </select>
                 </div>
 
@@ -60,6 +59,7 @@
                     <th>Nº</th>
                     <th>Nome</th>
                     <th>Telefone</th>
+                    <th>Empresa</th>
                     <th>Status</th>
                     <th>Vendedor</th>
                     <th>Ações</th>
@@ -83,18 +83,31 @@
             <label>Telefone</label>
             <input type="text" id="telefone">
 
+            <label>Empresa</label>
+            <select id="empresa">
+                <option value="">Selecione</option>
+            </select>
+
             <label>Vendedor</label>
             <select id="vendedor">
                 <option value="">Selecione</option>
-                <option value="Vendedor A">Vendedor A</option>
-                <option value="Vendedor B">Vendedor B</option>
+            </select>
+
+            <label>Origem</label>
+            <select id="origem">
+                <option value="site">Site</option>
+                <option value="instagram">Instagram</option>
+                <option value="indicacao">Indicação</option>
+                <option value="google">Google</option>
+                <option value="outro">Outro</option>
             </select>
 
             <label>Status</label>
             <select id="status">
                 <option>Em andamento</option>
                 <option>Perdido</option>
-                <option>Convertido</option>
+                <!-- "Convertido" só é definido ao gerar o orçamento (botão 📄 na lista). -->
+                <option disabled>Convertido</option>
             </select>
 
             <br><br>

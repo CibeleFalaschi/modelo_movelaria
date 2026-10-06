@@ -1,4 +1,4 @@
-import { authFetch, clearToken, getToken, logoutRequest } from './api.js';
+import { authBlob, authFetch, clearToken, getToken, logoutRequest } from './api.js';
 
 async function request(path, options = {}) {
     try {
@@ -11,12 +11,29 @@ async function request(path, options = {}) {
     }
 }
 
+// Perfil vem do JWT só para exibir/ocultar menus; a API valida o perfil de verdade no servidor.
+function perfilAtual() {
+    try {
+        const payload = JSON.parse(atob(getToken().split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+        return payload.perfil || null;
+    } catch {
+        return null;
+    }
+}
+
 window.api = {
+    perfil: perfilAtual,
     request,
+    blob: authBlob,
     getToken,
     clearToken,
     logout: logoutRequest
 };
+
+// Os scripts das telas são clássicos e a ponte é um módulo (executado depois
+// do parsing da página). Este evento evita que uma tela tente carregar dados
+// antes de `window.api` existir.
+window.dispatchEvent(new Event('movelaria:api-ready'));
 
 window.notify = function notify(message, type = 'info') {
     let container = document.getElementById('notificacoes');
@@ -57,6 +74,10 @@ if (!paginaPublica && !getToken()) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    if (perfilAtual() === 'admin') {
+        document.querySelectorAll('.somente-admin').forEach(item => { item.hidden = false; });
+    }
+
     document.querySelectorAll('a.btn-sair').forEach(link => {
         link.addEventListener('click', async event => {
             event.preventDefault();

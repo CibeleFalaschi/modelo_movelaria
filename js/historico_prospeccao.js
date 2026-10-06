@@ -30,9 +30,9 @@ async function salvarHistorico() {
         await window.api.request(`/prospeccoes/${prospeccaoId}/historico`, {
             method: 'POST',
             body: {
-                tipoAcao: tipo,
-                observacao: obs.trim(),
-                proximoContato: proximo || null
+                TipoAcao: tipo,
+                Observacao: obs.trim(),
+                ProximoContato: proximo || null
             }
         });
         await carregarHistorico();
@@ -50,13 +50,11 @@ function renderizarHistorico(registros) {
     registros.forEach(registro => {
         const linha = tabela.insertRow();
         linha.insertCell(0).innerText = registro.dataAcao
-            ? new Date(registro.dataAcao).toLocaleDateString('pt-BR')
+            ? new Date(registro.dataAcao).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
             : '';
         linha.insertCell(1).innerText = registro.tipoAcao || '';
         linha.insertCell(2).innerText = registro.observacao || '';
-        linha.insertCell(3).innerText = registro.proximoContato
-            ? new Date(`${registro.proximoContato}T00:00:00`).toLocaleDateString('pt-BR')
-            : '';
+        linha.insertCell(3).innerText = formatarDataBR(registro.proximoContato);
     });
 }
 
@@ -72,7 +70,10 @@ async function carregarHistorico() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function inicializarHistorico() {
     document.getElementById('nome-contato').textContent = localStorage.getItem('contatoNome') || '';
     carregarHistorico();
-});
+}
+
+window.addEventListener('movelaria:api-ready', inicializarHistorico, { once: true });
+if (window.api?.request) inicializarHistorico();

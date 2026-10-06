@@ -16,6 +16,7 @@
             <li><a href="briefing_orcamento.html">Briefing</a></li>
             <li><a href="orcamento.html">Orçamento</a></li>
             <li><a href="cliente.html">Cliente</a></li>
+            <li class="somente-admin" hidden><a href="funcionarios.html">Funcionários</a></li>
             <li><a href="index.html" class="btn-sair">Sair</a></li>
         </ul>
     </nav>
@@ -28,8 +29,6 @@
                             <legend>Empresa</legend>
             <select id="empresa" required>
                         <option value="">Selecionar Empresa</option>
-                        <option value="apparato">Apparato</option>
-                        <option value="signore">Signore</option>
                     </select>
             </fieldset>
 
@@ -68,6 +67,8 @@
                 + Adicionar Novo Ambiente
             </button>
 
+            <div id="arquivos-existentes"></div>
+
             <!-- BLOCO 3: UPLOAD DE INSPIRAÇÕES -->
             <fieldset style="margin-top: 20px;">
                 <legend>📎 Fotos de Inspiração do Cliente</legend>
@@ -89,11 +90,6 @@
                     <select name="status_orcamento" id="status_orcamento" 
         style="width: 100%; padding: 8px;"
         onchange="verificarStatusContrato(this.value)">
-    <option value="1">Em aberto</option>
-    <option value="2">Em elaboração</option>
-    <option value="3">Fechado</option>
-    <option value="4">Perdido</option>
-    <option value="5">Entregue</option>
     </select>
                 </div>
 
@@ -255,7 +251,7 @@
                 <td><strong>WHATSAPP:</strong> <span id="c-empresa-whats"></span></td>
             </tr>
             <tr>
-                <td><strong>E-MAIL:</strong> <span id="c-empresa-email"></span></td>
+                <td><strong>E-MAIL:</strong> <span id="c-empresa-email-tab"></span></td>
                 <td><strong>E-MAIL FINANCEIRO:</strong> <span id="c-empresa-email-fin"></span></td>
             </tr>
         </table>

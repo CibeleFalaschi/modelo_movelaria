@@ -1,18 +1,24 @@
-function atualizarDadosImpressao() {
-    const empresa = document.getElementById('empresaSeletor').value;
+// Dados das empresas vêm do banco (GET /empresas); o código publicado não guarda endereço real.
+let empresasCadastro = [];
+const LOGOS_EMPRESA = {
+    apparato: 'imagens/Logo_Apparato.jpg',
+    signore: 'imagens/logo_signore_contrato.png'
+};
+
+function atualizarDadosImpressao(codigo) {
+    const seletor = document.getElementById('empresaSeletor');
+    if (typeof codigo === 'string' && [...seletor.options].some(opcao => opcao.value === codigo)) seletor.value = codigo;
+    const empresa = seletor.value;
     const logoImg = document.getElementById('logo-img');
     const nomeTxt = document.getElementById('empresa-nome');
     const enderecoTxt = document.getElementById('empresa-endereco');
 
-    if (empresa === 'apparato') {
-        logoImg.src = 'imagens/Logo_Apparato.jpg';
-        nomeTxt.innerText = 'APPARATO MOVELARIA';
-        enderecoTxt.innerText = 'R. dos Bambus, 000 - Jardim São Paulo, Campinas - SP';
-    } else {
-        logoImg.src = 'imagens/logo_signore.jpg';
-        nomeTxt.innerText = 'SIGNORE MOBILI';
-        enderecoTxt.innerText = '___________________';
-    }
+    const cadastro = empresasCadastro.find(item => item.Codigo === empresa) || {};
+    const endereco = [cadastro.Endereco, cadastro.Bairro, cadastro.Cidade].filter(Boolean).join(', ');
+
+    logoImg.src = LOGOS_EMPRESA[empresa] || '';
+    nomeTxt.innerText = (cadastro.Nome || empresa).toUpperCase();
+    enderecoTxt.innerText = endereco || '___________________';
 }
 
 function prepararImpressao(numero, cliente, valor, endereco, telefone, cidade, itens = obterItensDoFormulario()) {
@@ -33,7 +39,7 @@ function prepararImpressao(numero, cliente, valor, endereco, telefone, cidade, i
     itens.forEach(item => {
         corpo.innerHTML += `
             <tr>
-                <td>${item.descricao}</td>
+                <td>${escapeHtml(item.descricao)}</td>
                 <td>${formatarMoeda(item.avista)}</td>
                 <td>${formatarMoeda(item.prazo)}</td>
             </tr>`;
@@ -93,9 +99,7 @@ function renderizarOrcamentos(orcamentos) {
         const linha = tabela.insertRow();
         linha.insertCell(0).textContent = item.numeroOrcamento || item.id;
         linha.insertCell(1).textContent = item.contato?.nome || '';
-        linha.insertCell(2).textContent = item.dataSolicitacao
-            ? new Date(`${item.dataSolicitacao}T00:00:00`).toLocaleDateString('pt-BR')
-            : '';
+        linha.insertCell(2).textContent = formatarDataBR(item.dataSolicitacao);
         linha.insertCell(3).textContent = formatarMoeda(item.valor || 0);
         linha.insertCell(4).textContent = item.status || '';
         linha.insertCell(5).innerHTML = `<button type="button" onclick="abrirOrcamento(${item.id})">✏️ Editar</button>`
@@ -103,9 +107,10 @@ function renderizarOrcamentos(orcamentos) {
         linha.querySelector('[data-imprimir]').addEventListener('click', async () => {
             try {
                 const detalhes = await window.api.request(`/orcamentos/${item.id}`);
+                atualizarDadosImpressao(detalhes.empresaCodigo);
                 const itens = (detalhes.ambientes || []).map(ambiente => ({
                     ambiente: ambiente.nome,
-                    descricao: ambiente.observacao || '',
+                    descricao: ambiente.observacao ? `${ambiente.nome} - ${ambiente.observacao}` : ambiente.nome,
                     avista: Number(ambiente.valor) || 0,
                     prazo: (Number(ambiente.valor) || 0) * 1.1
                 }));
@@ -113,9 +118,9 @@ function renderizarOrcamentos(orcamentos) {
                     detalhes.numeroOrcamento || item.numeroOrcamento || item.id,
                     detalhes.contato?.nome || item.contato?.nome || '',
                     detalhes.valor || item.valor || 0,
-                    detalhes.contato?.endereco || '',
+                    detalhes.contato?.endereco?.endereco || '',
                     detalhes.contato?.telefone || '',
-                    detalhes.contato?.cidade || '',
+                    detalhes.contato?.endereco?.cidade || '',
                     itens
                 );
             } catch (erro) {
@@ -129,11 +134,19 @@ async function carregarOrcamentos() {
     if (!window.api?.request) return;
 
     try {
-        const orcamentos = await window.api.request('/orcamentos');
+        const [orcamentos, empresas] = await Promise.all([
+            window.api.request('/orcamentos'),
+            window.api.request('/empresas')
+        ]);
+        empresasCadastro = empresas;
+        atualizarDadosImpressao();
         renderizarOrcamentos(orcamentos);
     } catch (erro) {
         console.error('Erro ao carregar orçamentos', erro);
+        alert(`Não foi possível carregar os orçamentos: ${erro.message}`);
     }
 }
 
-document.addEventListener('DOMContentLoaded', carregarOrcamentos);
+atualizarDadosImpressao();
+window.addEventListener('movelaria:api-ready', carregarOrcamentos, { once: true });
+if (window.api?.request) carregarOrcamentos();

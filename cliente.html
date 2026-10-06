@@ -16,6 +16,7 @@
             <li><a href="briefing_orcamento.html">Briefing</a></li>
             <li><a href="orcamento.html">Orçamento</a></li>
             <li><a href="cliente.html">Cliente</a></li>
+            <li class="somente-admin" hidden><a href="funcionarios.html">Funcionários</a></li>
             <li><a href="index.html" class="btn-sair">Sair</a></li>
         </ul>
     </nav>
@@ -91,7 +92,7 @@
                style="grid-column: span 2;">
 
         <input type="text" id="cidade" placeholder="Cidade">
-        <input type="text" id="estado" placeholder="Estado">
+        <input type="text" id="estado" placeholder="UF" maxlength="2" style="text-transform: uppercase;">
         <textarea id="observacao" placeholder="Observações"
                   style="grid-column: 1 / -1; min-height: 80px; 
                          padding: 8px; resize: vertical;">

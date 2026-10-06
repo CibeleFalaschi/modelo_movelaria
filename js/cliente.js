@@ -11,10 +11,11 @@ function abrirEdicaoCliente(idCliente) {
     document.getElementById('telefone').value = clienteSelecionado.contato?.telefone || '';
     document.getElementById('cpf_cnpj').value = clienteSelecionado.cpfCnpj || '';
     document.getElementById('rg').value = clienteSelecionado.rg || '';
-    document.getElementById('data_nascimento').value = clienteSelecionado.dataNascimento || '';
+    document.getElementById('data_nascimento').value = String(clienteSelecionado.dataNascimento || '').slice(0, 10);
     document.getElementById('profissao').value = clienteSelecionado.profissao || '';
     document.getElementById('estado_civil').value = clienteSelecionado.estadoCivil || '';
-    document.getElementById('endereco').value = clienteSelecionado.endereco || '';
+    document.getElementById('endereco').value = clienteSelecionado.endereco?.logradouro || '';
+    document.getElementById('cep').value = clienteSelecionado.endereco?.cep || '';
     document.getElementById('cidade').value = clienteSelecionado.cidade || '';
     document.getElementById('estado').value = clienteSelecionado.estado || '';
     document.getElementById('observacao').value = clienteSelecionado.observacao || '';
@@ -39,14 +40,18 @@ async function salvarCliente() {
             body: {
                 idContato: clienteSelecionado.contato.id,
                 idEmpresa: clienteSelecionado.empresa?.id || null,
+                idEndereco: clienteSelecionado.endereco?.id || null,
+                nome: document.getElementById('nome').value.trim(),
+                telefone: document.getElementById('telefone').value.trim(),
                 cpfCnpj: document.getElementById('cpf_cnpj').value.trim(),
                 rg: document.getElementById('rg').value.trim(),
                 dataNascimento: document.getElementById('data_nascimento').value || null,
                 profissao: document.getElementById('profissao').value.trim(),
                 estadoCivil: document.getElementById('estado_civil').value,
                 endereco: document.getElementById('endereco').value.trim(),
+                cep: document.getElementById('cep').value.trim(),
                 cidade: document.getElementById('cidade').value.trim(),
-                estado: document.getElementById('estado').value.trim(),
+                estado: document.getElementById('estado').value.trim().toUpperCase(),
                 observacao: document.getElementById('observacao').value.trim()
             }
         });
@@ -84,10 +89,11 @@ async function carregarClientes() {
         renderizarClientes(window.clientes);
     } catch (erro) {
         console.error('Erro ao carregar clientes', erro);
+        alert(`Não foi possível carregar os clientes: ${erro.message}`);
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function inicializarClientes() {
     carregarClientes();
     document.getElementById('busca').addEventListener('input', event => {
         const busca = event.target.value.toLowerCase();
@@ -95,4 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             linha.style.display = linha.cells[1]?.textContent.toLowerCase().includes(busca) ? '' : 'none';
         });
     });
-});
+}
+
+window.addEventListener('movelaria:api-ready', inicializarClientes, { once: true });
+if (window.api?.request) inicializarClientes();

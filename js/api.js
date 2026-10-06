@@ -76,6 +76,12 @@ export async function authFetch(path, opts = {}) {
   return parseResponse(res);
 }
 
+export async function authBlob(path) {
+  const res = await fetch(`${API_BASE}${path}`, { headers: { Authorization: 'Bearer ' + getToken() } });
+  if (!res.ok) throw new Error('Não foi possível baixar o arquivo.');
+  return res.blob();
+}
+
 export async function logoutRequest() {
   clearToken();
 }
