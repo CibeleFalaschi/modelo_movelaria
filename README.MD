@@ -13,11 +13,10 @@ Análise e Desenvolvimento de Sistemas e da Mentoria em Testes de Software do Ju
 1. **Organizar o fluxo comercial da movelaria**:
    **Prospecção → Contato → Briefing/Orçamento → Visita/Projeto → Cliente**
 2. **Servir de laboratório de testes de software**: um sistema completo (frontend, API REST e banco de dados)
-   entregue "como se viesse do time de desenvolvimento" para ser testado pelo QA. Ele permite praticar testes
+   para ser testado pelo QA. Ele permite praticar testes
    funcionais, exploratórios, de API, de banco de dados, de segurança e de regressão.
-3. **Uso real**: depois de validado pelos testes, o sistema poderá ser usado no dia a dia das empresas
-   Apparato e Signore.
-
+3. **Uso real**: depois de validado pelos testes, o sistema poderá ser usado no dia a dia das empresas.
+   
 ---
 
 ## 🧩 Funcionalidades
